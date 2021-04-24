@@ -6,24 +6,42 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://strivemans.github.io">
-  <title>递归 | Hexo</title>
+  <title>递归 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+  <link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+    <style>
+    .pace .pace-progress {
+        background: #6d6d6d; /*进度条颜色*/
+        height: 2px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #6d6d6d; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #6d6d6d;    /*上边框颜色*/
+        border-left-color: #6d6d6d;    /*左边框颜色*/
+    }
+  </style>
+  
   <meta name="description" content="1.递归 含义：一个方法当中 通过 调用自身来依此 循环的形式 就叫做 递归 例子1234567891011&#x2F;&#x2F;感受递归的作用	public static void main(String[] args) &amp;#123;		print(3);	&amp;#125;		public static void print(int n) &amp;#123;		if(n&gt;0) &amp;#123;			System.out.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="递归">
 <meta property="og:url" content="https://strivemans.github.io/2021/04/23/%E9%80%92%E5%BD%92/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="1.递归 含义：一个方法当中 通过 调用自身来依此 循环的形式 就叫做 递归 例子1234567891011&#x2F;&#x2F;感受递归的作用	public static void main(String[] args) &amp;#123;		print(3);	&amp;#125;		public static void print(int n) &amp;#123;		if(n&gt;0) &amp;#123;			System.out.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-04-23T15:37:23.000Z">
-<meta property="article:modified_time" content="2021-04-23T16:35:31.943Z">
+<meta property="article:modified_time" content="2021-04-24T10:00:13.458Z">
 <meta property="article:author" content="John Doe">
+<meta property="article:tag" content="-java -数据结构">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.ico">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -43,7 +61,7 @@
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
       
-<div class="overlay" style="background: #4d4d4d"></div>
+<div class="overlay" style="background: linear-gradient(200deg,#a0cfe4,#e8c37e)"></div>
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
@@ -62,6 +80,9 @@
 				<li><a href="/tags/%E9%9A%8F%E7%AC%94/">随笔</a></li>
 	        
 			</ul>
+		</nav>
+		<nav>
+				总文章数 6
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -94,7 +115,7 @@
     <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
       
 <nav id="mobile-nav">
-  	<div class="overlay js-overlay" style="background: #4d4d4d"></div>
+  	<div class="overlay js-overlay" style="background: linear-gradient(200deg,#a0cfe4,#e8c37e)"></div>
 	<div class="btnctn js-mobile-btnctn">
   		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
 	</div>
@@ -156,7 +177,7 @@
       递归
     </h1>
   
-
+ 
         
         <a href="/2021/04/23/%E9%80%92%E5%BD%92/" class="archive-article-date">
   	<time datetime="2021-04-23T15:37:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
@@ -170,6 +191,8 @@
 <li><h4 id="含义：一个方法当中-通过-调用自身来依此-循环的形式-就叫做-递归"><a href="#含义：一个方法当中-通过-调用自身来依此-循环的形式-就叫做-递归" class="headerlink" title="含义：一个方法当中 通过 调用自身来依此 循环的形式 就叫做 递归"></a>含义：一个方法当中 通过 调用自身来依此 循环的形式 就叫做 递归</h4></li>
 <li><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//感受递归的作用</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		print(<span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(n&gt;<span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(n);</span><br><span class="line">			print(n-<span class="number">1</span>);  <span class="comment">//递归 当n&lt;0时 则返回</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
+<span id="more"></span>
+
 <h2 id="2-案列"><a href="#2-案列" class="headerlink" title="2.案列"></a>2.案列</h2><ul>
 <li><h4 id="斐波那契数列：除了-第-1-2-项为-1-，其余的项的数值-都为-前两项的和-如-1-1-2-3-5-8-13-…"><a href="#斐波那契数列：除了-第-1-2-项为-1-，其余的项的数值-都为-前两项的和-如-1-1-2-3-5-8-13-…" class="headerlink" title="斐波那契数列：除了 第 1 2 项为 1 ，其余的项的数值 都为 前两项的和 如 1 1 2 3 5 8 13 …"></a>斐波那契数列：除了 第 1 2 项为 1 ，其余的项的数值 都为 前两项的和 如 1 1 2 3 5 8 13 …</h4></li>
 <li><h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> result=Febonacci(<span class="number">3</span>);  <span class="comment">//result 为 2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Febonacci</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;  <span class="comment">//n为 第几项</span></span><br><span class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">2</span>)&#123;  <span class="comment">//由特点可知 第1 2 项均为2</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> Febonacci(n-<span class="number">1</span>)+Febonacci(n-<span class="number">2</span>);  <span class="comment">//由性质可知 第n项 为 n-1项 和 n-2项的和</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -208,6 +231,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -325,6 +359,9 @@
     </div>
   </div>
 </footer>
+<!--页面点击小红心-->
+<script type="text/javascript" src="/love.js"></script>
+
     </div>
     <script>
 	var yiliaConfig = {
@@ -398,6 +435,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">-java -数据结构</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-hexo -搭建</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
