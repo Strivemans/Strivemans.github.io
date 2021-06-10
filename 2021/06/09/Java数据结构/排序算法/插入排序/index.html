@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://strivemans.github.io">
-  <title>时间复杂度与空间复杂度 | 我的博客</title>
+  <title>插入排序 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
@@ -25,20 +25,18 @@
     }
   </style>
   
-  <meta name="description" content="1.时间复杂度 作用：用于衡量一个算法的优劣，时间次数越短越好 频度：一个算法中的语句执行的次数 称为 频度 记为 T(n)">
+  <meta name="description" content="直接插入排序思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。实现代码：12345678910111213141516171819202122232425&#x2F;&#x2F;思路：	&#x2F;*	 * 下标从第2个数 作为比较的开始  让它与第一个数 比较 	 * 要是第一个">
 <meta property="og:type" content="article">
-<meta property="og:title" content="时间复杂度与空间复杂度">
-<meta property="og:url" content="https://strivemans.github.io/2021/04/24/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/index.html">
+<meta property="og:title" content="插入排序">
+<meta property="og:url" content="https://strivemans.github.io/2021/06/09/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="1.时间复杂度 作用：用于衡量一个算法的优劣，时间次数越短越好 频度：一个算法中的语句执行的次数 称为 频度 记为 T(n)">
+<meta property="og:description" content="直接插入排序思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。实现代码：12345678910111213141516171819202122232425&#x2F;&#x2F;思路：	&#x2F;*	 * 下标从第2个数 作为比较的开始  让它与第一个数 比较 	 * 要是第一个">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://strivemans.github.io/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%BE%E4%BE%8B.png">
-<meta property="article:published_time" content="2021-04-24T13:39:38.000Z">
-<meta property="article:modified_time" content="2021-04-24T14:07:30.487Z">
+<meta property="article:published_time" content="2021-06-09T04:29:04.000Z">
+<meta property="article:modified_time" content="2021-06-10T03:54:23.114Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="-java -数据结构 -排序算法">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://strivemans.github.io/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%BE%E4%BE%8B.png">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -169,39 +167,35 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java数据结构/排序算法/时间复杂度与空间复杂度" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java数据结构/排序算法/插入排序" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      时间复杂度与空间复杂度
+      插入排序
     </h1>
   
  
         
-        <a href="/2021/04/24/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2021-04-24T13:39:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-24</time>
+        <a href="/2021/06/09/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2021-06-09T04:29:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="1-时间复杂度"><a href="#1-时间复杂度" class="headerlink" title="1.时间复杂度"></a>1.时间复杂度</h2><ul>
-<li><h4 id="作用：用于衡量一个算法的优劣，时间次数越短越好"><a href="#作用：用于衡量一个算法的优劣，时间次数越短越好" class="headerlink" title="作用：用于衡量一个算法的优劣，时间次数越短越好"></a>作用：用于衡量一个算法的优劣，时间次数越短越好</h4></li>
-<li><h4 id="频度：一个算法中的语句执行的次数-称为-频度-记为-T-n"><a href="#频度：一个算法中的语句执行的次数-称为-频度-记为-T-n" class="headerlink" title="频度：一个算法中的语句执行的次数 称为 频度 记为 T(n)"></a>频度：一个算法中的语句执行的次数 称为 频度 记为 T(n)</h4><span id="more"></span></li>
-<li><h4 id="举例"><a href="#举例" class="headerlink" title="举例"></a>举例</h4><p><img src="/images/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%BE%E4%BE%8B.png"></p>
-<h4 id="由上图可知，一方法的时间复杂度为-n-1-二方法的时间复杂度为-1-由此可知-二方法比一方法的效率高"><a href="#由上图可知，一方法的时间复杂度为-n-1-二方法的时间复杂度为-1-由此可知-二方法比一方法的效率高" class="headerlink" title="由上图可知，一方法的时间复杂度为 n+1 二方法的时间复杂度为 1 由此可知 二方法比一方法的效率高"></a>由上图可知，一方法的时间复杂度为 n+1 二方法的时间复杂度为 1 由此可知 二方法比一方法的效率高</h4></li>
-<li><h4 id="计算时间复杂度的方法："><a href="#计算时间复杂度的方法：" class="headerlink" title="计算时间复杂度的方法："></a>计算时间复杂度的方法：</h4><ul>
-<li><h4 id="忽略常数：比如-2n-10-与-2n的时间复杂度是非常相近的-所以-可以忽略10-直接时间复杂度都等于-2n"><a href="#忽略常数：比如-2n-10-与-2n的时间复杂度是非常相近的-所以-可以忽略10-直接时间复杂度都等于-2n" class="headerlink" title="忽略常数：比如 2n+10 与 2n的时间复杂度是非常相近的 所以 可以忽略10 直接时间复杂度都等于 2n"></a>忽略常数：比如 2n+10 与 2n的时间复杂度是非常相近的 所以 可以忽略10 直接时间复杂度都等于 2n</h4></li>
-<li><h4 id="忽略低次项：比如-2n²-10n-2-与-2n²-的时间复杂度很相近-所以可以忽略低次项-时间复杂度均为-2n²"><a href="#忽略低次项：比如-2n²-10n-2-与-2n²-的时间复杂度很相近-所以可以忽略低次项-时间复杂度均为-2n²" class="headerlink" title="忽略低次项：比如 2n²+10n+2 与 2n² 的时间复杂度很相近 所以可以忽略低次项 时间复杂度均为 2n²"></a>忽略低次项：比如 2n²+10n+2 与 2n² 的时间复杂度很相近 所以可以忽略低次项 时间复杂度均为 2n²</h4></li>
-<li><h4 id="忽略系数：当-n²-与-n三次方对比时-可以忽略系数"><a href="#忽略系数：当-n²-与-n三次方对比时-可以忽略系数" class="headerlink" title="忽略系数：当 n² 与 n三次方对比时 可以忽略系数"></a>忽略系数：当 n² 与 n三次方对比时 可以忽略系数</h4></li>
-</ul>
-</li>
-</ul>
-<h2 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h2>
+        <h2 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h2><h4 id="思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较"><a href="#思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较" class="headerlink" title="思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较"></a>思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较</h4><h4 id="缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。"><a href="#缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。" class="headerlink" title="缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。"></a>缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。</h4><h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路：</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 下标从第2个数 作为比较的开始  让它与第一个数 比较 </span></span><br><span class="line"><span class="comment">	 * 要是第一个数比他大 则替换位置 </span></span><br><span class="line"><span class="comment">	 * 下标转移到第3个数 再与前面的数字依次进行比较 若该数比他们都大则不动 下标继续往后移</span></span><br><span class="line"><span class="comment">	 * 若是前面的数比该数大 则交换位置 直至该数比前面的数都要大则停止比较 下标继续往后移</span></span><br><span class="line"><span class="comment">	 * 因此 比较的顺序为</span></span><br><span class="line"><span class="comment">	 * 1.&#123;2,4,9,5,7,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 2.&#123;2,4,9,5,7,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 3.&#123;2,4,5,9,7,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 4.&#123;2,4,5,7,9,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 5.&#123;2,3,4,5,7,9,1,6,8,10&#125; ....</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//遍历数组元素</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp=arr[i]; <span class="comment">//获取下标指向的元素 用于等下的交换	</span></span><br><span class="line">			<span class="comment">//与前面的数字进行比较</span></span><br><span class="line">			<span class="keyword">int</span> j;</span><br><span class="line">			<span class="keyword">for</span>(j=i-<span class="number">1</span>;j&gt;=<span class="number">0</span> &amp;&amp; arr[j]&gt;temp;j--) &#123;</span><br><span class="line">				arr[j+<span class="number">1</span>]=arr[j]; <span class="comment">//比temp小的数 都往前移</span></span><br><span class="line">			&#125;</span><br><span class="line">			arr[j+<span class="number">1</span>]=temp; <span class="comment">//让temp赋值到合适的位置 通过上面的for循环 后面的数都应该比该数大</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><h4 id="思路：希尔排序-是-直接插入排序-的升级版本，希尔排序-把数组通过-步长-的设定来把数组分成几等分-这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升-直接插入排序-的-执行效率。sss"><a href="#思路：希尔排序-是-直接插入排序-的升级版本，希尔排序-把数组通过-步长-的设定来把数组分成几等分-这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升-直接插入排序-的-执行效率。sss" class="headerlink" title="思路：希尔排序 是 直接插入排序 的升级版本，希尔排序 把数组通过 步长 的设定来把数组分成几等分 这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升 直接插入排序 的 执行效率。sss"></a>思路：希尔排序 是 直接插入排序 的升级版本，希尔排序 把数组通过 步长 的设定来把数组分成几等分 这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升 直接插入排序 的 执行效率。sss</h4><h4 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路：</span></span><br><span class="line">	<span class="comment">/* </span></span><br><span class="line"><span class="comment">	 *通过步的设定来将数组划分为几个组</span></span><br><span class="line"><span class="comment">	 *通过每一次步的改变而分的组来将数字进行 直接插入排序</span></span><br><span class="line"><span class="comment">	 * 步的改变通常为 数组长度/2 一直/2 直到 0 为止</span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> k=<span class="number">1</span>;</span><br><span class="line">		<span class="comment">//设置步长</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> d=arr.length/<span class="number">2</span>;d&gt;<span class="number">0</span>;d/=<span class="number">2</span>) &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=d;i&lt;arr.length;i+=d) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=i-d;j&gt;=<span class="number">0</span>&amp;&amp;arr[j]&gt;arr[j+d];j-=d) &#123;</span><br><span class="line">					<span class="keyword">int</span> temp=arr[j];</span><br><span class="line">					arr[j]=arr[j+d];</span><br><span class="line">					arr[j+d]=temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">&quot;第&quot;</span>+k+<span class="string">&quot;次:&quot;</span>+Arrays.toString(arr));</span><br><span class="line">			k++;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id><a href="#" class="headerlink" title></a></h4>
       
 
       
@@ -291,7 +285,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://strivemans.github.io/2021/04/24/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://strivemans.github.io/2021/06/09/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -305,18 +299,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/04/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F(%E5%86%92%E6%B3%A1%E3%80%81%E5%BF%AB%E9%80%9F)/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          交换排序
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/04/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E9%80%92%E5%BD%92/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">递归</div>
+    <a href="/2021/04/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F(%E5%86%92%E6%B3%A1%E3%80%81%E5%BF%AB%E9%80%9F)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">交换排序</div>
       <i class="icon-circle-right"></i>
     </a>
   
