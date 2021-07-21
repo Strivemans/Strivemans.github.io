@@ -25,27 +25,27 @@
     }
   </style>
   
-  <meta name="description" content="为什么使用树树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。树的基本概念 根结点：由源头开始的结点 就是根结点 其中 1 就是根结点  双亲结点：延">
+  <meta name="description" content="为什么使用树树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。树的基本概念1.根结点：由源头开始的结点 就是根结点 其中 1 就是根结点 2.双亲结点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="树结构概述">
 <meta property="og:url" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="为什么使用树树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。树的基本概念 根结点：由源头开始的结点 就是根结点 其中 1 就是根结点  双亲结点：延">
+<meta property="og:description" content="为什么使用树树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。树的基本概念1.根结点：由源头开始的结点 就是根结点 其中 1 就是根结点 2.双亲结点">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E6%A0%B9%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E8%B7%AF%E7%BB%8F.png">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E6%9D%83.png">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
-<meta property="og:image" content="https://strivemans.github.io/.io//%E8%B7%AF%E7%BB%8F.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%B9%E7%BB%93%E7%82%B9.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E8%B7%AF%E7%BB%8F.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%9D%83.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png">
+<meta property="og:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E8%B7%AF%E7%BB%8F.png">
 <meta property="article:published_time" content="2021-06-17T03:09:36.000Z">
-<meta property="article:modified_time" content="2021-06-17T05:01:34.424Z">
+<meta property="article:modified_time" content="2021-07-21T07:01:03.365Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="-java -数据结构">
+<meta property="article:tag" content="-java -数据结构 -树结构">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://strivemans.github.io/.io//%E6%A0%B9%E7%BB%93%E7%82%B9.png">
+<meta name="twitter:image" content="https://strivemans.github.io/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%B9%E7%BB%93%E7%82%B9.png">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -196,28 +196,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="为什么使用树"><a href="#为什么使用树" class="headerlink" title="为什么使用树"></a>为什么使用树</h3><h4 id="树结构能够解决掉顺序结构当中的繁琐的问题。-比如-在顺序结构当中-通常我们需要插入一个数据-都需要先将-插入的位置后面的数据进行向后移动-才能够将数据插入。或者在-链表结构当中-我们想要找到链表的其中一个数据-我们需要先从链头开始不断向下遍历去寻找。-这些顺序结构存在的繁琐问题-能够使用树结构解决。"><a href="#树结构能够解决掉顺序结构当中的繁琐的问题。-比如-在顺序结构当中-通常我们需要插入一个数据-都需要先将-插入的位置后面的数据进行向后移动-才能够将数据插入。或者在-链表结构当中-我们想要找到链表的其中一个数据-我们需要先从链头开始不断向下遍历去寻找。-这些顺序结构存在的繁琐问题-能够使用树结构解决。" class="headerlink" title="树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。"></a>树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。</h4><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><ol>
-<li><h3 id="根结点：由源头开始的结点-就是根结点-其中-1-就是根结点"><a href="#根结点：由源头开始的结点-就是根结点-其中-1-就是根结点" class="headerlink" title="根结点：由源头开始的结点 就是根结点 其中 1 就是根结点"></a>根结点：由源头开始的结点 就是根结点 其中 1 就是根结点</h3><p><img src="/.io//%E6%A0%B9%E7%BB%93%E7%82%B9.png"></p>
-</li>
-<li><h3 id="双亲结点：延伸下来的结点就是它们的双亲结点-1-就是-2和3的双亲结点"><a href="#双亲结点：延伸下来的结点就是它们的双亲结点-1-就是-2和3的双亲结点" class="headerlink" title="双亲结点：延伸下来的结点就是它们的双亲结点 1 就是 2和3的双亲结点"></a>双亲结点：延伸下来的结点就是它们的双亲结点 1 就是 2和3的双亲结点</h3><p><img src="/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
-</li>
-<li><h3 id="子结点：由它们产生的结点-即为子结点-2和3是-1-的子节点"><a href="#子结点：由它们产生的结点-即为子结点-2和3是-1-的子节点" class="headerlink" title="子结点：由它们产生的结点 即为子结点 2和3是 1 的子节点"></a>子结点：由它们产生的结点 即为子结点 2和3是 1 的子节点</h3><p><img src="/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
-</li>
-<li><h3 id="路经：结点到另一个结点的路程-就为路经-1结点-到-4结点的路经为-1-2-3-4"><a href="#路经：结点到另一个结点的路程-就为路经-1结点-到-4结点的路经为-1-2-3-4" class="headerlink" title="路经：结点到另一个结点的路程 就为路经  1结点 到 4结点的路经为 1,2,3,4"></a>路经：结点到另一个结点的路程 就为路经  1结点 到 4结点的路经为 1,2,3,4</h3><p><img src="/.io//%E8%B7%AF%E7%BB%8F.png"></p>
-</li>
-<li><h3 id="结点的度：度-即使-一个结点中-有多少个子节点-1结点-的度为-2-因为-它有两个子结点"><a href="#结点的度：度-即使-一个结点中-有多少个子节点-1结点-的度为-2-因为-它有两个子结点" class="headerlink" title="结点的度：度 即使 一个结点中 有多少个子节点  1结点 的度为 2 因为 它有两个子结点"></a>结点的度：度 即使 一个结点中 有多少个子节点  1结点 的度为 2 因为 它有两个子结点</h3><p><img src="/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
-</li>
-<li><h3 id="结点的权：权即是-一个结点到下一个结点的连线中代表的数值-如-1-到2-结点的-权为-15"><a href="#结点的权：权即是-一个结点到下一个结点的连线中代表的数值-如-1-到2-结点的-权为-15" class="headerlink" title="结点的权：权即是 一个结点到下一个结点的连线中代表的数值 如 1 到2 结点的 权为 15"></a>结点的权：权即是 一个结点到下一个结点的连线中代表的数值 如 1 到2 结点的 权为 15</h3><p><img src="/.io//%E6%9D%83.png"></p>
-</li>
-<li><h3 id="叶子结点：该节点没有子结点的话-就是叶子结点-2-和-3-就是-叶子结点"><a href="#叶子结点：该节点没有子结点的话-就是叶子结点-2-和-3-就是-叶子结点" class="headerlink" title="叶子结点：该节点没有子结点的话 就是叶子结点 2 和 3 就是 叶子结点"></a>叶子结点：该节点没有子结点的话 就是叶子结点 2 和 3 就是 叶子结点</h3><p><img src="/.io//%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
-</li>
-<li><h3 id="子树：即-一个大树当中-把其中一个结点拿出来-也是一颗树-即它是该树当中的子树"><a href="#子树：即-一个大树当中-把其中一个结点拿出来-也是一颗树-即它是该树当中的子树" class="headerlink" title="子树：即 一个大树当中 把其中一个结点拿出来 也是一颗树 即它是该树当中的子树"></a>子树：即 一个大树当中 把其中一个结点拿出来 也是一颗树 即它是该树当中的子树</h3></li>
-<li><h3 id="层：由根结点-到-没有结点为止-即为层-该树有1-2-3-4-层"><a href="#层：由根结点-到-没有结点为止-即为层-该树有1-2-3-4-层" class="headerlink" title="层：由根结点 到 没有结点为止 即为层 该树有1 2 3 4 层"></a>层：由根结点 到 没有结点为止 即为层 该树有1 2 3 4 层</h3><p><img src="/.io//%E8%B7%AF%E7%BB%8F.png"></p>
-</li>
-<li><h3 id="树的高度：高度即是最高的层树-如上图当中-树的高度是4"><a href="#树的高度：高度即是最高的层树-如上图当中-树的高度是4" class="headerlink" title="树的高度：高度即是最高的层树 如上图当中 树的高度是4"></a>树的高度：高度即是最高的层树 如上图当中 树的高度是4</h3></li>
-<li><h3 id="森林：由很多很多的子树组成-就是森林"><a href="#森林：由很多很多的子树组成-就是森林" class="headerlink" title="森林：由很多很多的子树组成 就是森林"></a>森林：由很多很多的子树组成 就是森林</h3></li>
-</ol>
-
+        <h3 id="为什么使用树"><a href="#为什么使用树" class="headerlink" title="为什么使用树"></a>为什么使用树</h3><h4 id="树结构能够解决掉顺序结构当中的繁琐的问题。-比如-在顺序结构当中-通常我们需要插入一个数据-都需要先将-插入的位置后面的数据进行向后移动-才能够将数据插入。或者在-链表结构当中-我们想要找到链表的其中一个数据-我们需要先从链头开始不断向下遍历去寻找。-这些顺序结构存在的繁琐问题-能够使用树结构解决。"><a href="#树结构能够解决掉顺序结构当中的繁琐的问题。-比如-在顺序结构当中-通常我们需要插入一个数据-都需要先将-插入的位置后面的数据进行向后移动-才能够将数据插入。或者在-链表结构当中-我们想要找到链表的其中一个数据-我们需要先从链头开始不断向下遍历去寻找。-这些顺序结构存在的繁琐问题-能够使用树结构解决。" class="headerlink" title="树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。"></a>树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。</h4><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><h3 id="1-根结点：由源头开始的结点-就是根结点-其中-1-就是根结点"><a href="#1-根结点：由源头开始的结点-就是根结点-其中-1-就是根结点" class="headerlink" title="1.根结点：由源头开始的结点 就是根结点 其中 1 就是根结点"></a>1.根结点：由源头开始的结点 就是根结点 其中 1 就是根结点</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%B9%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="2-双亲结点：延伸下来的结点就是它们的双亲结点-1-就是-2和3的双亲结点"><a href="#2-双亲结点：延伸下来的结点就是它们的双亲结点-1-就是-2和3的双亲结点" class="headerlink" title="2.双亲结点：延伸下来的结点就是它们的双亲结点 1 就是 2和3的双亲结点"></a>2.双亲结点：延伸下来的结点就是它们的双亲结点 1 就是 2和3的双亲结点</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="3-子结点：由它们产生的结点-即为子结点-2和3是-1-的子节点"><a href="#3-子结点：由它们产生的结点-即为子结点-2和3是-1-的子节点" class="headerlink" title="3.子结点：由它们产生的结点 即为子结点 2和3是 1 的子节点"></a>3.子结点：由它们产生的结点 即为子结点 2和3是 1 的子节点</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="4-路经：结点到另一个结点的路程-就为路经-1结点-到-4结点的路经为-1-2-3-4"><a href="#4-路经：结点到另一个结点的路程-就为路经-1结点-到-4结点的路经为-1-2-3-4" class="headerlink" title="4.路经：结点到另一个结点的路程 就为路经  1结点 到 4结点的路经为 1,2,3,4"></a>4.路经：结点到另一个结点的路程 就为路经  1结点 到 4结点的路经为 1,2,3,4</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E8%B7%AF%E7%BB%8F.png"></p>
+<h3 id="5-结点的度：度-即使-一个结点中-有多少个子节点-1结点-的度为-2-因为-它有两个子结点"><a href="#5-结点的度：度-即使-一个结点中-有多少个子节点-1结点-的度为-2-因为-它有两个子结点" class="headerlink" title="5.结点的度：度 即使 一个结点中 有多少个子节点  1结点 的度为 2 因为 它有两个子结点"></a>5.结点的度：度 即使 一个结点中 有多少个子节点  1结点 的度为 2 因为 它有两个子结点</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="6-结点的权：权即是-一个结点到下一个结点的连线中代表的数值-如-1-到2-结点的-权为-15"><a href="#6-结点的权：权即是-一个结点到下一个结点的连线中代表的数值-如-1-到2-结点的-权为-15" class="headerlink" title="6.结点的权：权即是 一个结点到下一个结点的连线中代表的数值 如 1 到2 结点的 权为 15"></a>6.结点的权：权即是 一个结点到下一个结点的连线中代表的数值 如 1 到2 结点的 权为 15</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%9D%83.png"></p>
+<h3 id="7-叶子结点：该节点没有子结点的话-就是叶子结点-2-和-3-就是-叶子结点"><a href="#7-叶子结点：该节点没有子结点的话-就是叶子结点-2-和-3-就是-叶子结点" class="headerlink" title="7.叶子结点：该节点没有子结点的话 就是叶子结点 2 和 3 就是 叶子结点"></a>7.叶子结点：该节点没有子结点的话 就是叶子结点 2 和 3 就是 叶子结点</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="8-子树：即-一个大树当中-把其中一个结点拿出来-也是一颗树-即它是该树当中的子树"><a href="#8-子树：即-一个大树当中-把其中一个结点拿出来-也是一颗树-即它是该树当中的子树" class="headerlink" title="8.子树：即 一个大树当中 把其中一个结点拿出来 也是一颗树 即它是该树当中的子树"></a>8.子树：即 一个大树当中 把其中一个结点拿出来 也是一颗树 即它是该树当中的子树</h3><h3 id="9-层：由根结点-到-没有结点为止-即为层-该树有1-2-3-4-层"><a href="#9-层：由根结点-到-没有结点为止-即为层-该树有1-2-3-4-层" class="headerlink" title="9.层：由根结点 到 没有结点为止 即为层 该树有1 2 3 4 层"></a>9.层：由根结点 到 没有结点为止 即为层 该树有1 2 3 4 层</h3><p><img src="images/%E6%A0%91%E7%BB%93%E6%9E%84/%E8%B7%AF%E7%BB%8F.png"></p>
+<h3 id="10-树的高度：高度即是最高的层树-如上图当中-树的高度是4"><a href="#10-树的高度：高度即是最高的层树-如上图当中-树的高度是4" class="headerlink" title="10.树的高度：高度即是最高的层树 如上图当中 树的高度是4"></a>10.树的高度：高度即是最高的层树 如上图当中 树的高度是4</h3><h3 id="11-森林：由很多很多的子树组成-就是森林"><a href="#11-森林：由很多很多的子树组成-就是森林" class="headerlink" title="11.森林：由很多很多的子树组成 就是森林"></a>11.森林：由很多很多的子树组成 就是森林</h3>
       
 
       
@@ -251,7 +238,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构 -树结构</a>
         		</li>
       		
 		</ul>
@@ -474,6 +461,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">-java -数据结构 -排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">-java -数据结构 -树结构</a>
               </li>
             
             <div class="clearfix"></div>
