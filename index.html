@@ -77,7 +77,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 15
+				总文章数 16
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -163,6 +163,83 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Java数据结构/排序算法/堆排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/">堆排序</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2021-07-27T04:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p><strong>1. 大顶堆：二叉树中，任意一个父节点的权值 都要比 它的叶子结点要大。 小顶堆则相反</strong></p>
+<p><strong>2. 原理：把数组 想成 二叉树，把二叉树 整理成 大顶堆的格式 。 通过 根结点（最大） 与 最后的结点（最小） 进行交换 从而达到排序效果</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">//堆排序</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">9</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">		heapSort(arr);</span><br><span class="line">		System.out.print(Arrays.toString(arr));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 原理：  把数组想成二叉树 ，把 该树整理成 大顶堆（任何一个父节点都比它所属的叶子结点大 ）的格式</span></span><br><span class="line"><span class="comment">	 * 然后 把根结点与 最后的一个叶子结点 进行交换， 交换完 再次整理二叉树 变成 大顶堆模式 </span></span><br><span class="line"><span class="comment">	 * 依次循环 达到排序的效果</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//拿到 最后的结点开始 进行 大顶堆的模式  即使 最后一个结点的父节点</span></span><br><span class="line">		<span class="keyword">int</span> start=(arr.length-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//整理成 大顶堆</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=start;i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">			maxHeap(arr,arr.length,i);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//交换数值 根结点与 最后的结点进行交换</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=arr.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp=arr[<span class="number">0</span>];</span><br><span class="line">			arr[<span class="number">0</span>]=arr[i];</span><br><span class="line">			arr[i]=temp;</span><br><span class="line">			maxHeap(arr,i,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//把二叉树整理成大顶堆  size:对二叉树进行整理的次数 index:最后一个的非叶子结点位置</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">maxHeap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> size,<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//左、右 结点的位置  由 树的定义可知</span></span><br><span class="line">		<span class="keyword">int</span> leftNode =index*<span class="number">2</span>+<span class="number">1</span>;  <span class="comment">//左子结点 </span></span><br><span class="line">		<span class="keyword">int</span> rightNode= index*<span class="number">2</span>+<span class="number">2</span>;  <span class="comment">//右子结点</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//记录 每一次 最大值的位置</span></span><br><span class="line">		<span class="keyword">int</span> max=index; </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//比较左子结点</span></span><br><span class="line">		<span class="keyword">if</span>(leftNode&lt;size &amp;&amp;arr[leftNode]&gt;arr[max]) &#123;</span><br><span class="line">			max=leftNode;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//比较右子结点</span></span><br><span class="line">		<span class="keyword">if</span>(rightNode&lt;size &amp;&amp; arr[rightNode]&gt;arr[max]) &#123;</span><br><span class="line">			max=rightNode;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//交换数值</span></span><br><span class="line">		<span class="keyword">if</span>(max!=index) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp=arr[index];</span><br><span class="line">			arr[index]=arr[max];</span><br><span class="line">			arr[max]=temp;</span><br><span class="line">			<span class="comment">//再次整理树 变成大顶堆模式  因为交换后 可能 会打乱原先的大顶堆模式</span></span><br><span class="line">			maxHeap(arr,size,max);</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-SSM框架整合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -940,85 +1017,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/24/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E4%B8%8E%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java数据结构/线性结构/递归" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E9%80%92%E5%BD%92/">递归</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/04/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E9%80%92%E5%BD%92/" class="archive-article-date">
-  	<time datetime="2021-04-23T15:37:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-递归"><a href="#1-递归" class="headerlink" title="1.递归"></a>1.递归</h2><ul>
-<li><h4 id="含义：一个方法当中-通过-调用自身来依此-循环的形式-就叫做-递归"><a href="#含义：一个方法当中-通过-调用自身来依此-循环的形式-就叫做-递归" class="headerlink" title="含义：一个方法当中 通过 调用自身来依此 循环的形式 就叫做 递归"></a>含义：一个方法当中 通过 调用自身来依此 循环的形式 就叫做 递归</h4></li>
-<li><h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//感受递归的作用</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		print(<span class="number">3</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(n&gt;<span class="number">0</span>) &#123;</span><br><span class="line">			System.out.println(n);</span><br><span class="line">			print(n-<span class="number">1</span>);  <span class="comment">//递归 当n&lt;0时 则返回</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-        
-          <a class="article-more-a" href="/2021/04/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E9%80%92%E5%BD%92/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -线性结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/23/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E9%80%92%E5%BD%92/">展开全文 >></a>
         </p>
       
 
