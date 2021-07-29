@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://strivemans.github.io">
-  <title>堆排序 | 我的博客</title>
+  <title>线索二叉树 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
@@ -25,18 +25,20 @@
     }
   </style>
   
-  <meta name="description" content="堆排序1. 大顶堆：二叉树中，任意一个父节点的权值 都要比 它的叶子结点要大。 小顶堆则相反 2. 原理：把数组 想成 二叉树，把二叉树 整理成 大顶堆的格式 。 通过 根结点（最大） 与 最后的结点（最小） 进行交换 从而达到排序效果 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+  <meta name="description" content="线索二叉树 1, 含义：由上图可知 当 4 结点 是最后的叶子结点时， 它的 左右结点都为null。这就存在了资源浪费问题。 因此 我们可以把这些空着的结点 根据遍历的方式 把左右结点 指向 对应的上下结点。这样就能找到一个结点的上下结点是什么  而这是普通的二叉树做不到的 这就是 线索二叉树。 123456789101112131415161718192021222324252627282930">
 <meta property="og:type" content="article">
-<meta property="og:title" content="堆排序">
-<meta property="og:url" content="https://strivemans.github.io/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/index.html">
+<meta property="og:title" content="线索二叉树">
+<meta property="og:url" content="https://strivemans.github.io/2021/07/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="堆排序1. 大顶堆：二叉树中，任意一个父节点的权值 都要比 它的叶子结点要大。 小顶堆则相反 2. 原理：把数组 想成 二叉树，把二叉树 整理成 大顶堆的格式 。 通过 根结点（最大） 与 最后的结点（最小） 进行交换 从而达到排序效果 123456789101112131415161718192021222324252627282930313233343536373839404142434445">
+<meta property="og:description" content="线索二叉树 1, 含义：由上图可知 当 4 结点 是最后的叶子结点时， 它的 左右结点都为null。这就存在了资源浪费问题。 因此 我们可以把这些空着的结点 根据遍历的方式 把左右结点 指向 对应的上下结点。这样就能找到一个结点的上下结点是什么  而这是普通的二叉树做不到的 这就是 线索二叉树。 123456789101112131415161718192021222324252627282930">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-07-27T04:22:04.000Z">
-<meta property="article:modified_time" content="2021-07-27T02:02:44.868Z">
+<meta property="og:image" content="https://strivemans.github.io/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91.png">
+<meta property="article:published_time" content="2021-07-29T03:09:36.000Z">
+<meta property="article:modified_time" content="2021-07-29T14:44:35.059Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="-java -数据结构 -排序算法">
+<meta property="article:tag" content="-java -数据结构 -树结构">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://strivemans.github.io/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91.png">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -167,29 +169,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java数据结构/排序算法/堆排序" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java数据结构/树结构/线索二叉树" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      堆排序
+      线索二叉树
     </h1>
   
  
         
-        <a href="/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2021-07-27T04:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-27</time>
+        <a href="/2021/07/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2021-07-29T03:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-29</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h3><p><strong>1. 大顶堆：二叉树中，任意一个父节点的权值 都要比 它的叶子结点要大。 小顶堆则相反</strong></p>
-<p><strong>2. 原理：把数组 想成 二叉树，把二叉树 整理成 大顶堆的格式 。 通过 根结点（最大） 与 最后的结点（最小） 进行交换 从而达到排序效果</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">//堆排序</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HeapSort</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">9</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">7</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>,<span class="number">4</span>,<span class="number">2</span>&#125;;</span><br><span class="line">		heapSort(arr);</span><br><span class="line">		System.out.print(Arrays.toString(arr));</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 原理：  把数组想成二叉树 ，把 该树整理成 大顶堆（任何一个父节点都比它所属的叶子结点大 ）的格式</span></span><br><span class="line"><span class="comment">	 * 然后 把根结点与 最后的一个叶子结点 进行交换， 交换完 再次整理二叉树 变成 大顶堆模式 </span></span><br><span class="line"><span class="comment">	 * 依次循环 达到排序的效果</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">//排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">heapSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//拿到 最后的结点开始 进行 大顶堆的模式  即使 最后一个结点的父节点</span></span><br><span class="line">		<span class="keyword">int</span> start=(arr.length-<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//整理成 大顶堆</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=start;i&gt;=<span class="number">0</span>;i--) &#123;</span><br><span class="line">			maxHeap(arr,arr.length,i);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//交换数值 根结点与 最后的结点进行交换</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=arr.length-<span class="number">1</span>;i&gt;<span class="number">0</span>;i--) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp=arr[<span class="number">0</span>];</span><br><span class="line">			arr[<span class="number">0</span>]=arr[i];</span><br><span class="line">			arr[i]=temp;</span><br><span class="line">			maxHeap(arr,i,<span class="number">0</span>);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//把二叉树整理成大顶堆  size:对二叉树进行整理的次数 index:最后一个的非叶子结点位置</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">maxHeap</span><span class="params">(<span class="keyword">int</span>[] arr,<span class="keyword">int</span> size,<span class="keyword">int</span> index)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//左、右 结点的位置  由 树的定义可知</span></span><br><span class="line">		<span class="keyword">int</span> leftNode =index*<span class="number">2</span>+<span class="number">1</span>;  <span class="comment">//左子结点 </span></span><br><span class="line">		<span class="keyword">int</span> rightNode= index*<span class="number">2</span>+<span class="number">2</span>;  <span class="comment">//右子结点</span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//记录 每一次 最大值的位置</span></span><br><span class="line">		<span class="keyword">int</span> max=index; </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//比较左子结点</span></span><br><span class="line">		<span class="keyword">if</span>(leftNode&lt;size &amp;&amp;arr[leftNode]&gt;arr[max]) &#123;</span><br><span class="line">			max=leftNode;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//比较右子结点</span></span><br><span class="line">		<span class="keyword">if</span>(rightNode&lt;size &amp;&amp; arr[rightNode]&gt;arr[max]) &#123;</span><br><span class="line">			max=rightNode;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//交换数值</span></span><br><span class="line">		<span class="keyword">if</span>(max!=index) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp=arr[index];</span><br><span class="line">			arr[index]=arr[max];</span><br><span class="line">			arr[max]=temp;</span><br><span class="line">			<span class="comment">//再次整理树 变成大顶堆模式  因为交换后 可能 会打乱原先的大顶堆模式</span></span><br><span class="line">			maxHeap(arr,size,max);</span><br><span class="line">		&#125;	</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+        <h3 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91.png"></p>
+<p><strong>1, 含义：由上图可知 当 4 结点 是最后的叶子结点时， 它的 左右结点都为null。这就存在了资源浪费问题。 因此 我们可以把这些空着的结点 根据遍历的方式 把左右结点 指向 对应的上下结点。这样就能找到一个结点的上下结点是什么  而这是普通的二叉树做不到的 这就是 线索二叉树。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//中序 线索二叉树</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">threadedNodes</span><span class="params">(ThreadedNode node)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//递归到 中序遍历中 最开始的结点</span></span><br><span class="line">		<span class="keyword">if</span>(node==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		threadedNodes(node.LNode);</span><br><span class="line">		<span class="keyword">if</span>(node.LNode==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//设置前驱结点 就是该结点的前一个结点</span></span><br><span class="line">			node.LNode=pre;</span><br><span class="line">			<span class="comment">//改变当前结点的类型  0 为 正常的左右结点指向 子结点  1为 左右结点 指向 前驱与后一个结点</span></span><br><span class="line">			node.leftType=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(pre!=<span class="keyword">null</span> &amp;&amp; pre.RNode==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//将上一个结点的右结点设置为当前节点</span></span><br><span class="line">			pre.RNode=node;</span><br><span class="line">			pre.rightTye=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pre=node;</span><br><span class="line">		<span class="comment">//处理右边结点</span></span><br><span class="line">		threadedNodes(node.RNode);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//线索二叉树遍历</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">threadedIterate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//临时存储当前结点</span></span><br><span class="line">		ThreadedNode node=root;</span><br><span class="line">		<span class="keyword">while</span>(node!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//中序遍历 获取到最后的左子结点</span></span><br><span class="line">			<span class="keyword">while</span>(node.leftType==<span class="number">0</span>) &#123;</span><br><span class="line">				node=node.LNode;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.print(node.data+<span class="string">&quot; &quot;</span>);</span><br><span class="line">			<span class="comment">//node.rightTye =1 说明 有 下一个结点 则 把当前结点给到下一个结点</span></span><br><span class="line">			<span class="keyword">while</span>(node.rightTye==<span class="number">1</span>) &#123;</span><br><span class="line">				node=node.RNode;</span><br><span class="line">				System.out.print(node.data+<span class="string">&quot; &quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//继续把当前结点给到下一个结点</span></span><br><span class="line">			node=node.RNode;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
 
 
       
@@ -225,7 +227,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构 -树结构</a>
         		</li>
       		
 		</ul>
@@ -281,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://strivemans.github.io/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://strivemans.github.io/2021/07/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -295,18 +297,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/07/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          线索二叉树
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/07/26/SSM%E6%A1%86%E6%9E%B6%E6%95%B4%E5%90%88/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">SSM框架整合</div>
+    <a href="/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">堆排序</div>
       <i class="icon-circle-right"></i>
     </a>
   
