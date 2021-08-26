@@ -77,7 +77,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 17
+				总文章数 19
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -163,6 +163,167 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Java数据结构/树结构/哈夫曼编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/">哈夫曼编码</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/08/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/" class="archive-article-date">
+  	<time datetime="2021-08-26T03:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="哈夫曼编码"><a href="#哈夫曼编码" class="headerlink" title="哈夫曼编码"></a>哈夫曼编码</h3><p><strong>1. 原理：根据哈夫曼树可知，常用的会靠近根结点，不常用的则会离根结点越远。 由此可得到一种名为 哈夫曼编码的 编码方式。 会比普通的编码方式效率更高。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> TreeUtil;</span><br><span class="line"></span><br><span class="line"><span class="comment">//哈夫曼树的结点类型</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HuffmanCodeNode</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">HuffmanCodeNode</span>&gt; </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> weight;</span><br><span class="line">	</span><br><span class="line">	HuffmanCodeNode left;</span><br><span class="line">	HuffmanCodeNode right;</span><br><span class="line">	</span><br><span class="line">	Byte data;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">HuffmanCodeNode</span><span class="params">(Byte data,<span class="keyword">int</span> weight)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.data=data;</span><br><span class="line">		<span class="keyword">this</span>.weight=weight;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(HuffmanCodeNode o)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> o.weight-<span class="keyword">this</span>.weight;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line">	<span class="number">1.</span> <span class="comment">//生成哈夫曼树</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> HuffmanCodeNode <span class="title">getHuffmanCodeTree</span><span class="params">(List&lt;HuffmanCodeNode&gt; nodes)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">while</span>(nodes.size()&gt;<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">//排序</span></span><br><span class="line">			Collections.sort(nodes);</span><br><span class="line">			<span class="comment">//获取weight权值最小的两个树</span></span><br><span class="line">			HuffmanCodeNode left=nodes.get(nodes.size()-<span class="number">1</span>);</span><br><span class="line">			HuffmanCodeNode right=nodes.get(nodes.size()-<span class="number">2</span>);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//创建一个临时根结点</span></span><br><span class="line">			HuffmanCodeNode parent=<span class="keyword">new</span> HuffmanCodeNode(<span class="keyword">null</span>,left.weight+right.weight);</span><br><span class="line">			</span><br><span class="line">			parent.left=left;</span><br><span class="line">			parent.right=right;</span><br><span class="line">			<span class="comment">//删除最小的两个树</span></span><br><span class="line">			nodes.remove(left);</span><br><span class="line">			nodes.remove(right);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把新建成的parent树 添加进 nodes集合</span></span><br><span class="line">			nodes.add(parent);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> nodes.get(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//用于统计编码出现的次数 返回HuffmanCodeNode类型的集合</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> List&lt;HuffmanCodeNode&gt; <span class="title">getNodes</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">		List&lt;HuffmanCodeNode&gt; nodes=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//统计 每一个byte出现的次数</span></span><br><span class="line">		<span class="comment">//用于存储每一个byte出现的次数</span></span><br><span class="line">		Map&lt;Byte,Integer&gt; counts=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">byte</span> b:bytes) &#123;</span><br><span class="line">			Integer count=counts.get(b);</span><br><span class="line">			<span class="comment">//byte的数值 第一次出现</span></span><br><span class="line">			<span class="keyword">if</span>(count==<span class="keyword">null</span>) &#123; </span><br><span class="line">				counts.put(b, <span class="number">1</span>);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				counts.put(b, count+<span class="number">1</span>);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//把每一个键值 转化为 huffmanCodeNode 的形式</span></span><br><span class="line">		<span class="comment">//Map.Entry方法 相当于方便的去取 某一个map对象里面的值  </span></span><br><span class="line">		<span class="comment">//counts.entrySet()用于 方便被 另一个map对象取自己相对应的值</span></span><br><span class="line">		<span class="keyword">for</span>(Map.Entry&lt;Byte,Integer&gt; entry:counts.entrySet()) &#123;</span><br><span class="line">			nodes.add(<span class="keyword">new</span> HuffmanCodeNode(entry.getKey(),entry.getValue()));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> nodes;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//临时存储 编码路经</span></span><br><span class="line">	<span class="keyword">static</span> StringBuilder sb=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//用于存储编码表</span></span><br><span class="line">	<span class="keyword">static</span> Map&lt;Byte,String&gt; Huffcodes=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"></span><br><span class="line">	<span class="number">2.</span><span class="comment">//创建哈夫曼编码路经</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">getCodes</span><span class="params">(HuffmanCodeNode node, String code, StringBuilder sb)</span> </span>&#123;</span><br><span class="line">		StringBuilder sb2=<span class="keyword">new</span> StringBuilder(sb);</span><br><span class="line">		sb2.append(code);</span><br><span class="line">		<span class="keyword">if</span>(node.data==<span class="keyword">null</span>) &#123;</span><br><span class="line">			getCodes(node.left,<span class="string">&quot;0&quot;</span>,sb2);</span><br><span class="line">			getCodes(node.right,<span class="string">&quot;1&quot;</span>,sb2);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			Huffcodes.put(node.data,sb2.toString());</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="number">3.</span><span class="comment">//创建哈夫曼编码表</span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> Map&lt;Byte, String&gt; <span class="title">getCodes</span><span class="params">(HuffmanCodeNode tree)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(tree==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		getCodes(tree.left,<span class="string">&quot;0&quot;</span>,sb);</span><br><span class="line">		getCodes(tree.right,<span class="string">&quot;1&quot;</span>,sb);</span><br><span class="line">		<span class="keyword">return</span> Huffcodes;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="number">4.</span><span class="comment">//进行编码操作</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] zip(<span class="keyword">byte</span>[] bytes, Map&lt;Byte, String&gt; huffCodes) &#123;</span><br><span class="line">		StringBuilder sb=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="comment">//把需要压缩的byte数组转化为二进制的字符串</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">byte</span> b:bytes) &#123;</span><br><span class="line">			sb.append(huffCodes.get(b));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//定义长度</span></span><br><span class="line">		<span class="keyword">int</span> len;</span><br><span class="line">		<span class="keyword">if</span>(sb.length()%<span class="number">8</span>==<span class="number">0</span>) &#123;</span><br><span class="line">			len=sb.length()/<span class="number">8</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			len=sb.length()/<span class="number">8</span>+<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//用于存储压缩后的bytes</span></span><br><span class="line">		<span class="keyword">byte</span>[] bys=<span class="keyword">new</span> <span class="keyword">byte</span>[len];</span><br><span class="line">		<span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;sb.length();i+=<span class="number">8</span>) &#123;</span><br><span class="line">			String strByte;</span><br><span class="line">			<span class="keyword">if</span>(i+<span class="number">8</span>&gt;sb.length()) &#123;</span><br><span class="line">				strByte=sb.substring(i);</span><br><span class="line">			&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">				strByte=sb.substring(i,i+<span class="number">8</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">byte</span> byt=(<span class="keyword">byte</span>)Integer.parseInt(strByte,<span class="number">2</span>);</span><br><span class="line">			bys[index]=byt;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> bys;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="number">5.</span><span class="comment">//使用赫夫曼进行压缩</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] HuffmanZip(<span class="keyword">byte</span>[] bytes) &#123;</span><br><span class="line">		<span class="comment">//对每一次出现的编码次数进行统计,并且让其变成 HuffmanCodeNode类型的集合</span></span><br><span class="line">		List&lt;HuffmanCodeNode&gt; nodes=getNodes(bytes);</span><br><span class="line">		<span class="comment">//生成哈夫曼树</span></span><br><span class="line">		HuffmanCodeNode tree=getHuffmanCodeTree(nodes);</span><br><span class="line">		<span class="comment">//创建哈夫曼编码表</span></span><br><span class="line">		Map&lt;Byte,String&gt; huffCodes=getCodes(tree);</span><br><span class="line">		<span class="comment">//编码</span></span><br><span class="line">		<span class="keyword">byte</span>[] by=zip(bytes,huffCodes);</span><br><span class="line">		<span class="keyword">return</span> by;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//用于补齐位数的 </span></span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">byteToBitStr</span><span class="params">(<span class="keyword">boolean</span> flag, <span class="keyword">byte</span> b)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> temp=b;</span><br><span class="line">		<span class="keyword">if</span>(flag) &#123;</span><br><span class="line">			temp|=<span class="number">256</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		String str=Integer.toBinaryString(temp);</span><br><span class="line">		<span class="keyword">if</span>(flag) &#123;</span><br><span class="line">			<span class="keyword">return</span> str.substring(str.length()-<span class="number">8</span>);</span><br><span class="line">		&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> str;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="number">6.</span><span class="comment">//解码操作</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">byte</span>[] deCode(Map&lt;Byte, String&gt; huffcodes, <span class="keyword">byte</span>[] bs) &#123;</span><br><span class="line">		StringBuilder sb=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">		<span class="comment">//把byte数组 转化为 二进制的 数组</span></span><br><span class="line">		<span class="comment">//补齐数字为 8 位数 不足的用0补足</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;bs.length;i++) &#123;</span><br><span class="line">			<span class="keyword">byte</span> b=bs[i];</span><br><span class="line">			<span class="keyword">boolean</span> flag=(i==bs.length-<span class="number">1</span>); <span class="comment">//</span></span><br><span class="line">			sb.append(byteToBitStr(!flag,b));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//把字符串按照指定的编码表进行编码</span></span><br><span class="line">		<span class="comment">//把赫夫曼编码的键值对进行交换</span></span><br><span class="line">		Map&lt;String,Byte&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(Map.Entry&lt;Byte, String&gt; entry:huffcodes.entrySet()) &#123;</span><br><span class="line">			map.put(entry.getValue(),entry.getKey());</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//创建一个集合 用于存储byte</span></span><br><span class="line">		List&lt;Byte&gt; list=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;sb.length();) &#123;</span><br><span class="line">			<span class="keyword">int</span> count=<span class="number">1</span>;</span><br><span class="line">			<span class="keyword">boolean</span> flag=<span class="keyword">true</span>;</span><br><span class="line">			Byte b=<span class="keyword">null</span>;</span><br><span class="line">			<span class="keyword">while</span>(flag) &#123;</span><br><span class="line">				String key=sb.substring(i,i+count);</span><br><span class="line">				b=map.get(key);</span><br><span class="line">				<span class="keyword">if</span>(b==<span class="keyword">null</span>) &#123;</span><br><span class="line">					count++;</span><br><span class="line">				&#125;<span class="keyword">else</span> &#123;</span><br><span class="line">					flag=<span class="keyword">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			list.add(b);</span><br><span class="line">			i+=count;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//把集合转化为数组</span></span><br><span class="line">		<span class="keyword">byte</span>[] b=<span class="keyword">new</span> <span class="keyword">byte</span>[list.size()];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;b.length;i++) &#123;</span><br><span class="line">			b[i]=list.get(i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> b;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构 -树结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E7%BC%96%E7%A0%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java数据结构/树结构/哈夫曼树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/">哈夫曼树</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/08/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/" class="archive-article-date">
+  	<time datetime="2021-08-10T03:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="创建哈夫曼树（最优二叉树）"><a href="#创建哈夫曼树（最优二叉树）" class="headerlink" title="创建哈夫曼树（最优二叉树）"></a>创建哈夫曼树（最优二叉树）</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91.png"></p>
+<p><strong>1.树的带权路经的长度（WPL）：比如 如上图所示 1图的WPL=2 * 9+2 * 4+2 * 5+2 * 2=40</strong></p>
+<p><strong>2. 概念：WPL最小的方式树 即为 哈夫曼树。即 权值离根结点越近 即为哈夫曼树 如上图2 即为 哈夫曼树</strong></p>
+<p><strong>3.代码实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> TreeUtil;</span><br><span class="line"></span><br><span class="line"><span class="comment">//哈夫曼樹的結點</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HuffmanNode</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> value;</span><br><span class="line">	</span><br><span class="line">	HuffmanNode left;  <span class="comment">//用于表示 最小的权值结点</span></span><br><span class="line">	HuffmanNode right; <span class="comment">//用于表示 第二小的权值结点</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">HuffmanNode</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value=value;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">this</span>.value;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setValue</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.value=value;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> TreeUtil;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HuffmanTree</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span>[] arr=<span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">3</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">29</span>,<span class="number">5</span>,<span class="number">11</span>,<span class="number">23</span>,<span class="number">14</span>&#125;;</span><br><span class="line">		HuffmanNode node=HuffmanTree(arr);</span><br><span class="line">		System.out.println(node.value);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 思路：</span></span><br><span class="line"><span class="comment">	 * 1.把数组的每一个元素都当成是 一个 二叉树 </span></span><br><span class="line"><span class="comment">	 * 2.把数组 进行 排序  </span></span><br><span class="line"><span class="comment">	 * 3.把权值最小的两个结点 组成一个 临时的二叉树 根结点是 他俩的权值之和</span></span><br><span class="line"><span class="comment">	 * 4.把 临时的二叉树 归并到数组中 并且删除 刚刚排序 权值最小的结点 </span></span><br><span class="line"><span class="comment">	 * 5.继续 排序 按照上面步骤循环进行 直到只剩下最后合并的总 树</span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> HuffmanNode <span class="title">HuffmanTree</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//1. 把数组的每一个元素 都变成树</span></span><br><span class="line">		List&lt;HuffmanNode&gt; nodes=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="comment">//int value:arr ==   int i;value=arr[i]; i++</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> value:arr) &#123;</span><br><span class="line">			nodes.add(<span class="keyword">new</span> HuffmanNode(value));</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//树的数量大于1 时 继续循环</span></span><br><span class="line">		<span class="keyword">while</span>(nodes.size()&gt;<span class="number">1</span>) &#123;</span><br><span class="line">			<span class="comment">//排序</span></span><br><span class="line">			selectSort(nodes);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把两个最小的结点 合成一个树</span></span><br><span class="line">			<span class="keyword">int</span> size =nodes.size();<span class="comment">//总二叉树的长度</span></span><br><span class="line">			HuffmanNode left=nodes.get(size-<span class="number">1</span>); <span class="comment">//最小的点</span></span><br><span class="line">			HuffmanNode right=nodes.get(size-<span class="number">2</span>); <span class="comment">//第二小的点</span></span><br><span class="line">			HuffmanNode parent=<span class="keyword">new</span> HuffmanNode(left.value+right.value);  <span class="comment">//根结点</span></span><br><span class="line">			<span class="comment">//删除最小的两个树</span></span><br><span class="line">			nodes.remove(left);</span><br><span class="line">			nodes.remove(right);</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把刚刚归并好的树 加入到 总树中</span></span><br><span class="line">			nodes.add(parent);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">return</span> nodes.get(<span class="number">0</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//交换排序</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(List&lt;HuffmanNode&gt; nodes)</span></span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nodes.size();i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> maxIndex=i;</span><br><span class="line">  			<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;nodes.size();j++) &#123;</span><br><span class="line">				 <span class="keyword">if</span>(nodes.get(maxIndex).getData()&lt;nodes.get(j).getData()) &#123;</span><br><span class="line">					 maxIndex=j;</span><br><span class="line">				 &#125;</span><br><span class="line">			&#125;</span><br><span class="line">  			 <span class="keyword">if</span>(maxIndex!=i) &#123;</span><br><span class="line">				 <span class="keyword">int</span> temp=nodes.get(maxIndex).getData();</span><br><span class="line">				 <span class="keyword">int</span> temp2=nodes.get(i).getData();  <span class="comment">//i 的值 </span></span><br><span class="line">				 nodes.get(maxIndex).setValue(temp2);</span><br><span class="line">				 nodes.get(i).setValue(temp);</span><br><span class="line">			 &#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构 -树结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Java数据结构/树结构/线索二叉树" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -857,165 +1018,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/06/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java数据结构/排序算法/插入排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/09/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">插入排序</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/06/09/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2021-06-09T04:29:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h2><h4 id="思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较"><a href="#思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较" class="headerlink" title="思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较"></a>思路：依次选定一个数字与前面的数字进行比较，比它大的就往后移，比他小的就保持不动，继续与该数前面的数字比较</h4><h4 id="缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。"><a href="#缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。" class="headerlink" title="缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。"></a>缺点：如果有一个小数字在数组的后面，那么它就会与前面的数字依次进行比较，这样子就会影响效率。</h4><h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路：</span></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 下标从第2个数 作为比较的开始  让它与第一个数 比较 </span></span><br><span class="line"><span class="comment">	 * 要是第一个数比他大 则替换位置 </span></span><br><span class="line"><span class="comment">	 * 下标转移到第3个数 再与前面的数字依次进行比较 若该数比他们都大则不动 下标继续往后移</span></span><br><span class="line"><span class="comment">	 * 若是前面的数比该数大 则交换位置 直至该数比前面的数都要大则停止比较 下标继续往后移</span></span><br><span class="line"><span class="comment">	 * 因此 比较的顺序为</span></span><br><span class="line"><span class="comment">	 * 1.&#123;2,4,9,5,7,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 2.&#123;2,4,9,5,7,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 3.&#123;2,4,5,9,7,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 4.&#123;2,4,5,7,9,3,1,6,8,10&#125;</span></span><br><span class="line"><span class="comment">	 * 5.&#123;2,3,4,5,7,9,1,6,8,10&#125; ....</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InsertSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//遍历数组元素</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> temp=arr[i]; <span class="comment">//获取下标指向的元素 用于等下的交换	</span></span><br><span class="line">			<span class="comment">//与前面的数字进行比较</span></span><br><span class="line">			<span class="keyword">int</span> j;</span><br><span class="line">			<span class="keyword">for</span>(j=i-<span class="number">1</span>;j&gt;=<span class="number">0</span> &amp;&amp; arr[j]&gt;temp;j--) &#123;</span><br><span class="line">				arr[j+<span class="number">1</span>]=arr[j]; <span class="comment">//比temp小的数 都往前移</span></span><br><span class="line">			&#125;</span><br><span class="line">			arr[j+<span class="number">1</span>]=temp; <span class="comment">//让temp赋值到合适的位置 通过上面的for循环 后面的数都应该比该数大</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h3><h4 id="思路：希尔排序-是-直接插入排序-的升级版本，希尔排序-把数组通过-步长-的设定来把数组分成几等分-这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升-直接插入排序-的-执行效率。"><a href="#思路：希尔排序-是-直接插入排序-的升级版本，希尔排序-把数组通过-步长-的设定来把数组分成几等分-这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升-直接插入排序-的-执行效率。" class="headerlink" title="思路：希尔排序 是 直接插入排序 的升级版本，希尔排序 把数组通过 步长 的设定来把数组分成几等分 这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升 直接插入排序 的 执行效率。"></a>思路：希尔排序 是 直接插入排序 的升级版本，希尔排序 把数组通过 步长 的设定来把数组分成几等分 这样能够达到小数字可以向前移而大数字会往后移的效果，这样能够大大提升 直接插入排序 的 执行效率。</h4><h4 id="实现代码：-1"><a href="#实现代码：-1" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//思路：</span></span><br><span class="line">	<span class="comment">/* </span></span><br><span class="line"><span class="comment">	 *通过步的设定来将数组划分为几个组</span></span><br><span class="line"><span class="comment">	 *通过每一次步的改变而分的组来将数字进行 直接插入排序</span></span><br><span class="line"><span class="comment">	 * 步的改变通常为 数组长度/2 一直/2 直到 0 为止</span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ShellSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> k=<span class="number">1</span>;</span><br><span class="line">		<span class="comment">//设置步长</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> d=arr.length/<span class="number">2</span>;d&gt;<span class="number">0</span>;d/=<span class="number">2</span>) &#123;</span><br><span class="line">			</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> i=d;i&lt;arr.length;i+=d) &#123;</span><br><span class="line">				<span class="keyword">for</span>(<span class="keyword">int</span> j=i-d;j&gt;=<span class="number">0</span>&amp;&amp;arr[j]&gt;arr[j+d];j-=d) &#123;</span><br><span class="line">					<span class="keyword">int</span> temp=arr[j];</span><br><span class="line">					arr[j]=arr[j+d];</span><br><span class="line">					arr[j+d]=temp;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.println(<span class="string">&quot;第&quot;</span>+k+<span class="string">&quot;次:&quot;</span>+Arrays.toString(arr));</span><br><span class="line">			k++;	</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id><a href="#" class="headerlink" title></a></h4>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/09/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E6%8F%92%E5%85%A5%E6%8E%92%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java数据结构/排序算法/交换排序(冒泡、快速)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F(%E5%86%92%E6%B3%A1%E3%80%81%E5%BF%AB%E9%80%9F)/">交换排序</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/04/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F(%E5%86%92%E6%B3%A1%E3%80%81%E5%BF%AB%E9%80%9F)/" class="archive-article-date">
-  	<time datetime="2021-04-26T07:22:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-冒泡排序"><a href="#1-冒泡排序" class="headerlink" title="1.冒泡排序"></a>1.冒泡排序</h2><ul>
-<li><h4 id="思路：通过两个数字彼此比较大小，依此达到排序效果"><a href="#思路：通过两个数字彼此比较大小，依此达到排序效果" class="headerlink" title="思路：通过两个数字彼此比较大小，依此达到排序效果"></a>思路：通过两个数字彼此比较大小，依此达到排序效果</h4></li>
-<li><h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4></li></ul>
-        
-          <a class="article-more-a" href="/2021/04/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F(%E5%86%92%E6%B3%A1%E3%80%81%E5%BF%AB%E9%80%9F)/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/26/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E4%BA%A4%E6%8D%A2%E6%8E%92%E5%BA%8F(%E5%86%92%E6%B3%A1%E3%80%81%E5%BF%AB%E9%80%9F)/">展开全文 >></a>
         </p>
       
 
