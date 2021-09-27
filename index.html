@@ -77,7 +77,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 19
+				总文章数 20
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -163,6 +163,148 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Java复习/Java复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0/">Java复习</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
+  	<time datetime="2021-09-21T03:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-JDK-JRE-JVM-三者之间的关系"><a href="#1-JDK-JRE-JVM-三者之间的关系" class="headerlink" title="1.JDK,JRE,JVM 三者之间的关系"></a>1.JDK,JRE,JVM 三者之间的关系</h3><ul>
+<li><p><strong>JDK: 俗称Java工具包 里面包含有JRE和JVM 没有JDK java就不能运行</strong></p>
+</li>
+<li><p><strong>JRE：里面包含有JVM 以及各种 Java各种的类包方法</strong></p>
+</li>
+<li><p><strong>JVM：又称为Java虚拟机 主要负责java文件的运行功能</strong></p>
+</li>
+</ul>
+<h3 id="2-类型转换细节"><a href="#2-类型转换细节" class="headerlink" title="2.类型转换细节"></a>2.类型转换细节</h3><p>**需要强制转换的类型：int类型 -》short类型、int-&gt;byte、byte-&gt;short **</p>
+<h3 id="3-短路与-amp-或-、逻辑与-amp-amp-或"><a href="#3-短路与-amp-或-、逻辑与-amp-amp-或" class="headerlink" title="3.短路与&amp;  | 或 | 、逻辑与&amp;&amp; | 或 ||"></a>3.短路与&amp;  | 或 | 、逻辑与&amp;&amp; | 或 ||</h3><p><strong>1. 短路和逻辑的区别</strong></p>
+<ul>
+<li><p><strong>短路：当符合条件时，会强制结束掉剩余的条件判定。直接执行结果。</strong></p>
+</li>
+<li><p><strong>逻辑：不管前面的条件符合与否，都会 全部 执行完条件再判定结果</strong></p>
+</li>
+</ul>
+<h3 id="4-进制转换"><a href="#4-进制转换" class="headerlink" title="4.进制转换"></a>4.进制转换</h3><p>1.**二、八、十六 进制 转 十进制 **</p>
+<ul>
+<li><p><strong>规则：二进制 0b开头，十六进制 0x 开头，八进制02开头.    在十六进制中，A=10 其他则往后带入就行 B=11</strong></p>
+</li>
+<li><p><strong>方法：从最低位（最右边），将每个数的数提取出来，乘以 被转化的进制数 的 （位数-1）次方，然后求和</strong></p>
+</li>
+<li><p><strong>例子：二进制转十进制-》 0b1011的十进制是 1<em>2^0 + 1</em>2^1+1*2^3 =  11 其他进制一样</strong></p>
+</li>
+</ul>
+<p>2.<strong>十进制 转 二、八、十六进制</strong></p>
+<ul>
+<li><strong>当十进制 转 二进制时 需要补0 补到十位数</strong></li>
+<li><strong>方法：对<em>十进制数</em> 进行除法运算 对该数除以要转的进制数字 直到商为0 然后把余数倒过来</strong></li>
+<li><img src="/images/Java%E5%A4%8D%E4%B9%A0/%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2.png"></li>
+</ul>
+<p>3.<strong>二进制 转 八、十六进制</strong></p>
+<ul>
+<li><p><strong>规则</strong></p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E6%8D%A2%E8%A7%84%E5%88%99.png"></p>
+</li>
+<li><p><strong>转八进制：从最低位开始，把三位组成一组，转成对应的八进制即可。如 1101 代表的 八位进制数 是1+（这里的+号 是拼接的意思）（5）= 15=D</strong></p>
+</li>
+<li><p><strong>转十六进制：从最低位开始，把四位组成一组，转成对应的十六进制即可 如 0b11010101 -&gt; 0x(13=D)+(5)-&gt;0xD5</strong></p>
+</li>
+</ul>
+<p>4.<strong>八、十六进制 转 二进制</strong></p>
+<ul>
+<li><strong>八-》二：把八进制的每一位数 转为 三位数的二进制即可。 如 01230 -》 (001)(010)(011)</strong></li>
+<li><strong>十六-》二：把八进制的每一位数 转为 四位数的二进制即可。如0x23B-》(0010)(0011)(1011)-&gt;0b001000111011</strong></li>
+</ul>
+<h3 id="5-位运算符"><a href="#5-位运算符" class="headerlink" title="5.位运算符"></a>5.位运算符</h3><p><strong>1.运算法符</strong></p>
+<ul>
+<li><strong>按位与(&amp;)：两位都是 1，结果则为1 反则为0</strong></li>
+<li><strong>按位或(|)：两位其中有一位是1 ，结果为1 反则为0</strong></li>
+<li><strong>按位异或(^)：两位一个为0，一个为1 结果为1 反则为0</strong></li>
+<li><strong>按位取反(~)：0-&gt;1,1-&gt;0</strong></li>
+<li><strong>算术右移(&gt;&gt;)：低位溢出，符号位不变，并用符号位补溢出的高位</strong></li>
+<li><strong>算术左移(&lt;&lt;)：符号位不变，低位补0</strong></li>
+<li><strong>逻辑右移(&gt;&gt;&gt;)：低位溢出，高位补0</strong></li>
+</ul>
+<p><strong>2. 使用举例</strong></p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6%E6%BC%94%E7%BB%83.png"></p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E7%AE%97%E6%9C%AF%E5%8F%B3%E7%A7%BB.png"></p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E7%AE%97%E6%9C%AF%E5%B7%A6%E7%A7%BB.png"></p>
+<h3 id="6-源码、反码、补码"><a href="#6-源码、反码、补码" class="headerlink" title="6.源码、反码、补码"></a>6.源码、反码、补码</h3><ul>
+<li><strong>二进制的最高位 是 符号位（0是正数，1是负数）</strong></li>
+<li><strong>正数的反码、补码、原码都一样（三码合一）</strong></li>
+<li>**负数的补码 = 它的反码+1 ， 负数的反码 = 负数的补码 -1 **</li>
+<li><strong>负数的反码 = 它的符号位不变，其它位取反</strong></li>
+<li>**0的反码，补码都是 0 **</li>
+<li><strong>在计算机运行的时候，都是以 补码 的方式进行</strong></li>
+<li><strong>当我们看结果时，需要看它的原码</strong></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-Java -复习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Java数据结构/树结构/哈夫曼编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -973,80 +1115,6 @@
 
 
   
-    <article id="post-Java数据结构/排序算法/选择排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">选择排序</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/06/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2021-06-10T04:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><h4 id="思路：设定一个-最小数-的下标，依次选定一个数-与-后面的数-进行比较。发现后面的数中有比选定的数字小时-把最小的下标-设置它的下标-等到-对比结束-之后-。-把-该数-与-最小下标的数进行交换"><a href="#思路：设定一个-最小数-的下标，依次选定一个数-与-后面的数-进行比较。发现后面的数中有比选定的数字小时-把最小的下标-设置它的下标-等到-对比结束-之后-。-把-该数-与-最小下标的数进行交换" class="headerlink" title="思路：设定一个 最小数 的下标，依次选定一个数 与 后面的数 进行比较。发现后面的数中有比选定的数字小时 把最小的下标 设置它的下标 等到 对比结束 之后 。 把 该数 与 最小下标的数进行交换"></a>思路：设定一个 最小数 的下标，依次选定一个数 与 后面的数 进行比较。发现后面的数中有比选定的数字小时 把最小的下标 设置它的下标 等到 对比结束 之后 。 把 该数 与 最小下标的数进行交换</h4><h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 思路:选定一个数 定义一个最小下标 </span></span><br><span class="line"><span class="comment">	 * 该数 依次与后面的数进行比较 发现比它小的就把 下标设置成它</span></span><br><span class="line"><span class="comment">	 * 待整个数组比较完成  把被比较的 最小下标指向的数字  进行交换 </span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">SelectSort</span><span class="params">(<span class="keyword">int</span> arr[])</span> </span>&#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> minIndex=i;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;arr.length;j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(arr[minIndex]&gt;arr[j]) &#123;</span><br><span class="line">					minIndex=j;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(minIndex!=i) &#123;</span><br><span class="line">				<span class="keyword">int</span> temp=arr[i];</span><br><span class="line">				arr[i]=arr[minIndex];</span><br><span class="line">				arr[minIndex]=temp;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1168,6 +1236,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">-java -框架技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">-Java -复习</a>
               </li>
             
             <div class="clearfix"></div>
