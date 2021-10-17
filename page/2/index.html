@@ -77,7 +77,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 20
+				总文章数 22
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -163,6 +163,160 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Java数据结构/排序算法/基数排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/12/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">基数排序</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/06/12/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2021-06-12T04:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h4 id="思路：主要作用于-数值之间大小相差很大-或者说-数字很大与数字很小并存的数组。-该排序-通过-个、十、百…-这些-位数来依次进行排序。达到排序的效果"><a href="#思路：主要作用于-数值之间大小相差很大-或者说-数字很大与数字很小并存的数组。-该排序-通过-个、十、百…-这些-位数来依次进行排序。达到排序的效果" class="headerlink" title="思路：主要作用于 数值之间大小相差很大 或者说 数字很大与数字很小并存的数组。 该排序 通过 个、十、百… 这些 位数来依次进行排序。达到排序的效果"></a>思路：主要作用于 数值之间大小相差很大 或者说 数字很大与数字很小并存的数组。 该排序 通过 个、十、百… 这些 位数来依次进行排序。达到排序的效果</h4><h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 思路：通过 个、十、百..的位数来依次对数组进行排序 达到排序的效果</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">redixSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//定义一个最大值变量 用于确定最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> max=Integer.MIN_VALUE; <span class="comment">//Integer.MIN_VALUE 拿到int类型的最小值</span></span><br><span class="line">		<span class="comment">//拿到数组中的最大值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(max&lt;arr[i]) &#123;</span><br><span class="line">				max=arr[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> maxYs=(max+<span class="string">&quot;&quot;</span>).length(); <span class="comment">//(max+&quot;&quot;)这种表达方式可以让max由整型变成字符串 </span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个二维数组 用于对数组的排序进行存放 即位数是多少 该位数有多少个</span></span><br><span class="line">		<span class="keyword">int</span>[][] temp=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][arr.length];</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//位数的数组  0-9个位数 以及可以记录该位数有多少个</span></span><br><span class="line">		<span class="keyword">int</span>[] counts=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//循环的次数为 最大的位数 次</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,n=<span class="number">1</span>;i&lt;maxYs;i++,n*=<span class="number">10</span>) &#123;</span><br><span class="line">			<span class="comment">//遍历数组的每一个数字 按照位数进行存放与排序</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr.length;j++) &#123;</span><br><span class="line">				<span class="comment">//位数的获取</span></span><br><span class="line">				<span class="keyword">int</span> ys=arr[j]/n%<span class="number">10</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//把当前遍历的数字 放在相应的临时数组里面</span></span><br><span class="line">				temp[ys][counts[ys]]=arr[j];</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//存放的数据 向后移</span></span><br><span class="line">				counts[ys]++;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//用于记录拿数据时的下标</span></span><br><span class="line">			<span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把数据拿出来</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;counts.length;k++) &#123; <span class="comment">//遍历每一个位数</span></span><br><span class="line">				<span class="keyword">if</span>(counts[k]!=<span class="number">0</span>) &#123;  <span class="comment">//位数里面没有数据 就不拿 </span></span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;counts[k];l++) &#123;  <span class="comment">//l 相当于 可以表示 遍历该位数里面的数据</span></span><br><span class="line">						arr[index]=temp[k][l];</span><br><span class="line">						index++;</span><br><span class="line">					&#125;</span><br><span class="line">					counts[k]=<span class="number">0</span>;  <span class="comment">//数据每一次拿完之后 都让该位数的数组清0</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="队列实现基数排序"><a href="#队列实现基数排序" class="headerlink" title="队列实现基数排序"></a>队列实现基数排序</h3><h4 id="思路：基数排序的思想就是-通过-个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面-再依次按照放进去的顺序-拿出来-。-因此-这种放置的过程-符合队列的特性"><a href="#思路：基数排序的思想就是-通过-个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面-再依次按照放进去的顺序-拿出来-。-因此-这种放置的过程-符合队列的特性" class="headerlink" title="思路：基数排序的思想就是 通过 个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面 再依次按照放进去的顺序 拿出来 。 因此 这种放置的过程 符合队列的特性"></a>思路：基数排序的思想就是 通过 个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面 再依次按照放进去的顺序 拿出来 。 因此 这种放置的过程 符合队列的特性</h4><h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 思路：通过 个、十、百..的位数来依次对数组进行排序 达到排序的效果</span></span><br><span class="line"><span class="comment">	 * 通过队列的方法实现</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">redixSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//定义一个最大值变量 用于确定最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> max=Integer.MIN_VALUE; <span class="comment">//Integer.MIN_VALUE 拿到int类型的最小值</span></span><br><span class="line">		<span class="comment">//拿到数组中的最大值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(max&lt;arr[i]) &#123;</span><br><span class="line">				max=arr[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> maxYs=(max+<span class="string">&quot;&quot;</span>).length();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个数组队列 用于存放数据</span></span><br><span class="line">		QueueDemo[] temp=<span class="keyword">new</span> QueueDemo[<span class="number">10</span>]; </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//为队列数组进行赋值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;temp.length;i++) &#123;</span><br><span class="line">			temp[i]=<span class="keyword">new</span> QueueDemo();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//循环的次数为 最大的位数 次</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,n=<span class="number">1</span>;i&lt;maxYs;i++,n*=<span class="number">10</span>) &#123;</span><br><span class="line">			<span class="comment">//遍历数组的每一个数字 按照位数进行存放与排序</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr.length;j++) &#123;</span><br><span class="line">				<span class="comment">//位数的获取</span></span><br><span class="line">				<span class="keyword">int</span> ys=arr[j]/n%<span class="number">10</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//把当前遍历的数字 放在相应的临时数组里面</span></span><br><span class="line">				temp[ys].push(arr[j]);;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//用于记录拿数据时的下标</span></span><br><span class="line">			<span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把数据拿出来</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;temp.length;k++) &#123; <span class="comment">//遍历每一个位数</span></span><br><span class="line">				<span class="keyword">while</span>(!temp[k].IsEmpty()) &#123;  <span class="comment">//位数里面没有数据 就不拿 </span></span><br><span class="line">					arr[index]=temp[k].pop();</span><br><span class="line">					index++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/12/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java数据结构/排序算法/归并排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/11/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/06/11/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" class="archive-article-date">
+  	<time datetime="2021-06-11T04:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h4 id="思路：把一个数组-分成两个或者多个有序的小数组-然后通过两个两个小数组的比较-依此来达到把整个数组进行排序的效果"><a href="#思路：把一个数组-分成两个或者多个有序的小数组-然后通过两个两个小数组的比较-依此来达到把整个数组进行排序的效果" class="headerlink" title="思路：把一个数组 分成两个或者多个有序的小数组 然后通过两个两个小数组的比较 依此来达到把整个数组进行排序的效果"></a>思路：把一个数组 分成两个或者多个有序的小数组 然后通过两个两个小数组的比较 依此来达到把整个数组进行排序的效果</h4><h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用于把数组进行分割成彼此有序的数组</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merageSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//用于分割你下标位置</span></span><br><span class="line">		<span class="keyword">int</span> middleIndex=(low+high)/<span class="number">2</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			<span class="comment">//分割左边 通过递归</span></span><br><span class="line">			merageSort(arr,low,middleIndex);</span><br><span class="line">			<span class="comment">//分割右边</span></span><br><span class="line">			merageSort(arr,middleIndex+<span class="number">1</span>,high);</span><br><span class="line">			<span class="comment">//开始排序</span></span><br><span class="line">			merage(arr,low,middleIndex,high);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//用于排序 两个已经排好序的数组（其实 只是一个数组 把他们看成有序的数组而已）</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merage</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> middle,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//该数组 用于临时存储 两个数比较后 的数据</span></span><br><span class="line">		<span class="keyword">int</span>[] temp=<span class="keyword">new</span> <span class="keyword">int</span>[high-low+<span class="number">1</span>];</span><br><span class="line">		<span class="comment">//用于记录 临时数组的下标</span></span><br><span class="line">		<span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">		<span class="comment">//用于第一个数组的遍历</span></span><br><span class="line">		<span class="keyword">int</span> i=low;</span><br><span class="line">		<span class="comment">//用于第二个数组的遍历</span></span><br><span class="line">		<span class="keyword">int</span> j=middle+<span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(i&lt;=middle &amp;&amp; j&lt;=high) &#123;</span><br><span class="line">			<span class="comment">//第一个数组遍历</span></span><br><span class="line">			<span class="keyword">if</span>(arr[i]&lt;=arr[j]) &#123;</span><br><span class="line">				temp[index]=arr[i];</span><br><span class="line">				i++;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="comment">//第二个数组遍历</span></span><br><span class="line">				temp[index]=arr[j];</span><br><span class="line">				j++;</span><br><span class="line">			&#125;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//处理第一个数组 多余的数据</span></span><br><span class="line">		<span class="keyword">while</span>(i&lt;=middle) &#123;</span><br><span class="line">			temp[index]=arr[i];</span><br><span class="line">			i++;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//处理第二个数组 多余的数据</span></span><br><span class="line">		<span class="keyword">while</span>(j&lt;=high) &#123;</span><br><span class="line">			temp[index]=arr[j];</span><br><span class="line">			j++;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//把临时数组 存放到 原来的数组当中</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;temp.length;k++) &#123;</span><br><span class="line">			arr[k+low]=temp[k];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/11/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Java数据结构/排序算法/选择排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -792,172 +946,9 @@
 
 
   
-    <article id="post-Java数据结构/线性结构/数组查找" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE/">数组的查找方法</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE/" class="archive-article-date">
-  	<time datetime="2021-04-20T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="线性查找"><a href="#线性查找" class="headerlink" title="线性查找"></a>线性查找</h3><ul>
-<li><p><strong>含义：通过遍历数组来找到指定的元素</strong></p>
-</li>
-<li><p><strong>优点：</strong> <strong>没有限制条件 适用于很多情况</strong> </p>
-</li>
-<li><p><strong>缺点：</strong> <strong>效率低，比较麻烦</strong></p>
-</li>
-<li><p><strong>实现代码</strong> </p></li></ul>
-        
-          <a class="article-more-a" href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -线性结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-win10搭建hexo博客" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/18/win10%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">win10搭建hexo博客+github连接</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/04/18/win10%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/" class="archive-article-date">
-  	<time datetime="2021-04-18T03:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-准备工具"><a href="#1-准备工具" class="headerlink" title="1. 准备工具"></a>1. 准备工具</h3><ul>
-<li><strong>node.js</strong>   （可从node官网中下载）<a target="_blank" rel="noopener" href="https://nodejs.org/en/">https://nodejs.org/en/</a></li>
-<li><strong>git</strong>  用于对github仓库上传文件等操作  <a target="_blank" rel="noopener" href="https://git-scm.com/downloads%EF%BC%88%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%EF%BC%89">https://git-scm.com/downloads（下载地址）</a></li>
-<li><strong>需要创建一个github用户</strong>  便于使用域名登录博客 而不需要每次都开启服务</li>
-</ul>
-        
-          <a class="article-more-a" href="/2021/04/18/win10%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-hexo -搭建</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/18/win10%E6%90%AD%E5%BB%BAhexo%E5%8D%9A%E5%AE%A2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
     </nav>
   
 

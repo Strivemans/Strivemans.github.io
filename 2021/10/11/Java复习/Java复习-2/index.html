@@ -6,7 +6,7 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://strivemans.github.io">
-  <title>线索二叉树 | 我的博客</title>
+  <title>Java复习-2 | 我的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
   <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
@@ -25,20 +25,21 @@
     }
   </style>
   
-  <meta name="description" content="线索二叉树 1, 含义：由上图可知 当 4 结点 是最后的叶子结点时， 它的 左右结点都为null。这就存在了资源浪费问题。 因此 我们可以把这些空着的结点 根据遍历的方式 把左右结点 指向 对应的上下结点。这样就能找到一个结点的上下结点是什么  而这是普通的二叉树做不到的 这就是 线索二叉树。 123456789101112131415161718192021222324252627282930">
+  <meta name="description" content="1.对象创建流程分析  分析： 根据JVM的内存存储可知 空间可以分为 栈（存放对象名）、堆（存放整形数据 以及 其他类型的 地址）、常量区（存放常量数据 如 String类型之类的数据）、方法区（加载.clss文件 加载类） 1. 先在 方法区中 加载 Person类 2. 在 堆 中 进行给person类的属性进行 默认 赋值  age&#x3D;0，name&#x3D;null 3. 在堆中 进行 初始化 赋值">
 <meta property="og:type" content="article">
-<meta property="og:title" content="线索二叉树">
-<meta property="og:url" content="https://strivemans.github.io/2021/07/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/index.html">
+<meta property="og:title" content="Java复习-2">
+<meta property="og:url" content="https://strivemans.github.io/2021/10/11/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-2/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="线索二叉树 1, 含义：由上图可知 当 4 结点 是最后的叶子结点时， 它的 左右结点都为null。这就存在了资源浪费问题。 因此 我们可以把这些空着的结点 根据遍历的方式 把左右结点 指向 对应的上下结点。这样就能找到一个结点的上下结点是什么  而这是普通的二叉树做不到的 这就是 线索二叉树。 123456789101112131415161718192021222324252627282930">
+<meta property="og:description" content="1.对象创建流程分析  分析： 根据JVM的内存存储可知 空间可以分为 栈（存放对象名）、堆（存放整形数据 以及 其他类型的 地址）、常量区（存放常量数据 如 String类型之类的数据）、方法区（加载.clss文件 加载类） 1. 先在 方法区中 加载 Person类 2. 在 堆 中 进行给person类的属性进行 默认 赋值  age&#x3D;0，name&#x3D;null 3. 在堆中 进行 初始化 赋值">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://strivemans.github.io/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91.png">
-<meta property="article:published_time" content="2021-07-29T03:09:36.000Z">
-<meta property="article:modified_time" content="2021-07-29T14:44:35.059Z">
+<meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
+<meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E7%BB%A7%E6%89%BF%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%88%E5%86%85%E5%AD%98%E5%8F%98%E5%8C%96%EF%BC%89.png">
+<meta property="article:published_time" content="2021-10-11T03:57:36.000Z">
+<meta property="article:modified_time" content="2021-10-17T14:44:47.613Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="-java -数据结构 -树结构">
+<meta property="article:tag" content="-Java -复习">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://strivemans.github.io/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91.png">
+<meta name="twitter:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
   
     <link rel="alternative" href="/atom.xml" title="我的博客" type="application/atom+xml">
   
@@ -169,30 +170,61 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Java数据结构/树结构/线索二叉树" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Java复习/Java复习-2" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      线索二叉树
+      Java复习-2
     </h1>
   
  
         
-        <a href="/2021/07/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" class="archive-article-date">
-  	<time datetime="2021-07-29T03:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-07-29</time>
+        <a href="/2021/10/11/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-2/" class="archive-article-date">
+  	<time datetime="2021-10-11T03:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-11</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="线索二叉树"><a href="#线索二叉树" class="headerlink" title="线索二叉树"></a>线索二叉树</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91.png"></p>
-<p><strong>1, 含义：由上图可知 当 4 结点 是最后的叶子结点时， 它的 左右结点都为null。这就存在了资源浪费问题。 因此 我们可以把这些空着的结点 根据遍历的方式 把左右结点 指向 对应的上下结点。这样就能找到一个结点的上下结点是什么  而这是普通的二叉树做不到的 这就是 线索二叉树。</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//中序 线索二叉树</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">threadedNodes</span><span class="params">(ThreadedNode node)</span> </span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//递归到 中序遍历中 最开始的结点</span></span><br><span class="line">		<span class="keyword">if</span>(node==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		threadedNodes(node.LNode);</span><br><span class="line">		<span class="keyword">if</span>(node.LNode==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//设置前驱结点 就是该结点的前一个结点</span></span><br><span class="line">			node.LNode=pre;</span><br><span class="line">			<span class="comment">//改变当前结点的类型  0 为 正常的左右结点指向 子结点  1为 左右结点 指向 前驱与后一个结点</span></span><br><span class="line">			node.leftType=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(pre!=<span class="keyword">null</span> &amp;&amp; pre.RNode==<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//将上一个结点的右结点设置为当前节点</span></span><br><span class="line">			pre.RNode=node;</span><br><span class="line">			pre.rightTye=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		pre=node;</span><br><span class="line">		<span class="comment">//处理右边结点</span></span><br><span class="line">		threadedNodes(node.RNode);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//线索二叉树遍历</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">threadedIterate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">//临时存储当前结点</span></span><br><span class="line">		ThreadedNode node=root;</span><br><span class="line">		<span class="keyword">while</span>(node!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="comment">//中序遍历 获取到最后的左子结点</span></span><br><span class="line">			<span class="keyword">while</span>(node.leftType==<span class="number">0</span>) &#123;</span><br><span class="line">				node=node.LNode;</span><br><span class="line">			&#125;</span><br><span class="line">			System.out.print(node.data+<span class="string">&quot; &quot;</span>);</span><br><span class="line">			<span class="comment">//node.rightTye =1 说明 有 下一个结点 则 把当前结点给到下一个结点</span></span><br><span class="line">			<span class="keyword">while</span>(node.rightTye==<span class="number">1</span>) &#123;</span><br><span class="line">				node=node.RNode;</span><br><span class="line">				System.out.print(node.data+<span class="string">&quot; &quot;</span>);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//继续把当前结点给到下一个结点</span></span><br><span class="line">			node=node.RNode;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br></pre></td></tr></table></figure>
-
+        <h3 id="1-对象创建流程分析"><a href="#1-对象创建流程分析" class="headerlink" title="1.对象创建流程分析"></a>1.对象创建流程分析</h3><p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9B%BE.png"></p>
+<ul>
+<li><h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><ul>
+<li><strong>根据JVM的内存存储可知 空间可以分为 栈（存放对象名）、堆（存放整形数据 以及 其他类型的 地址）、常量区（存放常量数据 如 String类型之类的数据）、方法区（加载.clss文件 加载类）</strong></li>
+<li><strong>1. 先在 方法区中 加载 Person类</strong></li>
+<li><strong>2. 在 堆 中 进行给person类的属性进行 默认 赋值  age=0，name=null</strong></li>
+<li><strong>3. 在堆中 进行 初始化 赋值 age=90 name依然=null</strong></li>
+<li><strong>4. 开始 进行构造器的赋值 name=小倩 age=20</strong></li>
+<li><strong>5.在 栈中 创建 p对象引用（对象名） 根据地址 找到 堆中的 对象</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h3><ul>
+<li><h4 id="含义：当某些属性或者方法-可以重复利用的时候-可以通过继承的方式来共享这些属性以及方法。被继承的-类-叫父类（基类），继承-父类的类-叫做子类（派生类）。"><a href="#含义：当某些属性或者方法-可以重复利用的时候-可以通过继承的方式来共享这些属性以及方法。被继承的-类-叫父类（基类），继承-父类的类-叫做子类（派生类）。" class="headerlink" title="含义：当某些属性或者方法 可以重复利用的时候 可以通过继承的方式来共享这些属性以及方法。被继承的 类 叫父类（基类），继承 父类的类 叫做子类（派生类）。"></a>含义：当某些属性或者方法 可以重复利用的时候 可以通过继承的方式来共享这些属性以及方法。被继承的 类 叫父类（基类），继承 父类的类 叫做子类（派生类）。</h4></li>
+<li><h4 id="细节："><a href="#细节：" class="headerlink" title="细节："></a>细节：</h4><ul>
+<li><h5 id="1-子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。"><a href="#1-子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。" class="headerlink" title="1.子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。"></a>1.子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。</h5></li>
+<li><h5 id="2-在（1）中，若-父类没有无参构造器，则必须用-super（）来指定使用父类中的哪个构造器来完成-对父类的初始化操作"><a href="#2-在（1）中，若-父类没有无参构造器，则必须用-super（）来指定使用父类中的哪个构造器来完成-对父类的初始化操作" class="headerlink" title="2. 在（1）中，若 父类没有无参构造器，则必须用 super（）来指定使用父类中的哪个构造器来完成 对父类的初始化操作"></a>2. 在（1）中，若 父类没有无参构造器，则必须用 super（）来指定使用父类中的哪个构造器来完成 对父类的初始化操作</h5></li>
+<li><h5 id="3-super-在使用的时候-必须放在-构造器-的第一行"><a href="#3-super-在使用的时候-必须放在-构造器-的第一行" class="headerlink" title="3. super 在使用的时候 必须放在 构造器 的第一行"></a>3. super 在使用的时候 必须放在 构造器 的第一行</h5></li>
+<li><h5 id="4-java所有类-都是-Object的子类"><a href="#4-java所有类-都是-Object的子类" class="headerlink" title="4.java所有类 都是 Object的子类"></a>4.java所有类 都是 Object的子类</h5></li>
+<li><h5 id="5-父类构造器的调用-不限于-直接父类！将一直往上追溯-直到-Object类"><a href="#5-父类构造器的调用-不限于-直接父类！将一直往上追溯-直到-Object类" class="headerlink" title="5.父类构造器的调用 不限于 直接父类！将一直往上追溯 直到 Object类"></a>5.父类构造器的调用 不限于 直接父类！将一直往上追溯 直到 Object类</h5></li>
+</ul>
+</li>
+<li><h4 id="继承的本质"><a href="#继承的本质" class="headerlink" title="继承的本质"></a>继承的本质</h4><p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E7%BB%A7%E6%89%BF%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%88%E5%86%85%E5%AD%98%E5%8F%98%E5%8C%96%EF%BC%89.png"></p>
+<ul>
+<li><h5 id="1-先在-方法区中-理清楚-类与类之间的继承关系-形成层次关系-本例是-Son-gt-Father-gt-GrandPa-gt-Object"><a href="#1-先在-方法区中-理清楚-类与类之间的继承关系-形成层次关系-本例是-Son-gt-Father-gt-GrandPa-gt-Object" class="headerlink" title="1.先在 方法区中 理清楚 类与类之间的继承关系 形成层次关系 本例是 Son-&gt;Father-&gt;GrandPa-&gt;Object"></a>1.先在 方法区中 理清楚 类与类之间的继承关系 形成层次关系 本例是 Son-&gt;Father-&gt;GrandPa-&gt;Object</h5></li>
+<li><h5 id="2-因此-开始在-堆中-对属性进行初始化-。-理所当然-先在GrandPa类-堆属性进行初始化-依次类推"><a href="#2-因此-开始在-堆中-对属性进行初始化-。-理所当然-先在GrandPa类-堆属性进行初始化-依次类推" class="headerlink" title="2.因此 开始在 堆中 对属性进行初始化 。 理所当然 先在GrandPa类 堆属性进行初始化 依次类推"></a>2.因此 开始在 堆中 对属性进行初始化 。 理所当然 先在GrandPa类 堆属性进行初始化 依次类推</h5></li>
+<li><h5 id="3-最后在栈中-生成对象引用-来识别-堆中的-son对象。"><a href="#3-最后在栈中-生成对象引用-来识别-堆中的-son对象。" class="headerlink" title="3.最后在栈中 生成对象引用 来识别 堆中的 son对象。"></a>3.最后在栈中 生成对象引用 来识别 堆中的 son对象。</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-重写-重载"><a href="#3-重写-重载" class="headerlink" title="3.重写|重载"></a>3.重写|重载</h3><h4 id="1-含义：当子类-继承了-父类之后，子类存在一个方法与父类中的方法一样（既-方法名、参数、返回类型）则-会覆盖掉父类的该方法"><a href="#1-含义：当子类-继承了-父类之后，子类存在一个方法与父类中的方法一样（既-方法名、参数、返回类型）则-会覆盖掉父类的该方法" class="headerlink" title="1.含义：当子类 继承了 父类之后，子类存在一个方法与父类中的方法一样（既 方法名、参数、返回类型）则 会覆盖掉父类的该方法"></a>1.含义：当子类 继承了 父类之后，子类存在一个方法与父类中的方法一样（既 方法名、参数、返回类型）则 会覆盖掉父类的该方法</h4><h4 id="2-细节："><a href="#2-细节：" class="headerlink" title="2.细节："></a>2.细节：</h4><ul>
+<li><h5 id="子类的方法的-参数，方法名称，必须要和父亲方法的参数、方法名完全一样。"><a href="#子类的方法的-参数，方法名称，必须要和父亲方法的参数、方法名完全一样。" class="headerlink" title="子类的方法的 参数，方法名称，必须要和父亲方法的参数、方法名完全一样。"></a>子类的方法的 参数，方法名称，必须要和父亲方法的参数、方法名完全一样。</h5></li>
+<li><h5 id="子类的-返回类型-必须要与父类的返回类型一致，或者是-父亲返回类型的子类。比如，父类的返回类型是Object-子类的返回类型是String"><a href="#子类的-返回类型-必须要与父类的返回类型一致，或者是-父亲返回类型的子类。比如，父类的返回类型是Object-子类的返回类型是String" class="headerlink" title="子类的 返回类型 必须要与父类的返回类型一致，或者是 父亲返回类型的子类。比如，父类的返回类型是Object 子类的返回类型是String"></a>子类的 返回类型 必须要与父类的返回类型一致，或者是 父亲返回类型的子类。比如，父类的返回类型是Object 子类的返回类型是String</h5></li>
+<li><h5 id="子类方法不能缩小父类方法的访问权限。"><a href="#子类方法不能缩小父类方法的访问权限。" class="headerlink" title="子类方法不能缩小父类方法的访问权限。"></a>子类方法不能缩小父类方法的访问权限。</h5></li>
+</ul>
 
       
 
@@ -227,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构 -树结构</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-Java -复习</a>
         		</li>
       		
 		</ul>
@@ -283,7 +315,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://strivemans.github.io/2021/07/29/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E7%BA%BF%E7%B4%A2%E4%BA%8C%E5%8F%89%E6%A0%91/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://strivemans.github.io/2021/10/11/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-2/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -297,18 +329,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2021/08/10/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          哈夫曼树
-        
-      </div>
-    </a>
   
-  
-    <a href="/2021/07/27/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%A0%86%E6%8E%92%E5%BA%8F/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">堆排序</div>
+    <a href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java复习-1</div>
       <i class="icon-circle-right"></i>
     </a>
   

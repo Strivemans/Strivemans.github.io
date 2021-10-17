@@ -77,7 +77,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 20
+				总文章数 22
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -164,19 +164,127 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Java复习/Java复习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java复习/Java复习-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0/">Java复习</a>
+      <a class="article-title" href="/2021/10/11/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-2/">Java复习-2</a>
     </h1>
   
  
         
-        <a href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0/" class="archive-article-date">
+        <a href="/2021/10/11/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-2/" class="archive-article-date">
+  	<time datetime="2021-10-11T03:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-10-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-对象创建流程分析"><a href="#1-对象创建流程分析" class="headerlink" title="1.对象创建流程分析"></a>1.对象创建流程分析</h3><p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9B%BE.png"></p>
+<ul>
+<li><h4 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h4><ul>
+<li><strong>根据JVM的内存存储可知 空间可以分为 栈（存放对象名）、堆（存放整形数据 以及 其他类型的 地址）、常量区（存放常量数据 如 String类型之类的数据）、方法区（加载.clss文件 加载类）</strong></li>
+<li><strong>1. 先在 方法区中 加载 Person类</strong></li>
+<li><strong>2. 在 堆 中 进行给person类的属性进行 默认 赋值  age=0，name=null</strong></li>
+<li><strong>3. 在堆中 进行 初始化 赋值 age=90 name依然=null</strong></li>
+<li><strong>4. 开始 进行构造器的赋值 name=小倩 age=20</strong></li>
+<li><strong>5.在 栈中 创建 p对象引用（对象名） 根据地址 找到 堆中的 对象</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="2-继承"><a href="#2-继承" class="headerlink" title="2.继承"></a>2.继承</h3><ul>
+<li><h4 id="含义：当某些属性或者方法-可以重复利用的时候-可以通过继承的方式来共享这些属性以及方法。被继承的-类-叫父类（基类），继承-父类的类-叫做子类（派生类）。"><a href="#含义：当某些属性或者方法-可以重复利用的时候-可以通过继承的方式来共享这些属性以及方法。被继承的-类-叫父类（基类），继承-父类的类-叫做子类（派生类）。" class="headerlink" title="含义：当某些属性或者方法 可以重复利用的时候 可以通过继承的方式来共享这些属性以及方法。被继承的 类 叫父类（基类），继承 父类的类 叫做子类（派生类）。"></a>含义：当某些属性或者方法 可以重复利用的时候 可以通过继承的方式来共享这些属性以及方法。被继承的 类 叫父类（基类），继承 父类的类 叫做子类（派生类）。</h4></li>
+<li><h4 id="细节："><a href="#细节：" class="headerlink" title="细节："></a>细节：</h4><ul>
+<li><h5 id="1-子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。"><a href="#1-子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。" class="headerlink" title="1.子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。"></a>1.子类必须调用父类的构造器，完成父类的初始化。当运行子类的构造器时，会先运行父类的构造器，才运行子类的构造器。</h5></li>
+<li><h5 id="2-在（1）中，若-父类没有无参构造器，则必须用-super（）来指定使用父类中的哪个构造器来完成-对父类的初始化操作"><a href="#2-在（1）中，若-父类没有无参构造器，则必须用-super（）来指定使用父类中的哪个构造器来完成-对父类的初始化操作" class="headerlink" title="2. 在（1）中，若 父类没有无参构造器，则必须用 super（）来指定使用父类中的哪个构造器来完成 对父类的初始化操作"></a>2. 在（1）中，若 父类没有无参构造器，则必须用 super（）来指定使用父类中的哪个构造器来完成 对父类的初始化操作</h5></li>
+<li><h5 id="3-super-在使用的时候-必须放在-构造器-的第一行"><a href="#3-super-在使用的时候-必须放在-构造器-的第一行" class="headerlink" title="3. super 在使用的时候 必须放在 构造器 的第一行"></a>3. super 在使用的时候 必须放在 构造器 的第一行</h5></li>
+<li><h5 id="4-java所有类-都是-Object的子类"><a href="#4-java所有类-都是-Object的子类" class="headerlink" title="4.java所有类 都是 Object的子类"></a>4.java所有类 都是 Object的子类</h5></li>
+<li><h5 id="5-父类构造器的调用-不限于-直接父类！将一直往上追溯-直到-Object类"><a href="#5-父类构造器的调用-不限于-直接父类！将一直往上追溯-直到-Object类" class="headerlink" title="5.父类构造器的调用 不限于 直接父类！将一直往上追溯 直到 Object类"></a>5.父类构造器的调用 不限于 直接父类！将一直往上追溯 直到 Object类</h5></li>
+</ul>
+</li>
+<li><h4 id="继承的本质"><a href="#继承的本质" class="headerlink" title="继承的本质"></a>继承的本质</h4><p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E7%BB%A7%E6%89%BF%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%88%E5%86%85%E5%AD%98%E5%8F%98%E5%8C%96%EF%BC%89.png"></p>
+<ul>
+<li><h5 id="1-先在-方法区中-理清楚-类与类之间的继承关系-形成层次关系-本例是-Son-gt-Father-gt-GrandPa-gt-Object"><a href="#1-先在-方法区中-理清楚-类与类之间的继承关系-形成层次关系-本例是-Son-gt-Father-gt-GrandPa-gt-Object" class="headerlink" title="1.先在 方法区中 理清楚 类与类之间的继承关系 形成层次关系 本例是 Son-&gt;Father-&gt;GrandPa-&gt;Object"></a>1.先在 方法区中 理清楚 类与类之间的继承关系 形成层次关系 本例是 Son-&gt;Father-&gt;GrandPa-&gt;Object</h5></li>
+<li><h5 id="2-因此-开始在-堆中-对属性进行初始化-。-理所当然-先在GrandPa类-堆属性进行初始化-依次类推"><a href="#2-因此-开始在-堆中-对属性进行初始化-。-理所当然-先在GrandPa类-堆属性进行初始化-依次类推" class="headerlink" title="2.因此 开始在 堆中 对属性进行初始化 。 理所当然 先在GrandPa类 堆属性进行初始化 依次类推"></a>2.因此 开始在 堆中 对属性进行初始化 。 理所当然 先在GrandPa类 堆属性进行初始化 依次类推</h5></li>
+<li><h5 id="3-最后在栈中-生成对象引用-来识别-堆中的-son对象。"><a href="#3-最后在栈中-生成对象引用-来识别-堆中的-son对象。" class="headerlink" title="3.最后在栈中 生成对象引用 来识别 堆中的 son对象。"></a>3.最后在栈中 生成对象引用 来识别 堆中的 son对象。</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="3-重写-重载"><a href="#3-重写-重载" class="headerlink" title="3.重写|重载"></a>3.重写|重载</h3><h4 id="1-含义：当子类-继承了-父类之后，子类存在一个方法与父类中的方法一样（既-方法名、参数、返回类型）则-会覆盖掉父类的该方法"><a href="#1-含义：当子类-继承了-父类之后，子类存在一个方法与父类中的方法一样（既-方法名、参数、返回类型）则-会覆盖掉父类的该方法" class="headerlink" title="1.含义：当子类 继承了 父类之后，子类存在一个方法与父类中的方法一样（既 方法名、参数、返回类型）则 会覆盖掉父类的该方法"></a>1.含义：当子类 继承了 父类之后，子类存在一个方法与父类中的方法一样（既 方法名、参数、返回类型）则 会覆盖掉父类的该方法</h4><h4 id="2-细节："><a href="#2-细节：" class="headerlink" title="2.细节："></a>2.细节：</h4><ul>
+<li><h5 id="子类的方法的-参数，方法名称，必须要和父亲方法的参数、方法名完全一样。"><a href="#子类的方法的-参数，方法名称，必须要和父亲方法的参数、方法名完全一样。" class="headerlink" title="子类的方法的 参数，方法名称，必须要和父亲方法的参数、方法名完全一样。"></a>子类的方法的 参数，方法名称，必须要和父亲方法的参数、方法名完全一样。</h5></li>
+<li><h5 id="子类的-返回类型-必须要与父类的返回类型一致，或者是-父亲返回类型的子类。比如，父类的返回类型是Object-子类的返回类型是String"><a href="#子类的-返回类型-必须要与父类的返回类型一致，或者是-父亲返回类型的子类。比如，父类的返回类型是Object-子类的返回类型是String" class="headerlink" title="子类的 返回类型 必须要与父类的返回类型一致，或者是 父亲返回类型的子类。比如，父类的返回类型是Object 子类的返回类型是String"></a>子类的 返回类型 必须要与父类的返回类型一致，或者是 父亲返回类型的子类。比如，父类的返回类型是Object 子类的返回类型是String</h5></li>
+<li><h5 id="子类方法不能缩小父类方法的访问权限。"><a href="#子类方法不能缩小父类方法的访问权限。" class="headerlink" title="子类方法不能缩小父类方法的访问权限。"></a>子类方法不能缩小父类方法的访问权限。</h5></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-Java -复习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/10/11/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java复习/Java复习-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-1/">Java复习-1</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-1/" class="archive-article-date">
   	<time datetime="2021-09-21T03:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-21</time>
 </a>
         
@@ -245,13 +353,61 @@
 <p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E7%AE%97%E6%9C%AF%E5%8F%B3%E7%A7%BB.png"></p>
 <p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E7%AE%97%E6%9C%AF%E5%B7%A6%E7%A7%BB.png"></p>
 <h3 id="6-源码、反码、补码"><a href="#6-源码、反码、补码" class="headerlink" title="6.源码、反码、补码"></a>6.源码、反码、补码</h3><ul>
-<li><strong>二进制的最高位 是 符号位（0是正数，1是负数）</strong></li>
-<li><strong>正数的反码、补码、原码都一样（三码合一）</strong></li>
-<li><strong>负数的补码 = 它的反码+1 ， 负数的反码 = 负数的补码 -1</strong></li>
-<li><strong>负数的反码 = 它的符号位不变，其它位取反</strong></li>
-<li><strong>0的反码，补码都是 0</strong></li>
-<li><strong>在计算机运行的时候，都是以 补码 的方式进行</strong></li>
-<li><strong>当我们看结果时，需要看它的原码</strong></li>
+<li><p><strong>二进制的最高位 是 符号位（0是正数，1是负数）</strong></p>
+</li>
+<li><p><strong>正数的反码、补码、原码都一样（三码合一）</strong></p>
+</li>
+<li><p><strong>负数的补码 = 它的反码+1 ， 负数的反码 = 负数的补码 -1</strong></p>
+</li>
+<li><p><strong>负数的反码 = 它的符号位不变，其它位取反</strong></p>
+</li>
+<li><p><strong>0的反码，补码都是 0</strong></p>
+</li>
+<li><p><strong>在计算机运行的时候，都是以 补码 的方式进行</strong></p>
+</li>
+<li><p><strong>当我们看结果时，需要看它的原码</strong></p>
+</li>
+</ul>
+<h3 id="7-对象的存储布局"><a href="#7-对象的存储布局" class="headerlink" title="7.对象的存储布局"></a>7.对象的存储布局</h3><p><img src="/.io//blog\source\images\Java复习\对象内存布局.png"></p>
+<ul>
+<li><strong>java中的对象 是 根据jvm的内存方式进行存储的，存储布局中 有 栈、堆、方法区。</strong></li>
+<li> <strong>栈用来存储对象（并赋予一个地址来指定 堆中 那一组是该对象的属性）。</strong></li>
+<li><strong>堆 用来存放 基本类型（如 int）类型的 内容 以及 特殊类型（String类型）的特有地址</strong></li>
+<li><strong>方法区 则用来存储 由堆的特殊类型地址 指定 的 内容，以及 对象的行为（即方法）</strong></li>
+</ul>
+<h3 id="8-方法重载"><a href="#8-方法重载" class="headerlink" title="8.方法重载"></a>8.方法重载</h3><ul>
+<li><h4 id="含义：方法名一样-但是-传入的参数不一样-就叫-方法重载。-如-cat-int-num-与-cat-String-name-是合法的-为重载方法"><a href="#含义：方法名一样-但是-传入的参数不一样-就叫-方法重载。-如-cat-int-num-与-cat-String-name-是合法的-为重载方法" class="headerlink" title="含义：方法名一样 但是 传入的参数不一样  就叫 方法重载。   如 cat(int num) 与 cat(String name) 是合法的 为重载方法"></a>含义：方法名一样 但是 传入的参数不一样  就叫 方法重载。   如 cat(int num) 与 cat(String name) 是合法的 为重载方法</h4></li>
+<li><h4 id="使用细节："><a href="#使用细节：" class="headerlink" title="使用细节："></a>使用细节：</h4><ul>
+<li><h5 id="方法名-必须相同"><a href="#方法名-必须相同" class="headerlink" title="方法名 必须相同"></a>方法名 必须相同</h5></li>
+<li><h5 id="各个重载方法-的-形参列表-必须-不同-（个数-或者-顺序-至少要其中一样不相同-）"><a href="#各个重载方法-的-形参列表-必须-不同-（个数-或者-顺序-至少要其中一样不相同-）" class="headerlink" title="各个重载方法 的 形参列表 必须 不同 （个数 或者 顺序 至少要其中一样不相同 ）"></a>各个重载方法 的 形参列表 必须 不同 （个数 或者 顺序 至少要其中一样不相同 ）</h5></li>
+<li><h5 id="返回类型-无要求"><a href="#返回类型-无要求" class="headerlink" title="返回类型 无要求"></a>返回类型 无要求</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="9-可变参数"><a href="#9-可变参数" class="headerlink" title="9.可变参数"></a>9.可变参数</h3><ul>
+<li><h4 id="含义：可以理解为-方法重载的优化-既-可通过特殊的写法-让传参方便-如-cat-int…-nums-表示-cat方法-可传多个-int类型的参数-而-nums-为-数组-可用数组的方法-来获取-具体的实参数值"><a href="#含义：可以理解为-方法重载的优化-既-可通过特殊的写法-让传参方便-如-cat-int…-nums-表示-cat方法-可传多个-int类型的参数-而-nums-为-数组-可用数组的方法-来获取-具体的实参数值" class="headerlink" title="含义：可以理解为 方法重载的优化 既 可通过特殊的写法 让传参方便 如 cat(int… nums)  //表示 cat方法 可传多个 int类型的参数 而 nums 为 数组 可用数组的方法 来获取 具体的实参数值"></a>含义：可以理解为 方法重载的优化 既 可通过特殊的写法 让传参方便 如 cat(int… nums)  //表示 cat方法 可传多个 int类型的参数 而 nums 为 数组 可用数组的方法 来获取 具体的实参数值</h4></li>
+<li><h4 id="使用细节：-1"><a href="#使用细节：-1" class="headerlink" title="使用细节："></a>使用细节：</h4><ul>
+<li><h5 id="可变参数的实参-可以为-0-个-或者-多个"><a href="#可变参数的实参-可以为-0-个-或者-多个" class="headerlink" title="可变参数的实参 可以为 0 个 或者 多个"></a>可变参数的实参 可以为 0 个 或者 多个</h5></li>
+<li><p><strong>可变参数的实参 可以是 数组</strong></p>
+</li>
+<li><p><strong>可变参数的本质 就是 数组</strong></p>
+</li>
+<li><h5 id="可变参数可以-和-普通类型的参数-一起放在形参列表中，但必须保证可变参数-在-最后-如-cat-string-s-int…-nums"><a href="#可变参数可以-和-普通类型的参数-一起放在形参列表中，但必须保证可变参数-在-最后-如-cat-string-s-int…-nums" class="headerlink" title="可变参数可以 和 普通类型的参数 一起放在形参列表中，但必须保证可变参数 在 最后 如 cat(string s,int… nums)"></a>可变参数可以 和 普通类型的参数 一起放在形参列表中，但必须保证可变参数 在 最后 如 cat(string s,int… nums)</h5></li>
+<li><h5 id="一个形参列表中-只能出现-一个-可变参数"><a href="#一个形参列表中-只能出现-一个-可变参数" class="headerlink" title="一个形参列表中 只能出现 一个 可变参数"></a>一个形参列表中 只能出现 一个 可变参数</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="10-构造器"><a href="#10-构造器" class="headerlink" title="10.构造器"></a>10.构造器</h3><ul>
+<li><h4 id="含义：在创造对象的时候-，可以通过进行传参的方式来给对象中的属性赋值。-也可以在构造器中-自己进行赋值"><a href="#含义：在创造对象的时候-，可以通过进行传参的方式来给对象中的属性赋值。-也可以在构造器中-自己进行赋值" class="headerlink" title="含义：在创造对象的时候 ，可以通过进行传参的方式来给对象中的属性赋值。 也可以在构造器中 自己进行赋值"></a>含义：在创造对象的时候 ，可以通过进行传参的方式来给对象中的属性赋值。 也可以在构造器中 自己进行赋值</h4><p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E6%9E%84%E9%80%A0%E5%99%A81.png"></p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E6%9E%84%E9%80%A0%E5%99%A82.png"></p>
+</li>
+<li><h4 id="细节："><a href="#细节：" class="headerlink" title="细节："></a>细节：</h4><ul>
+<li><strong>构造器 和 类名必须相同</strong></li>
+<li><strong>构造器是完成对象的初始化 而非创建对象</strong></li>
+<li><strong>如果我们没有 定义构造器 系统则会 自动给类 生成一个无参的默认构造器 既 person();</strong></li>
+<li><strong>一旦 定义了构造器 则默认的构造器就会被覆盖 除非 我们自己写一个 默认的构造器</strong></li>
+</ul>
+</li>
 </ul>
 
       
@@ -276,7 +432,88 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0/">展开全文 >></a>
+          <a class="article-more-a" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java复习/语法知识点收集1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86%E7%82%B9%E6%94%B6%E9%9B%861/">Java语法函数复习收集1</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86%E7%82%B9%E6%94%B6%E9%9B%861/" class="archive-article-date">
+  	<time datetime="2021-09-21T03:57:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-随机生成随机数"><a href="#1-随机生成随机数" class="headerlink" title="1.随机生成随机数"></a>1.随机生成随机数</h3><ul>
+<li><p><strong>生成0-100的随机数： 添加Random类 生成Random对象 使用 nextInt()方法进行生成随机数4</strong></p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%880-100%EF%BC%89.png"></p>
+</li>
+<li><p>*<em>生成1-100的随机数：使用Math.random()方法  该方法生成的随机数范围是 0.0–0.1之间 因此 我们需要</em>100 将 数值增大 **</p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E9%9A%8F%E6%9C%BA%E6%95%B0%E7%94%9F%E6%88%90%EF%BC%881--100%EF%BC%89.png"></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">-Java -复习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86%E7%82%B9%E6%94%B6%E9%9B%861/">展开全文 >></a>
         </p>
       
 
@@ -961,163 +1198,9 @@
 
 
   
-    <article id="post-Java数据结构/排序算法/基数排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/12/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">基数排序</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/06/12/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2021-06-12T04:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h3><h4 id="思路：主要作用于-数值之间大小相差很大-或者说-数字很大与数字很小并存的数组。-该排序-通过-个、十、百…-这些-位数来依次进行排序。达到排序的效果"><a href="#思路：主要作用于-数值之间大小相差很大-或者说-数字很大与数字很小并存的数组。-该排序-通过-个、十、百…-这些-位数来依次进行排序。达到排序的效果" class="headerlink" title="思路：主要作用于 数值之间大小相差很大 或者说 数字很大与数字很小并存的数组。 该排序 通过 个、十、百… 这些 位数来依次进行排序。达到排序的效果"></a>思路：主要作用于 数值之间大小相差很大 或者说 数字很大与数字很小并存的数组。 该排序 通过 个、十、百… 这些 位数来依次进行排序。达到排序的效果</h4><h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 思路：通过 个、十、百..的位数来依次对数组进行排序 达到排序的效果</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">redixSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//定义一个最大值变量 用于确定最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> max=Integer.MIN_VALUE; <span class="comment">//Integer.MIN_VALUE 拿到int类型的最小值</span></span><br><span class="line">		<span class="comment">//拿到数组中的最大值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(max&lt;arr[i]) &#123;</span><br><span class="line">				max=arr[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> maxYs=(max+<span class="string">&quot;&quot;</span>).length(); <span class="comment">//(max+&quot;&quot;)这种表达方式可以让max由整型变成字符串 </span></span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个二维数组 用于对数组的排序进行存放 即位数是多少 该位数有多少个</span></span><br><span class="line">		<span class="keyword">int</span>[][] temp=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>][arr.length];</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//位数的数组  0-9个位数 以及可以记录该位数有多少个</span></span><br><span class="line">		<span class="keyword">int</span>[] counts=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//循环的次数为 最大的位数 次</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,n=<span class="number">1</span>;i&lt;maxYs;i++,n*=<span class="number">10</span>) &#123;</span><br><span class="line">			<span class="comment">//遍历数组的每一个数字 按照位数进行存放与排序</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr.length;j++) &#123;</span><br><span class="line">				<span class="comment">//位数的获取</span></span><br><span class="line">				<span class="keyword">int</span> ys=arr[j]/n%<span class="number">10</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//把当前遍历的数字 放在相应的临时数组里面</span></span><br><span class="line">				temp[ys][counts[ys]]=arr[j];</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//存放的数据 向后移</span></span><br><span class="line">				counts[ys]++;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//用于记录拿数据时的下标</span></span><br><span class="line">			<span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把数据拿出来</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;counts.length;k++) &#123; <span class="comment">//遍历每一个位数</span></span><br><span class="line">				<span class="keyword">if</span>(counts[k]!=<span class="number">0</span>) &#123;  <span class="comment">//位数里面没有数据 就不拿 </span></span><br><span class="line">					<span class="keyword">for</span>(<span class="keyword">int</span> l=<span class="number">0</span>;l&lt;counts[k];l++) &#123;  <span class="comment">//l 相当于 可以表示 遍历该位数里面的数据</span></span><br><span class="line">						arr[index]=temp[k][l];</span><br><span class="line">						index++;</span><br><span class="line">					&#125;</span><br><span class="line">					counts[k]=<span class="number">0</span>;  <span class="comment">//数据每一次拿完之后 都让该位数的数组清0</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="队列实现基数排序"><a href="#队列实现基数排序" class="headerlink" title="队列实现基数排序"></a>队列实现基数排序</h3><h4 id="思路：基数排序的思想就是-通过-个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面-再依次按照放进去的顺序-拿出来-。-因此-这种放置的过程-符合队列的特性"><a href="#思路：基数排序的思想就是-通过-个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面-再依次按照放进去的顺序-拿出来-。-因此-这种放置的过程-符合队列的特性" class="headerlink" title="思路：基数排序的思想就是 通过 个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面 再依次按照放进去的顺序 拿出来 。 因此 这种放置的过程 符合队列的特性"></a>思路：基数排序的思想就是 通过 个、十、百位的数字来进行分组排序，把数字每次放进分别代表的余数数组里面 再依次按照放进去的顺序 拿出来 。 因此 这种放置的过程 符合队列的特性</h4><h4 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * 思路：通过 个、十、百..的位数来依次对数组进行排序 达到排序的效果</span></span><br><span class="line"><span class="comment">	 * 通过队列的方法实现</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 * */</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">redixSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//定义一个最大值变量 用于确定最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> max=Integer.MIN_VALUE; <span class="comment">//Integer.MIN_VALUE 拿到int类型的最小值</span></span><br><span class="line">		<span class="comment">//拿到数组中的最大值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;arr.length;i++) &#123;</span><br><span class="line">			<span class="keyword">if</span>(max&lt;arr[i]) &#123;</span><br><span class="line">				max=arr[i];</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//获取最多是几位数</span></span><br><span class="line">		<span class="keyword">int</span> maxYs=(max+<span class="string">&quot;&quot;</span>).length();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//定义一个数组队列 用于存放数据</span></span><br><span class="line">		QueueDemo[] temp=<span class="keyword">new</span> QueueDemo[<span class="number">10</span>]; </span><br><span class="line">		</span><br><span class="line">		<span class="comment">//为队列数组进行赋值</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;temp.length;i++) &#123;</span><br><span class="line">			temp[i]=<span class="keyword">new</span> QueueDemo();</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//循环的次数为 最大的位数 次</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>,n=<span class="number">1</span>;i&lt;maxYs;i++,n*=<span class="number">10</span>) &#123;</span><br><span class="line">			<span class="comment">//遍历数组的每一个数字 按照位数进行存放与排序</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;arr.length;j++) &#123;</span><br><span class="line">				<span class="comment">//位数的获取</span></span><br><span class="line">				<span class="keyword">int</span> ys=arr[j]/n%<span class="number">10</span>;</span><br><span class="line">				</span><br><span class="line">				<span class="comment">//把当前遍历的数字 放在相应的临时数组里面</span></span><br><span class="line">				temp[ys].push(arr[j]);;</span><br><span class="line">				</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//用于记录拿数据时的下标</span></span><br><span class="line">			<span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">			</span><br><span class="line">			<span class="comment">//把数据拿出来</span></span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;temp.length;k++) &#123; <span class="comment">//遍历每一个位数</span></span><br><span class="line">				<span class="keyword">while</span>(!temp[k].IsEmpty()) &#123;  <span class="comment">//位数里面没有数据 就不拿 </span></span><br><span class="line">					arr[index]=temp[k].pop();</span><br><span class="line">					index++;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/12/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%9F%BA%E6%95%B0%E6%8E%92%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java数据结构/排序算法/归并排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/11/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">归并排序</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/06/11/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/" class="archive-article-date">
-  	<time datetime="2021-06-11T04:22:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h3><h4 id="思路：把一个数组-分成两个或者多个有序的小数组-然后通过两个两个小数组的比较-依此来达到把整个数组进行排序的效果"><a href="#思路：把一个数组-分成两个或者多个有序的小数组-然后通过两个两个小数组的比较-依此来达到把整个数组进行排序的效果" class="headerlink" title="思路：把一个数组 分成两个或者多个有序的小数组 然后通过两个两个小数组的比较 依此来达到把整个数组进行排序的效果"></a>思路：把一个数组 分成两个或者多个有序的小数组 然后通过两个两个小数组的比较 依此来达到把整个数组进行排序的效果</h4><h4 id="实现代码："><a href="#实现代码：" class="headerlink" title="实现代码："></a>实现代码：</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用于把数组进行分割成彼此有序的数组</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merageSort</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//用于分割你下标位置</span></span><br><span class="line">		<span class="keyword">int</span> middleIndex=(low+high)/<span class="number">2</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">if</span>(low&lt;high) &#123;</span><br><span class="line">			<span class="comment">//分割左边 通过递归</span></span><br><span class="line">			merageSort(arr,low,middleIndex);</span><br><span class="line">			<span class="comment">//分割右边</span></span><br><span class="line">			merageSort(arr,middleIndex+<span class="number">1</span>,high);</span><br><span class="line">			<span class="comment">//开始排序</span></span><br><span class="line">			merage(arr,low,middleIndex,high);</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">//用于排序 两个已经排好序的数组（其实 只是一个数组 把他们看成有序的数组而已）</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">merage</span><span class="params">(<span class="keyword">int</span> arr[],<span class="keyword">int</span> low,<span class="keyword">int</span> middle,<span class="keyword">int</span> high)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//该数组 用于临时存储 两个数比较后 的数据</span></span><br><span class="line">		<span class="keyword">int</span>[] temp=<span class="keyword">new</span> <span class="keyword">int</span>[high-low+<span class="number">1</span>];</span><br><span class="line">		<span class="comment">//用于记录 临时数组的下标</span></span><br><span class="line">		<span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">		<span class="comment">//用于第一个数组的遍历</span></span><br><span class="line">		<span class="keyword">int</span> i=low;</span><br><span class="line">		<span class="comment">//用于第二个数组的遍历</span></span><br><span class="line">		<span class="keyword">int</span> j=middle+<span class="number">1</span>;</span><br><span class="line">		</span><br><span class="line">		<span class="keyword">while</span>(i&lt;=middle &amp;&amp; j&lt;=high) &#123;</span><br><span class="line">			<span class="comment">//第一个数组遍历</span></span><br><span class="line">			<span class="keyword">if</span>(arr[i]&lt;=arr[j]) &#123;</span><br><span class="line">				temp[index]=arr[i];</span><br><span class="line">				i++;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="comment">//第二个数组遍历</span></span><br><span class="line">				temp[index]=arr[j];</span><br><span class="line">				j++;</span><br><span class="line">			&#125;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//处理第一个数组 多余的数据</span></span><br><span class="line">		<span class="keyword">while</span>(i&lt;=middle) &#123;</span><br><span class="line">			temp[index]=arr[i];</span><br><span class="line">			i++;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//处理第二个数组 多余的数据</span></span><br><span class="line">		<span class="keyword">while</span>(j&lt;=high) &#123;</span><br><span class="line">			temp[index]=arr[j];</span><br><span class="line">			j++;</span><br><span class="line">			index++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//把临时数组 存放到 原来的数组当中</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">0</span>;k&lt;temp.length;k++) &#123;</span><br><span class="line">			arr[k+low]=temp[k];</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">-java -数据结构 -排序算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/06/11/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/%E5%BD%92%E5%B9%B6%E6%8E%92%E5%BA%8F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
     </nav>
   
 
