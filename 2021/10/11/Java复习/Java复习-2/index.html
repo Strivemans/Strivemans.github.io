@@ -34,8 +34,11 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E5%AF%B9%E8%B1%A1%E5%88%9B%E5%BB%BA%E6%B5%81%E7%A8%8B%E5%9B%BE.png">
 <meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E7%BB%A7%E6%89%BF%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%88%E5%86%85%E5%AD%98%E5%8F%98%E5%8C%96%EF%BC%89.png">
+<meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E4%BD%93%E7%8E%B0%E5%A4%9A%E6%80%81.png">
+<meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%BD%93%E7%8E%B0%E5%A4%9A%E6%80%81.png">
+<meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%E4%B8%BE%E4%BE%8B.png">
 <meta property="article:published_time" content="2021-10-11T03:57:36.000Z">
-<meta property="article:modified_time" content="2021-10-17T14:44:47.613Z">
+<meta property="article:modified_time" content="2021-11-08T16:24:37.310Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="-Java -复习">
 <meta name="twitter:card" content="summary">
@@ -224,6 +227,55 @@
 <li><h5 id="子类的方法的-参数，方法名称，必须要和父亲方法的参数、方法名完全一样。"><a href="#子类的方法的-参数，方法名称，必须要和父亲方法的参数、方法名完全一样。" class="headerlink" title="子类的方法的 参数，方法名称，必须要和父亲方法的参数、方法名完全一样。"></a>子类的方法的 参数，方法名称，必须要和父亲方法的参数、方法名完全一样。</h5></li>
 <li><h5 id="子类的-返回类型-必须要与父类的返回类型一致，或者是-父亲返回类型的子类。比如，父类的返回类型是Object-子类的返回类型是String"><a href="#子类的-返回类型-必须要与父类的返回类型一致，或者是-父亲返回类型的子类。比如，父类的返回类型是Object-子类的返回类型是String" class="headerlink" title="子类的 返回类型 必须要与父类的返回类型一致，或者是 父亲返回类型的子类。比如，父类的返回类型是Object 子类的返回类型是String"></a>子类的 返回类型 必须要与父类的返回类型一致，或者是 父亲返回类型的子类。比如，父类的返回类型是Object 子类的返回类型是String</h5></li>
 <li><h5 id="子类方法不能缩小父类方法的访问权限。"><a href="#子类方法不能缩小父类方法的访问权限。" class="headerlink" title="子类方法不能缩小父类方法的访问权限。"></a>子类方法不能缩小父类方法的访问权限。</h5></li>
+</ul>
+<h3 id="4-多态"><a href="#4-多态" class="headerlink" title="4.多态"></a>4.多态</h3><ul>
+<li><h4 id="1-含义："><a href="#1-含义：" class="headerlink" title="1.含义："></a>1.含义：</h4><ul>
+<li><h5 id="方法多态：方法的-重写-与-重载-体现了-方法的多态性"><a href="#方法多态：方法的-重写-与-重载-体现了-方法的多态性" class="headerlink" title="方法多态：方法的 重写 与 重载 体现了 方法的多态性"></a>方法多态：方法的 重写 与 重载 体现了 方法的多态性</h5><p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%E4%BD%93%E7%8E%B0%E5%A4%9A%E6%80%81.png"></p>
+<p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%BD%93%E7%8E%B0%E5%A4%9A%E6%80%81.png"></p>
+</li>
+<li><h5 id="对象多态：（假设-A-是-B-的子类）"><a href="#对象多态：（假设-A-是-B-的子类）" class="headerlink" title="对象多态：（假设 A 是 B 的子类）"></a>对象多态：（假设 A 是 B 的子类）</h5><ul>
+<li><h5 id="一个对象的-编译类型-和-运行类型-可以不一致。-如-B-b-new-A-编译类型是-B-而-运行类型是-A"><a href="#一个对象的-编译类型-和-运行类型-可以不一致。-如-B-b-new-A-编译类型是-B-而-运行类型是-A" class="headerlink" title="一个对象的 编译类型 和 运行类型 可以不一致。 如 B b =new A(); 编译类型是 B 而 运行类型是 A"></a>一个对象的 编译类型 和 运行类型 可以不一致。 如 B b =new A(); 编译类型是 B 而 运行类型是 A</h5></li>
+<li><h5 id="编译类型-在-定义对象的时，就确定了，不能改变。"><a href="#编译类型-在-定义对象的时，就确定了，不能改变。" class="headerlink" title="编译类型 在 定义对象的时，就确定了，不能改变。"></a>编译类型 在 定义对象的时，就确定了，不能改变。</h5></li>
+<li><h5 id="运行类型是可以变化的。-即-b-new-A-也可以-b-new-B"><a href="#运行类型是可以变化的。-即-b-new-A-也可以-b-new-B" class="headerlink" title="运行类型是可以变化的。 即 b=new A(); 也可以 b=new B();"></a>运行类型是可以变化的。 即 b=new A(); 也可以 b=new B();</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="2-多态的形式"><a href="#2-多态的形式" class="headerlink" title="2.多态的形式"></a>2.多态的形式</h4><ul>
+<li><h5 id="向上转型：即-父类是-编译类型-子类是运行类型-B-b-new-A-；"><a href="#向上转型：即-父类是-编译类型-子类是运行类型-B-b-new-A-；" class="headerlink" title="向上转型：即 父类是 编译类型 子类是运行类型  B b=new A()；"></a>向上转型：即 父类是 编译类型 子类是运行类型  B b=new A()；</h5><ul>
+<li><h5 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h5><ul>
+<li><h5 id="可以调用父类的所有成员（需要遵守访问权限-如-public、private）"><a href="#可以调用父类的所有成员（需要遵守访问权限-如-public、private）" class="headerlink" title="可以调用父类的所有成员（需要遵守访问权限 如 public、private）"></a>可以调用父类的所有成员（需要遵守访问权限 如 public、private）</h5></li>
+<li><h5 id="不能调用子类的特有成员（即-子类特有的方法或者属性-父类没有）"><a href="#不能调用子类的特有成员（即-子类特有的方法或者属性-父类没有）" class="headerlink" title="不能调用子类的特有成员（即 子类特有的方法或者属性 父类没有）"></a>不能调用子类的特有成员（即 子类特有的方法或者属性 父类没有）</h5></li>
+<li><h5 id="最终运行效果-看子类的具体实现（即-父类和子类都有相同的方法时，需要先看子类的方法）"><a href="#最终运行效果-看子类的具体实现（即-父类和子类都有相同的方法时，需要先看子类的方法）" class="headerlink" title="最终运行效果 看子类的具体实现（即 父类和子类都有相同的方法时，需要先看子类的方法）"></a>最终运行效果 看子类的具体实现（即 父类和子类都有相同的方法时，需要先看子类的方法）</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h5 id="向下转型：子类类型-引用名-（子类类型）-父类引用-A-a-A-b"><a href="#向下转型：子类类型-引用名-（子类类型）-父类引用-A-a-A-b" class="headerlink" title="向下转型：子类类型 引用名=（子类类型） 父类引用 A a=(A) b;"></a>向下转型：子类类型 引用名=（子类类型） 父类引用 A a=(A) b;</h5><ul>
+<li><h5 id="特点：-1"><a href="#特点：-1" class="headerlink" title="特点："></a>特点：</h5><ul>
+<li><h5 id="只能强转父类的引用，不能强转父类的对象。"><a href="#只能强转父类的引用，不能强转父类的对象。" class="headerlink" title="只能强转父类的引用，不能强转父类的对象。"></a>只能强转父类的引用，不能强转父类的对象。</h5></li>
+<li><h5 id="要求父类的引用-必须指向的是当前目标类型的对象-即-要进行向下转型-则该-父类的父类的引用必须先进行-向上转型。"><a href="#要求父类的引用-必须指向的是当前目标类型的对象-即-要进行向下转型-则该-父类的父类的引用必须先进行-向上转型。" class="headerlink" title="要求父类的引用 必须指向的是当前目标类型的对象 即 要进行向下转型 则该 父类的父类的引用必须先进行 向上转型。"></a>要求父类的引用 必须指向的是当前目标类型的对象 即 要进行向下转型 则该 父类的父类的引用必须先进行 向上转型。</h5></li>
+<li><h5 id="可以调用子类类型的所有成员。"><a href="#可以调用子类类型的所有成员。" class="headerlink" title="可以调用子类类型的所有成员。"></a>可以调用子类类型的所有成员。</h5></li>
+<li><h5 id="最终运行效果-看子类的具体实现（先从子类开始找同名方法"><a href="#最终运行效果-看子类的具体实现（先从子类开始找同名方法" class="headerlink" title="最终运行效果 看子类的具体实现（先从子类开始找同名方法)"></a>最终运行效果 看子类的具体实现（先从子类开始找同名方法)</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="3-属性的重写"><a href="#3-属性的重写" class="headerlink" title="3.属性的重写"></a>3.属性的重写</h4><ul>
+<li><h5 id="属性没有重写的说法，属性的值主要看-编译类型。"><a href="#属性没有重写的说法，属性的值主要看-编译类型。" class="headerlink" title="属性没有重写的说法，属性的值主要看 编译类型。"></a>属性没有重写的说法，属性的值主要看 编译类型。</h5></li>
+<li><h5 id="instanceOf-可以用来判断是否为XX类型-或是-XX类型的子类型。"><a href="#instanceOf-可以用来判断是否为XX类型-或是-XX类型的子类型。" class="headerlink" title="instanceOf 可以用来判断是否为XX类型 或是 XX类型的子类型。"></a>instanceOf 可以用来判断是否为XX类型 或是 XX类型的子类型。</h5></li>
+<li><h5 id="方法的调用看-运行类型-。"><a href="#方法的调用看-运行类型-。" class="headerlink" title="方法的调用看 运行类型 。"></a>方法的调用看 运行类型 。</h5></li>
+</ul>
+</li>
+<li><h4 id="4-java的动态绑定机制"><a href="#4-java的动态绑定机制" class="headerlink" title="4.java的动态绑定机制"></a>4.java的动态绑定机制</h4><p><img src="/../images/Java%E5%A4%8D%E4%B9%A0/%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%E4%B8%BE%E4%BE%8B.png"></p>
+<ul>
+<li><h5 id="当调用-对象方法-的时候，该方法会和该对象的-内存地址-运行类型-进行绑定"><a href="#当调用-对象方法-的时候，该方法会和该对象的-内存地址-运行类型-进行绑定" class="headerlink" title="当调用 对象方法 的时候，该方法会和该对象的 内存地址/运行类型 进行绑定"></a>当调用 对象方法 的时候，该方法会和该对象的 内存地址/运行类型 进行绑定</h5></li>
+<li><h5 id="当调用对象属性的时候，是-没有-动态绑定机制的。-哪里声明，哪里使用。"><a href="#当调用对象属性的时候，是-没有-动态绑定机制的。-哪里声明，哪里使用。" class="headerlink" title="当调用对象属性的时候，是 没有 动态绑定机制的。 哪里声明，哪里使用。"></a>当调用对象属性的时候，是 没有 动态绑定机制的。 哪里声明，哪里使用。</h5></li>
+<li><h5 id="举例说明："><a href="#举例说明：" class="headerlink" title="举例说明："></a>举例说明：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">A a=<span class="keyword">new</span> B(); <span class="comment">//向上转型</span></span><br><span class="line">System.out.println(a.num());  <span class="comment">//输出30</span></span><br><span class="line"><span class="comment">//（此时 B 中 的 sum 方法被注释）当 a 调用 sum方法时，经历的过程</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	1. 先去 找 编译类型B 是否存在 sum方法 。 发现没有（被注释掉）</span></span><br><span class="line"><span class="comment">    2. 根据 继承原则 去父类A 中 找 sum 方法 发现找到。 但 执行A中的 sum方法 需要执行 getI（）方法</span></span><br><span class="line"><span class="comment">    3. 此时 根据 java的 动态绑定机制 方法会和执行它的对象进行绑定 既 和 a 进行绑定。  而 a的 运行类型是 B，因此 getI（）方法 </span></span><br><span class="line"><span class="comment">       会 先去B 中寻找 getI（）方法 发现 找到 返回 20 .</span></span><br><span class="line"><span class="comment">    4. 继续执行 A中的 sum方法 20+10 返回 30.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">System.out.println(a.num1()); <span class="comment">//返回 20</span></span><br><span class="line"><span class="comment">//此时的 B中的 sum方法被注释</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">	1. 先去 找 编译类型B 是否存在 sum1方法 。 发现没有（被注释掉）</span></span><br><span class="line"><span class="comment">	2. 根据 继承原则 去父类A 中 找 sum1 方法 发现找到</span></span><br><span class="line"><span class="comment">	3. 此时的 属性i 没有什么动态绑定之说，直接看当前类 是否有定义属性 i，有则直接调用 没有则 去B找。 发现有 则执行 返回 10+10=20</span></span><br><span class="line"><span class="comment">	 </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
 </ul>
 
       
