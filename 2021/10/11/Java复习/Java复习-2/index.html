@@ -38,7 +38,7 @@
 <meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD%E4%BD%93%E7%8E%B0%E5%A4%9A%E6%80%81.png">
 <meta property="og:image" content="https://strivemans.github.io/images/Java%E5%A4%8D%E4%B9%A0/%E5%8A%A8%E6%80%81%E7%BB%91%E5%AE%9A%E6%9C%BA%E5%88%B6%E4%B8%BE%E4%BE%8B.png">
 <meta property="article:published_time" content="2021-10-11T03:57:36.000Z">
-<meta property="article:modified_time" content="2021-11-08T16:24:37.310Z">
+<meta property="article:modified_time" content="2021-11-16T00:44:00.405Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="-Java -复习">
 <meta name="twitter:card" content="summary">
@@ -88,7 +88,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 22
+				总文章数 23
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -277,6 +277,107 @@
 </ul>
 </li>
 </ul>
+<h3 id="5-Static类变量-类方法（静态变量）"><a href="#5-Static类变量-类方法（静态变量）" class="headerlink" title="5. Static类变量/类方法（静态变量）"></a>5. Static类变量/类方法（静态变量）</h3><ul>
+<li><h4 id="介绍：Static-类变量-表示-它是全类公用的一个变量或者方法。所有该类的对象访问它时，都会得到同样的值。类变量-在-类加载时-就已经存在了。"><a href="#介绍：Static-类变量-表示-它是全类公用的一个变量或者方法。所有该类的对象访问它时，都会得到同样的值。类变量-在-类加载时-就已经存在了。" class="headerlink" title="介绍：Static 类变量 表示 它是全类公用的一个变量或者方法。所有该类的对象访问它时，都会得到同样的值。类变量 在 类加载时 就已经存在了。"></a>介绍：Static 类变量 表示 它是全类公用的一个变量或者方法。所有该类的对象访问它时，都会得到同样的值。类变量 在 类加载时 就已经存在了。</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestStatic</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> num=<span class="number">2</span>;</span><br><span class="line">		<span class="comment">//此时 a b c单个分别不同的对象 都会 共享同一个属性  num</span></span><br><span class="line">		A a=<span class="keyword">new</span> A();</span><br><span class="line">		A b=<span class="keyword">new</span> A();</span><br><span class="line">		A c=<span class="keyword">new</span> A();</span><br><span class="line">		a.num++;</span><br><span class="line">		b.num++;</span><br><span class="line">		<span class="comment">//此时 三个值应该是一样的 静态的特性 输出结果 均为 7</span></span><br><span class="line">        <span class="comment">//静态变量的 使用方法 可以是 对象名.num 也可以是类名.num 推荐第二种</span></span><br><span class="line">		System.out.println(<span class="string">&quot;a num=&quot;</span>+a.num+<span class="string">&quot; A.num=&quot;</span>+b.num+<span class="string">&quot; c num=&quot;</span>+c.num);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> num=<span class="number">5</span>;  <span class="comment">//定义 静态变量</span></span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		System.out.print(num);</span><br><span class="line">	&#125;	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h4 id="静态变量运用场景："><a href="#静态变量运用场景：" class="headerlink" title="静态变量运用场景："></a>静态变量运用场景：</h4><ul>
+<li><h5 id="1-当我们对该类-不需要太多的属性修改。直接实现对该类的代码进行-代码复用的时候，则可以使用静态变量。-例如-许许多多的-工具类。"><a href="#1-当我们对该类-不需要太多的属性修改。直接实现对该类的代码进行-代码复用的时候，则可以使用静态变量。-例如-许许多多的-工具类。" class="headerlink" title="1. 当我们对该类 不需要太多的属性修改。直接实现对该类的代码进行 代码复用的时候，则可以使用静态变量。 例如 许许多多的 工具类。"></a>1. 当我们对该类 不需要太多的属性修改。直接实现对该类的代码进行 代码复用的时候，则可以使用静态变量。 例如 许许多多的 工具类。</h5></li>
+<li><h5 id="2-当我们-需要-该属性-，一修改-所有对象的该属性-都产生变化的时候-则可以运用。-例如-Student类中，统计-叫多少学费的-fee变量。"><a href="#2-当我们-需要-该属性-，一修改-所有对象的该属性-都产生变化的时候-则可以运用。-例如-Student类中，统计-叫多少学费的-fee变量。" class="headerlink" title="2. 当我们 需要 该属性 ，一修改 所有对象的该属性 都产生变化的时候 则可以运用。 例如 Student类中，统计 叫多少学费的 fee变量。"></a>2. 当我们 需要 该属性 ，一修改 所有对象的该属性 都产生变化的时候 则可以运用。 例如 Student类中，统计 叫多少学费的 fee变量。</h5></li>
+</ul>
+</li>
+<li><h4 id="类方法使用注意事项："><a href="#类方法使用注意事项：" class="headerlink" title="类方法使用注意事项："></a>类方法使用注意事项：</h4><ul>
+<li><h5 id="1-类方法和普通方法-都是随着-类的加载而加载。"><a href="#1-类方法和普通方法-都是随着-类的加载而加载。" class="headerlink" title="1. 类方法和普通方法 都是随着 类的加载而加载。"></a>1. 类方法和普通方法 都是随着 类的加载而加载。</h5></li>
+<li><h5 id="2-类方法结构体中-不能使用this"><a href="#2-类方法结构体中-不能使用this" class="headerlink" title="2. 类方法结构体中 不能使用this"></a>2. 类方法结构体中 不能使用this</h5></li>
+<li><h5 id="3-类方法中，只能使用类变量，不能使用其他的变量。"><a href="#3-类方法中，只能使用类变量，不能使用其他的变量。" class="headerlink" title="3. 类方法中，只能使用类变量，不能使用其他的变量。"></a>3. 类方法中，只能使用类变量，不能使用其他的变量。</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="6-main方法-public-static-void-main-String-args"><a href="#6-main方法-public-static-void-main-String-args" class="headerlink" title="6.main方法( public static void main(String[] args) )"></a>6.main方法( public static void main(String[] args) )</h3><ul>
+<li><h5 id="main方法-因为会被-java虚拟机调用-因此访问权限必须是-public"><a href="#main方法-因为会被-java虚拟机调用-因此访问权限必须是-public" class="headerlink" title="main方法 因为会被 java虚拟机调用 因此访问权限必须是 public"></a>main方法 因为会被 java虚拟机调用 因此访问权限必须是 public</h5></li>
+<li><h5 id="调用main方法-不需要创建对象-所以-用-static来修饰"><a href="#调用main方法-不需要创建对象-所以-用-static来修饰" class="headerlink" title="调用main方法 不需要创建对象 所以 用 static来修饰"></a>调用main方法 不需要创建对象 所以 用 static来修饰</h5></li>
+<li><h5 id="main-方法的参数-args-用于存储-运行该命令时传递给所运行的类的参数。"><a href="#main-方法的参数-args-用于存储-运行该命令时传递给所运行的类的参数。" class="headerlink" title="main 方法的参数 args 用于存储 运行该命令时传递给所运行的类的参数。"></a>main 方法的参数 args 用于存储 运行该命令时传递给所运行的类的参数。</h5></li>
+<li><h5 id="特别提示："><a href="#特别提示：" class="headerlink" title="特别提示："></a>特别提示：</h5><ul>
+<li><h5 id="在-main-方法中，可以使用所在类的-静态变量-和-静态方法（即-遵守静态规则）"><a href="#在-main-方法中，可以使用所在类的-静态变量-和-静态方法（即-遵守静态规则）" class="headerlink" title="在 main() 方法中，可以使用所在类的 静态变量 和 静态方法（即 遵守静态规则）"></a>在 main() 方法中，可以使用所在类的 静态变量 和 静态方法（即 遵守静态规则）</h5></li>
+<li><h5 id="若想在-main-方法中使用非静态的东西，则需要先创建该类的-对象-再使用对象来引用非静态的东西"><a href="#若想在-main-方法中使用非静态的东西，则需要先创建该类的-对象-再使用对象来引用非静态的东西" class="headerlink" title="若想在 main() 方法中使用非静态的东西，则需要先创建该类的 对象 再使用对象来引用非静态的东西"></a>若想在 main() 方法中使用非静态的东西，则需要先创建该类的 对象 再使用对象来引用非静态的东西</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="7-代码块"><a href="#7-代码块" class="headerlink" title="7.代码块"></a>7.代码块</h3><ul>
+<li><h4 id="1-含义：类似于方法，将逻辑语句封装在方法体中，通过-来包围起来-通常用于解决代码冗余。"><a href="#1-含义：类似于方法，将逻辑语句封装在方法体中，通过-来包围起来-通常用于解决代码冗余。" class="headerlink" title="1. 含义：类似于方法，将逻辑语句封装在方法体中，通过{}来包围起来. 通常用于解决代码冗余。"></a>1. 含义：类似于方法，将逻辑语句封装在方法体中，通过{}来包围起来. 通常用于解决代码冗余。</h4></li>
+<li><h4 id="2-基本语法：【修饰符】-修饰符-可以加-可以不加-，要加也只能加-static-。-其中-后面的-号-可以不要。"><a href="#2-基本语法：【修饰符】-修饰符-可以加-可以不加-，要加也只能加-static-。-其中-后面的-号-可以不要。" class="headerlink" title="2.基本语法：【修饰符】{};  修饰符 可以加 可以不加 ，要加也只能加 static 。 其中 后面的 ;号 可以不要。"></a>2.基本语法：【修饰符】{};  修饰符 可以加 可以不加 ，要加也只能加 static 。 其中 后面的 ;号 可以不要。</h4></li>
+<li><h4 id="3-代码块使用细节："><a href="#3-代码块使用细节：" class="headerlink" title="3.代码块使用细节："></a>3.代码块使用细节：</h4><ul>
+<li><h5 id="static代码块，作用是对类进行初始化，它是随着-类的加载-而执行的，并且只会执行一次。-普通代码块，则是每创建一个对象就会执行一次。"><a href="#static代码块，作用是对类进行初始化，它是随着-类的加载-而执行的，并且只会执行一次。-普通代码块，则是每创建一个对象就会执行一次。" class="headerlink" title="static代码块，作用是对类进行初始化，它是随着 类的加载 而执行的，并且只会执行一次。 普通代码块，则是每创建一个对象就会执行一次。"></a>static代码块，作用是对类进行初始化，它是随着 类的加载 而执行的，并且只会执行一次。 普通代码块，则是每创建一个对象就会执行一次。</h5></li>
+<li><h5 id="类是什么时候被加载"><a href="#类是什么时候被加载" class="headerlink" title="类是什么时候被加载"></a>类是什么时候被加载</h5><ul>
+<li><h5 id="1-创建对象实例时-（如-new）"><a href="#1-创建对象实例时-（如-new）" class="headerlink" title="1. 创建对象实例时 （如 new）"></a>1. 创建对象实例时 （如 new）</h5></li>
+<li><h5 id="2-创建子类对象实例时，父类也会被加载。并且时-父类先加载完后，在加载子类。"><a href="#2-创建子类对象实例时，父类也会被加载。并且时-父类先加载完后，在加载子类。" class="headerlink" title="2. 创建子类对象实例时，父类也会被加载。并且时 父类先加载完后，在加载子类。"></a>2. 创建子类对象实例时，父类也会被加载。并且时 父类先加载完后，在加载子类。</h5></li>
+<li><h5 id="3-在使用-类的静态成员的时候（如-静态属性，静态方法）"><a href="#3-在使用-类的静态成员的时候（如-静态属性，静态方法）" class="headerlink" title="3. 在使用 类的静态成员的时候（如 静态属性，静态方法）"></a>3. 在使用 类的静态成员的时候（如 静态属性，静态方法）</h5></li>
+</ul>
+</li>
+<li><h5 id="使用类的静态成员的时候，普通代码块-并不会-执行。只有在创建对象实例的时候-普通代码块才会执行"><a href="#使用类的静态成员的时候，普通代码块-并不会-执行。只有在创建对象实例的时候-普通代码块才会执行" class="headerlink" title="使用类的静态成员的时候，普通代码块 并不会 执行。只有在创建对象实例的时候 普通代码块才会执行"></a>使用类的静态成员的时候，普通代码块 并不会 执行。只有在创建对象实例的时候 普通代码块才会执行</h5></li>
+<li><h5 id="创建一个对象时，在一个类-调用顺序："><a href="#创建一个对象时，在一个类-调用顺序：" class="headerlink" title="创建一个对象时，在一个类 调用顺序："></a>创建一个对象时，在一个类 调用顺序：</h5><ul>
+<li><h5 id="1-先执行-静态的代码块-和-静态属性初始化（先执行静态资源-优先级是一样的）"><a href="#1-先执行-静态的代码块-和-静态属性初始化（先执行静态资源-优先级是一样的）" class="headerlink" title="1.先执行 静态的代码块 和 静态属性初始化（先执行静态资源 优先级是一样的）"></a>1.先执行 静态的代码块 和 静态属性初始化（先执行静态资源 优先级是一样的）</h5></li>
+<li><h5 id="2-执行-普通代码块-和-普通属性-（执行-普通资源）"><a href="#2-执行-普通代码块-和-普通属性-（执行-普通资源）" class="headerlink" title="2. 执行 普通代码块 和 普通属性 （执行 普通资源）"></a>2. 执行 普通代码块 和 普通属性 （执行 普通资源）</h5></li>
+<li><h5 id="3-执行-构造器"><a href="#3-执行-构造器" class="headerlink" title="3. 执行 构造器"></a>3. 执行 构造器</h5></li>
+</ul>
+</li>
+<li><h5 id="构造方法-的-最前面-其实隐含了-super（）和-调用普通代码块。因此，每次执行构造器方法的时候，都会先去执行父类-以及该类中的-普通代码块"><a href="#构造方法-的-最前面-其实隐含了-super（）和-调用普通代码块。因此，每次执行构造器方法的时候，都会先去执行父类-以及该类中的-普通代码块" class="headerlink" title="构造方法 的 最前面 其实隐含了  super（）和 调用普通代码块。因此，每次执行构造器方法的时候，都会先去执行父类 以及该类中的 普通代码块"></a>构造方法 的 最前面 其实隐含了  super（）和 调用普通代码块。因此，每次执行构造器方法的时候，都会先去执行父类 以及该类中的 普通代码块</h5></li>
+<li><h5 id="静态代码块-依然要遵守-静态的规则，因此-静态代码块中-只能使用-静态属性-和-静态方法。而-普通代码块-则可以调用任何的属性和方法。"><a href="#静态代码块-依然要遵守-静态的规则，因此-静态代码块中-只能使用-静态属性-和-静态方法。而-普通代码块-则可以调用任何的属性和方法。" class="headerlink" title="静态代码块 依然要遵守 静态的规则，因此 静态代码块中 只能使用 静态属性 和 静态方法。而 普通代码块 则可以调用任何的属性和方法。"></a>静态代码块 依然要遵守 静态的规则，因此 静态代码块中 只能使用 静态属性 和 静态方法。而 普通代码块 则可以调用任何的属性和方法。</h5></li>
+<li><h5 id="子类与父类（继承关系）-调用顺序："><a href="#子类与父类（继承关系）-调用顺序：" class="headerlink" title="子类与父类（继承关系） 调用顺序："></a>子类与父类（继承关系） 调用顺序：</h5><ul>
+<li><h5 id="1-父类的-静态资源"><a href="#1-父类的-静态资源" class="headerlink" title="1. 父类的 静态资源"></a>1. 父类的 静态资源</h5></li>
+<li><h5 id="2-子类的-静态资源"><a href="#2-子类的-静态资源" class="headerlink" title="2. 子类的 静态资源"></a>2. 子类的 静态资源</h5></li>
+<li><h5 id="3-父类的-普通资源"><a href="#3-父类的-普通资源" class="headerlink" title="3. 父类的 普通资源"></a>3. 父类的 普通资源</h5></li>
+<li><h5 id="4-父类的-构造器"><a href="#4-父类的-构造器" class="headerlink" title="4. 父类的 构造器"></a>4. 父类的 构造器</h5></li>
+<li><h5 id="5-子类的普通资源"><a href="#5-子类的普通资源" class="headerlink" title="5. 子类的普通资源"></a>5. 子类的普通资源</h5></li>
+<li><h5 id="6-子类的构造器"><a href="#6-子类的构造器" class="headerlink" title="6. 子类的构造器"></a>6. 子类的构造器</h5></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="8-单例模式-设计模式中的一种"><a href="#8-单例模式-设计模式中的一种" class="headerlink" title="8.单例模式 (设计模式中的一种)"></a>8.单例模式 (设计模式中的一种)</h3><ul>
+<li><h4 id="1-含义：采取-一定的方法-保证-整个程序中-对某一个类-只能存在一个对象实例，并且该类只提供一个取得该对象实例的方法。"><a href="#1-含义：采取-一定的方法-保证-整个程序中-对某一个类-只能存在一个对象实例，并且该类只提供一个取得该对象实例的方法。" class="headerlink" title="1. 含义：采取 一定的方法 保证 整个程序中 对某一个类 只能存在一个对象实例，并且该类只提供一个取得该对象实例的方法。"></a>1. 含义：采取 一定的方法 保证 整个程序中 对某一个类 只能存在一个对象实例，并且该类只提供一个取得该对象实例的方法。</h4></li>
+<li><h4 id="2-分为-饿汉式-与-懒汉式"><a href="#2-分为-饿汉式-与-懒汉式" class="headerlink" title="2. 分为 饿汉式 与 懒汉式"></a>2. 分为 饿汉式 与 懒汉式</h4><ul>
+<li><h5 id="饿汉式："><a href="#饿汉式：" class="headerlink" title="饿汉式："></a>饿汉式：</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//饿汉式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="comment">//在本类中 new 一个对象</span></span><br><span class="line">    <span class="keyword">static</span> Cat cat=<span class="keyword">new</span> Cat(<span class="string">&quot;小猫&quot;</span>);</span><br><span class="line">    <span class="comment">//构造器 是 私有类型 private （为了防止 用户new对象）</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Cat</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 创建一个 让用户可以 获取对象实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Cat <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> cat;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Cat&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><h5 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//懒汉式</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Friend</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="comment">// 在本类 中 创建对象 但是没有 new出对象实例</span></span><br><span class="line">    <span class="keyword">static</span> Friend friend;</span><br><span class="line">    <span class="comment">//构造器 私有</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Friend</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//让用户 获取对象实例的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Friend <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//避免对象 被 多次创建</span></span><br><span class="line">        <span class="keyword">if</span>(friend==<span class="keyword">null</span>)&#123;</span><br><span class="line">            friend=<span class="keyword">new</span> Friend(<span class="string">&quot;朋友&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> friend;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Friend&#123;&quot;</span> +</span><br><span class="line">                <span class="string">&quot;name=&#x27;&quot;</span> + name + <span class="string">&#x27;\&#x27;&#x27;</span> +</span><br><span class="line">                <span class="string">&#x27;&#125;&#x27;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><h4 id="3-两种方式的区别："><a href="#3-两种方式的区别：" class="headerlink" title="3. 两种方式的区别："></a>3. 两种方式的区别：</h4><ul>
+<li><h5 id="饿汉式-的对象实例-是在-类加载的时候就创建了-若是程序没用该类，则会造成资源浪费。-而-懒汉氏则不会-但是会造成多线程问题。既-当多个线程访问-获取实体类方法时-类都为空-则可能会造成-创建三个类实例的效果，就不符合单例模式了-。"><a href="#饿汉式-的对象实例-是在-类加载的时候就创建了-若是程序没用该类，则会造成资源浪费。-而-懒汉氏则不会-但是会造成多线程问题。既-当多个线程访问-获取实体类方法时-类都为空-则可能会造成-创建三个类实例的效果，就不符合单例模式了-。" class="headerlink" title="饿汉式 的对象实例 是在 类加载的时候就创建了 若是程序没用该类，则会造成资源浪费。 而 懒汉氏则不会,但是会造成多线程问题。既 当多个线程访问 获取实体类方法时 类都为空 则可能会造成 创建三个类实例的效果，就不符合单例模式了 。"></a>饿汉式 的对象实例 是在 类加载的时候就创建了 若是程序没用该类，则会造成资源浪费。 而 懒汉氏则不会,但是会造成多线程问题。既 当多个线程访问 获取实体类方法时 类都为空 则可能会造成 创建三个类实例的效果，就不符合单例模式了 。</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="9-final关键字"><a href="#9-final关键字" class="headerlink" title="9.final关键字"></a>9.final关键字</h3><ul>
+<li><h4 id="使用情况："><a href="#使用情况：" class="headerlink" title="使用情况："></a>使用情况：</h4><ul>
+<li><h5 id="1-当-该类-不想要被继承时-可以使用-final-class-AA"><a href="#1-当-该类-不想要被继承时-可以使用-final-class-AA" class="headerlink" title="1.当 该类 不想要被继承时 可以使用  final class AA{}"></a>1.当 该类 不想要被继承时 可以使用  final class AA{}</h5></li>
+<li><h5 id="2-当-父类-中-的某个方法-不想要被-子类去重写或者重载的时候-public-final-void-AA"><a href="#2-当-父类-中-的某个方法-不想要被-子类去重写或者重载的时候-public-final-void-AA" class="headerlink" title="2.当 父类 中 的某个方法 不想要被 子类去重写或者重载的时候  public final void AA(){}"></a>2.当 父类 中 的某个方法 不想要被 子类去重写或者重载的时候  public final void AA(){}</h5></li>
+<li><h5 id="3-当-类中-的某一个变量-不想要被更改的时候（既-常量）-private-static-final-AA-3-14"><a href="#3-当-类中-的某一个变量-不想要被更改的时候（既-常量）-private-static-final-AA-3-14" class="headerlink" title="3.当 类中 的某一个变量 不想要被更改的时候（既 常量） private static final AA=3.14"></a>3.当 类中 的某一个变量 不想要被更改的时候（既 常量） private static final AA=3.14</h5></li>
+<li><h5 id="4-当-不希望局部的变量被修改时"><a href="#4-当-不希望局部的变量被修改时" class="headerlink" title="4.当 不希望局部的变量被修改时"></a>4.当 不希望局部的变量被修改时</h5></li>
+</ul>
+</li>
+<li><h4 id="使用细节："><a href="#使用细节：" class="headerlink" title="使用细节："></a>使用细节：</h4><ul>
+<li><h5 id="1-final修饰属性的时候-必须要对该属性-进行-定义。赋值的情况有三种："><a href="#1-final修饰属性的时候-必须要对该属性-进行-定义。赋值的情况有三种：" class="headerlink" title="1. final修饰属性的时候 必须要对该属性 进行 定义。赋值的情况有三种："></a>1. final修饰属性的时候 必须要对该属性 进行 定义。赋值的情况有三种：</h5><ul>
+<li><h5 id="直接-初始化-private-static-final-AA-3-14"><a href="#直接-初始化-private-static-final-AA-3-14" class="headerlink" title="直接 初始化 private static final AA=3.14;"></a>直接 初始化 private static final AA=3.14;</h5></li>
+<li><h5 id="在-代码块中-初始化"><a href="#在-代码块中-初始化" class="headerlink" title="在 代码块中 初始化"></a>在 代码块中 初始化</h5></li>
+<li><h5 id="在-构造器中-初始化"><a href="#在-构造器中-初始化" class="headerlink" title="在 构造器中 初始化"></a>在 构造器中 初始化</h5></li>
+</ul>
+</li>
+<li><h5 id="2-如果-final-修饰的属性时-静态的（static）-既-初始化-只能在-静态-代码块-或者-直接-定义初始化"><a href="#2-如果-final-修饰的属性时-静态的（static）-既-初始化-只能在-静态-代码块-或者-直接-定义初始化" class="headerlink" title="2. 如果 final 修饰的属性时 静态的（static） 既 初始化 只能在 (静态)代码块 或者 直接 定义初始化"></a>2. 如果 final 修饰的属性时 静态的（static） 既 初始化 只能在 (静态)代码块 或者 直接 定义初始化</h5></li>
+<li><h5 id="3-一般来说，如果该类是-final类-则该类-里面的-属性-和-方法-都无需再-修饰为final"><a href="#3-一般来说，如果该类是-final类-则该类-里面的-属性-和-方法-都无需再-修饰为final" class="headerlink" title="3. 一般来说，如果该类是 final类 则该类 里面的 属性 和 方法 都无需再 修饰为final"></a>3. 一般来说，如果该类是 final类 则该类 里面的 属性 和 方法 都无需再 修饰为final</h5></li>
+<li><h5 id="4-final-不能修饰-构造器"><a href="#4-final-不能修饰-构造器" class="headerlink" title="4. final 不能修饰 构造器"></a>4. final 不能修饰 构造器</h5></li>
+<li><h5 id="5-final-通常-会与-static-搭配使用-效率更高"><a href="#5-final-通常-会与-static-搭配使用-效率更高" class="headerlink" title="5. final 通常 会与  static 搭配使用 效率更高"></a>5. final 通常 会与  static 搭配使用 效率更高</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="10-抽象类-abstract"><a href="#10-抽象类-abstract" class="headerlink" title="10.抽象类 (abstract)"></a>10.抽象类 (abstract)</h3><ul>
+<li><h4 id="1-含义：当父类中-存在一些-不确定的方法实现时（既每个子类都会去重写该方法），可以将父类-设置成-抽象类。"><a href="#1-含义：当父类中-存在一些-不确定的方法实现时（既每个子类都会去重写该方法），可以将父类-设置成-抽象类。" class="headerlink" title="1.含义：当父类中 存在一些 不确定的方法实现时（既每个子类都会去重写该方法），可以将父类 设置成 抽象类。"></a>1.含义：当父类中 存在一些 不确定的方法实现时（既每个子类都会去重写该方法），可以将父类 设置成 抽象类。</h4></li>
+<li><h4 id="2-使用细节"><a href="#2-使用细节" class="headerlink" title="2.使用细节"></a>2.使用细节</h4><ul>
+<li><h5 id="1-抽象类-不能被实例化-（既不能new-对象实例）"><a href="#1-抽象类-不能被实例化-（既不能new-对象实例）" class="headerlink" title="1. 抽象类 不能被实例化 （既不能new 对象实例）"></a>1. 抽象类 不能被实例化 （既不能new 对象实例）</h5></li>
+<li><h5 id="2-一旦-某方法定义为-抽象方法-则该类-必须定义为-抽象类"><a href="#2-一旦-某方法定义为-抽象方法-则该类-必须定义为-抽象类" class="headerlink" title="2. 一旦 某方法定义为 抽象方法 则该类 必须定义为 抽象类"></a>2. 一旦 某方法定义为 抽象方法 则该类 必须定义为 抽象类</h5></li>
+<li><h5 id="3-abstract-只能用来修饰-方法-和-类"><a href="#3-abstract-只能用来修饰-方法-和-类" class="headerlink" title="3. abstract 只能用来修饰 方法 和 类"></a>3. abstract 只能用来修饰 方法 和 类</h5></li>
+<li><h5 id="4-如果某类-继承了-抽象类-则必须实现-抽象类-中的-抽象方法-，除非-该类也是一个抽象类"><a href="#4-如果某类-继承了-抽象类-则必须实现-抽象类-中的-抽象方法-，除非-该类也是一个抽象类" class="headerlink" title="4. 如果某类 继承了 抽象类 则必须实现 抽象类 中的  抽象方法 ，除非 该类也是一个抽象类"></a>4. 如果某类 继承了 抽象类 则必须实现 抽象类 中的  抽象方法 ，除非 该类也是一个抽象类</h5></li>
+</ul>
+</li>
+</ul>
+<p>​    </p>
 
       
 
@@ -380,6 +481,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2021/11/16/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Java复习3
+        
+      </div>
+    </a>
   
   
     <a href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-1/" id="article-nav-older" class="article-nav-link-wrap">

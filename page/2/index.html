@@ -77,7 +77,7 @@
 			</ul>
 		</nav>
 		<nav>
-				总文章数 22
+				总文章数 23
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -163,6 +163,89 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Java数据结构/树结构/树结构概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/">树结构概述</a>
+    </h1>
+  
+ 
+        
+        <a href="/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/" class="archive-article-date">
+  	<time datetime="2021-06-17T03:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-为什么使用树"><a href="#1-为什么使用树" class="headerlink" title="1.为什么使用树"></a>1.为什么使用树</h3><h4 id="树结构能够解决掉顺序结构当中的繁琐的问题。-比如-在顺序结构当中-通常我们需要插入一个数据-都需要先将-插入的位置后面的数据进行向后移动-才能够将数据插入。或者在-链表结构当中-我们想要找到链表的其中一个数据-我们需要先从链头开始不断向下遍历去寻找。-这些顺序结构存在的繁琐问题-能够使用树结构解决。"><a href="#树结构能够解决掉顺序结构当中的繁琐的问题。-比如-在顺序结构当中-通常我们需要插入一个数据-都需要先将-插入的位置后面的数据进行向后移动-才能够将数据插入。或者在-链表结构当中-我们想要找到链表的其中一个数据-我们需要先从链头开始不断向下遍历去寻找。-这些顺序结构存在的繁琐问题-能够使用树结构解决。" class="headerlink" title="树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。"></a>树结构能够解决掉顺序结构当中的繁琐的问题。 比如 在顺序结构当中 通常我们需要插入一个数据 都需要先将 插入的位置后面的数据进行向后移动 才能够将数据插入。或者在 链表结构当中 我们想要找到链表的其中一个数据 我们需要先从链头开始不断向下遍历去寻找。 这些顺序结构存在的繁琐问题 能够使用树结构解决。</h4><h2 id="树的基本概念"><a href="#树的基本概念" class="headerlink" title="树的基本概念"></a>树的基本概念</h2><h3 id="根结点：由源头开始的结点-就是根结点-其中-1-就是根结点"><a href="#根结点：由源头开始的结点-就是根结点-其中-1-就是根结点" class="headerlink" title="根结点：由源头开始的结点 就是根结点 其中 1 就是根结点"></a>根结点：由源头开始的结点 就是根结点 其中 1 就是根结点</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%B9%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="2-双亲结点：延伸下来的结点就是它们的双亲结点-1-就是-2和3的双亲结点"><a href="#2-双亲结点：延伸下来的结点就是它们的双亲结点-1-就是-2和3的双亲结点" class="headerlink" title="2. 双亲结点：延伸下来的结点就是它们的双亲结点 1 就是 2和3的双亲结点"></a>2. 双亲结点：延伸下来的结点就是它们的双亲结点 1 就是 2和3的双亲结点</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="3-子结点：由它们产生的结点-即为子结点-2和3是-1-的子节点"><a href="#3-子结点：由它们产生的结点-即为子结点-2和3是-1-的子节点" class="headerlink" title="3. 子结点：由它们产生的结点 即为子结点 2和3是 1 的子节点"></a>3. 子结点：由它们产生的结点 即为子结点 2和3是 1 的子节点</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="4-路经：结点到另一个结点的路程-就为路经-1结点-到-4结点的路经为-1-2-3-4"><a href="#4-路经：结点到另一个结点的路程-就为路经-1结点-到-4结点的路经为-1-2-3-4" class="headerlink" title="4. 路经：结点到另一个结点的路程 就为路经  1结点 到 4结点的路经为 1,2,3,4"></a>4. 路经：结点到另一个结点的路程 就为路经  1结点 到 4结点的路经为 1,2,3,4</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E8%B7%AF%E7%BB%8F.png"></p>
+<h3 id="5-结点的度：度-即使-一个结点中-有多少个子节点-1结点-的度为-2-因为-它有两个子结点"><a href="#5-结点的度：度-即使-一个结点中-有多少个子节点-1结点-的度为-2-因为-它有两个子结点" class="headerlink" title="5. 结点的度：度 即使 一个结点中 有多少个子节点  1结点 的度为 2 因为 它有两个子结点"></a>5. 结点的度：度 即使 一个结点中 有多少个子节点  1结点 的度为 2 因为 它有两个子结点</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="6-结点的权：权即是-一个结点到下一个结点的连线中代表的数值-如-1-到2-结点的-权为-15"><a href="#6-结点的权：权即是-一个结点到下一个结点的连线中代表的数值-如-1-到2-结点的-权为-15" class="headerlink" title="6. 结点的权：权即是 一个结点到下一个结点的连线中代表的数值 如 1 到2 结点的 权为 15"></a>6. 结点的权：权即是 一个结点到下一个结点的连线中代表的数值 如 1 到2 结点的 权为 15</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%9D%83.png"></p>
+<h3 id="7-叶子结点：该节点没有子结点的话-就是叶子结点-2-和-3-就是-叶子结点"><a href="#7-叶子结点：该节点没有子结点的话-就是叶子结点-2-和-3-就是-叶子结点" class="headerlink" title="7. 叶子结点：该节点没有子结点的话 就是叶子结点 2 和 3 就是 叶子结点"></a>7. 叶子结点：该节点没有子结点的话 就是叶子结点 2 和 3 就是 叶子结点</h3><p><img src="/images/%E6%A0%91%E7%BB%93%E6%9E%84/%E5%8F%8C%E4%BA%B2%E7%BB%93%E7%82%B9.png"></p>
+<h3 id="8-子树：即-一个大树当中-把其中一个结点拿出来-也是一颗树-即它是该树当中的子树"><a href="#8-子树：即-一个大树当中-把其中一个结点拿出来-也是一颗树-即它是该树当中的子树" class="headerlink" title="8. 子树：即 一个大树当中 把其中一个结点拿出来 也是一颗树 即它是该树当中的子树"></a>8. 子树：即 一个大树当中 把其中一个结点拿出来 也是一颗树 即它是该树当中的子树</h3><h3 id="9-层：由根结点-到-没有结点为止-即为层-该树有1-2-3-4-层"><a href="#9-层：由根结点-到-没有结点为止-即为层-该树有1-2-3-4-层" class="headerlink" title="9.层：由根结点 到 没有结点为止 即为层 该树有1 2 3 4 层"></a>9.层：由根结点 到 没有结点为止 即为层 该树有1 2 3 4 层</h3><h3 id="10-树的高度：高度即是最高的层树-如上图当中-树的高度是4"><a href="#10-树的高度：高度即是最高的层树-如上图当中-树的高度是4" class="headerlink" title="10. 树的高度：高度即是最高的层树 如上图当中 树的高度是4"></a>10. 树的高度：高度即是最高的层树 如上图当中 树的高度是4</h3><ul>
+<li><h3 id="11-森林：由很多很多的子树组成-就是森林"><a href="#11-森林：由很多很多的子树组成-就是森林" class="headerlink" title="11. 森林：由很多很多的子树组成 就是森林"></a>11. 森林：由很多很多的子树组成 就是森林</h3></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构 -树结构</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/06/17/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84/%E6%A0%91%E7%BB%93%E6%9E%84%E6%A6%82%E8%BF%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Java数据结构/排序算法/基数排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -837,86 +920,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/04/22/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java数据结构/数据结构与算法概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/">算法与数据结构概述</a>
-    </h1>
-  
- 
-        
-        <a href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-  	<time datetime="2021-04-21T03:09:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数据结构概述"><a href="#数据结构概述" class="headerlink" title="数据结构概述"></a>数据结构概述</h3><p>1.数据结构 就是 <strong>数据与数据之间的关系</strong>  </p>
-<p>2.<strong>数据的存储结构</strong></p>
-<ul>
-<li><p><strong>顺序储存结构</strong>：顺序存储 就像排队一样的存储数据 类似于<strong>数组</strong></p>
-<p><img src="/images/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/%E9%A1%BA%E5%BA%8F%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84.png"></p></li></ul>
-        
-          <a class="article-more-a" href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">-java -数据结构</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/04/21/Java%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/">展开全文 >></a>
         </p>
       
 
