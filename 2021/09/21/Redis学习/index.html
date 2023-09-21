@@ -1,0 +1,460 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Redis数据库学习 | 梁伟杰的代码之旅</title><meta name="author" content="jackCoding"><meta name="copyright" content="jackCoding"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、NoSQL介绍1. 为什么会出现nosql技术在传统的网络时代中，用户的访问量 随着时代的发展 越来越大，对 CPU、内存、IO 的压力 越来越大。 这时，NOSQL技术就可以大大的缓解了这些压力。比如， 可以把 存储用户信息的session，放到NoSQL中。 或是 把一些常用的 简单的数据查询 放到 NOSQL中，可以缓解IO压力 等等。  2. NoSQL介绍 NoSQL 意为 Not">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis数据库学习">
+<meta property="og:url" content="http://example.com/2021/09/21/Redis%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="梁伟杰的代码之旅">
+<meta property="og:description" content="一、NoSQL介绍1. 为什么会出现nosql技术在传统的网络时代中，用户的访问量 随着时代的发展 越来越大，对 CPU、内存、IO 的压力 越来越大。 这时，NOSQL技术就可以大大的缓解了这些压力。比如， 可以把 存储用户信息的session，放到NoSQL中。 或是 把一些常用的 简单的数据查询 放到 NOSQL中，可以缓解IO压力 等等。  2. NoSQL介绍 NoSQL 意为 Not">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avator.png">
+<meta property="article:published_time" content="2021-09-21T03:57:36.000Z">
+<meta property="article:modified_time" content="2023-09-14T13:06:37.758Z">
+<meta property="article:author" content="jackCoding">
+<meta property="article:tag" content="-redis">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avator.png"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="http://example.com/2021/09/21/Redis%E5%AD%A6%E4%B9%A0/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Redis数据库学习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-09-14 21:06:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梁伟杰的代码之旅" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="梁伟杰的代码之旅"><span class="site-name">梁伟杰的代码之旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Redis数据库学习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-09-14T13:06:37.758Z" title="更新于 2023-09-14 21:06:37">2023-09-14</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Redis数据库学习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、NoSQL介绍"><a href="#一、NoSQL介绍" class="headerlink" title="一、NoSQL介绍"></a>一、NoSQL介绍</h1><h3 id="1-为什么会出现nosql技术"><a href="#1-为什么会出现nosql技术" class="headerlink" title="1. 为什么会出现nosql技术"></a>1. 为什么会出现nosql技术</h3><p>在传统的网络时代中，用户的访问量 随着时代的发展 越来越大，对 <strong>CPU、内存、IO</strong> 的压力 越来越大。 这时，NOSQL技术就可以大大的缓解了这些压力。比如， <strong>可以把 存储用户信息的session，放到NoSQL中。 或是 把一些常用的 简单的数据查询 放到 NOSQL中，可以缓解IO压力 等等。</strong> </p>
+<h3 id="2-NoSQL介绍"><a href="#2-NoSQL介绍" class="headerlink" title="2. NoSQL介绍"></a>2. NoSQL介绍</h3><ul>
+<li><p>NoSQL 意为 Not Only SQL  不仅仅是 SQL。 指的是 <strong>非关系型数据库。</strong> NoSQL 是 <strong>不依赖义务逻辑存储的</strong>  而是以 <strong>key - value</strong> 的模式存储。</p>
+</li>
+<li><p><strong>特点：</strong></p>
+<p>不遵循SQL标准、不支持ACID（原子性、一致性、永久性、隔离性）、远超SQL的性能。</p>
+</li>
+<li><p><strong>存储数据库类型：</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E8%A1%8C%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93.png"></p>
+</li>
+</ul>
+<h1 id="二、Redis安装"><a href="#二、Redis安装" class="headerlink" title="二、Redis安装"></a>二、Redis安装</h1><h3 id="1-前提"><a href="#1-前提" class="headerlink" title="1. 前提"></a><strong>1. 前提</strong></h3><p>由于Redis 只支持Linux操作系统。 所以本次学习系统环境是：CentOS7 。</p>
+<h3 id="2-安装步骤"><a href="#2-安装步骤" class="headerlink" title="2. 安装步骤"></a>2. 安装步骤</h3><ul>
+<li><p><strong>1) 安装C语言 编译环境（centos yml ， ubuntu apt-get）</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E5%AE%89%E8%A3%85C%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E7%8E%AF%E5%A2%83.png"></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">yum install centos-release-scl scl-utils-build</span><br><span class="line">yum install -y devtoolset-8-toolchain</span><br><span class="line">scl enable devtoolset-8 bash</span><br></pre></td></tr></table></figure>
+
+<p><strong>可通过 gcc –version 来检验是否完成安装。</strong> </p>
+</li>
+<li><p><strong>2）去官网下载Redis。并把下载好的压缩文件 放到 &#x2F;opt目录 。 然后解压</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E8%A7%A3%E5%8E%8Bredis%E5%8E%8B%E7%BC%A9%E5%8C%85.png"></p>
+<p><code>tar -zxvf redis-6.2.1.tar.gz</code> </p>
+</li>
+<li><p><strong>3）在 redis-6.2.1 文件下 进行 编译并安装。安装目录：&#x2F;usr&#x2F;local&#x2F;bin</strong></p>
+<p><strong>先使用 make命令 进行编译。 然后 使用 make install 命令进行 安装。</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/redis%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95%E4%BB%8B%E7%BB%8D.png"></p>
+</li>
+<li></li>
+</ul>
+<h3 id="3-配置后台启动"><a href="#3-配置后台启动" class="headerlink" title="3. 配置后台启动"></a>3. 配置后台启动</h3><ul>
+<li><p><strong>1）复制一份 redis.conf 到 &#x2F;etc 目录下。</strong></p>
+</li>
+<li><p><strong>2）对&#x2F;etc&#x2F;redis.conf 文件 进行设置 。 把 daemonize no 改成 yes</strong></p>
+</li>
+<li><h3 id="3）启动："><a href="#3）启动：" class="headerlink" title="3）启动："></a><strong>3）启动：</strong></h3><p><strong>开启服务：redis-server &#x2F;etc&#x2F;redis.conf</strong></p>
+<p><strong>查看是否开启服务：</strong> <strong>ps -ef | grep redis</strong></p>
+<p><strong>进入 redis 客户端 使用 redis：</strong> <strong>redis-cli</strong> </p>
+</li>
+<li><h3 id="4）-关闭redis"><a href="#4）-关闭redis" class="headerlink" title="4） 关闭redis"></a>4） 关闭redis</h3><p><strong>可通过 exit、 ctrl+c 退出 redis客户端、使用 shutdown 退出服务。</strong></p>
+</li>
+</ul>
+<h3 id="4-Redis相关知识介绍"><a href="#4-Redis相关知识介绍" class="headerlink" title="4. Redis相关知识介绍"></a>4. Redis相关知识介绍</h3><p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/redis%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86.png"></p>
+<ul>
+<li><p>redis 是 <strong>单线程+多路复用 技术。</strong> </p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E5%8D%95%E7%BA%BF%E7%A8%8B+%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8%E6%8A%80%E6%9C%AF%E8%A7%A3%E6%9E%90.png"></p>
+</li>
+</ul>
+<h1 id="三、常用五大数据类型"><a href="#三、常用五大数据类型" class="headerlink" title="三、常用五大数据类型"></a>三、常用五大数据类型</h1><h3 id="1-redis健（key）"><a href="#1-redis健（key）" class="headerlink" title="1. redis健（key）"></a>1. redis健（key）</h3><ul>
+<li><p><strong>常用命令：</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/key%E5%91%BD%E4%BB%A401.png"></p>
+</li>
+<li><p>![</p>
+</li>
+</ul>
+<h3 id="2-字符串类型（String）"><a href="#2-字符串类型（String）" class="headerlink" title="2. 字符串类型（String）"></a>2. 字符串类型（String）</h3><ul>
+<li><p><strong>基本介绍：</strong></p>
+<p>String 类型 是 <strong>二进制安全的 即Redis的String类型 可以包含任何数据。比如 jpg图片、序列化对象。</strong> </p>
+<p>一个Redis中 字符串的 value <strong>最多可以是 512M.</strong></p>
+</li>
+<li><p><strong>常用命令：</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/string%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A401.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/string%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A401.png" alt="string类型命令01"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/string%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A402.png" alt="string类型命令02"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/string%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A403.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/String%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A404.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/string%E7%B1%BB%E5%9E%8B%E5%91%BD%E4%BB%A405.png"></p>
+</li>
+<li><p><strong>数据结构：</strong></p>
+<p><strong>String类型 持有 原子性 的数据结构：</strong> 即 <strong>这种操作 一旦执行 ，就不会被 其它线程打断。</strong></p>
+<p>String类型的是 <strong>简单动态字符串</strong> 是可以修改的 字符串。内部结构 <strong>类似于Java的ArrayList。</strong> 采用 <strong>预分配冗余空间 减少内存的频繁分配（即 会在长度16中， 到了 13 就会扩容）。</strong> </p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/String%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84.png"></p>
+</li>
+</ul>
+<h3 id="3-Redis列表（List）"><a href="#3-Redis列表（List）" class="headerlink" title="3. Redis列表（List）"></a>3. Redis列表（List）</h3><ul>
+<li><p><strong>1）基本了解：</strong> redis列表是简单的字符串列表。它的底层 实际上是一个 <strong>双向链表</strong> ，对两端的操作性能很高， 通过索引操作中间的节点性能会较差。</p>
+</li>
+<li><p><strong>2）常用命令：</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/list%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/list%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A402.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/list%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A403.png"></p>
+</li>
+<li><p><strong>3）数据结构：</strong></p>
+<p>List的数据结构 是 <strong>快速链表quickList</strong> 。 在 <strong>列表元素较少时，会使用一块连续的内存存储 ziplist</strong> 。当 <strong>数据量变多时，就会将 各个的 ziplist 连接起来。组成 quicklist</strong> </p>
+<p> <img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/list%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84quicklist.png"></p>
+</li>
+</ul>
+<h3 id="4-Redis集合（Set）"><a href="#4-Redis集合（Set）" class="headerlink" title="4. Redis集合（Set）"></a>4. Redis集合（Set）</h3><ul>
+<li><p><strong>1) 基本介绍：</strong> set集合 与 list列表 的功能是基本一致的。 主要的区别在于 <strong>set 可以 自动排重（即自动排除重复元素）。且 set集合 可以判断 某个 元素是否在set集合中 的 功能。</strong> set 是 <strong>string类型的  无序集合，底层是 value 为 null 的 hash表。</strong> 所以 添加、删除、查找 的 时间复杂度都为 O（1）。</p>
+</li>
+<li><p><strong>2) 常用命令：</strong></p>
+</li>
+</ul>
+<p>  <img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/set%E9%9B%86%E5%90%88%E5%91%BD%E4%BB%A401.png"></p>
+<p>  <img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/set%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A402.png"></p>
+<ul>
+<li><strong>3) 数据结构：</strong> <strong>Redis 的 set 结构 内部 使用了 hash结构，所有的value 指向 同一个内部值。</strong></li>
+</ul>
+<h3 id="5-哈希类型（Hash）"><a href="#5-哈希类型（Hash）" class="headerlink" title="5. 哈希类型（Hash）"></a>5. 哈希类型（Hash）</h3><ul>
+<li><p><strong>1）基本介绍：</strong> hash 是一个 <strong>键值对集合</strong>, 是一个 <strong>string类型的 field value</strong> 的映射表，类似于Java的 map。 通常可以用来存储对象类型的数据。</p>
+</li>
+<li><p><strong>2) 常用命令：</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/hash%E7%B1%BB%E5%9E%8B%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.png"></p>
+</li>
+<li><p><strong>3) 数据结构：</strong> 当数据量少的时候用 ziplist， 当数据量多的时候 则会把 每一个 zipList 合成一个 hashTable。</p>
+</li>
+</ul>
+<h3 id="6-有序集合Zset"><a href="#6-有序集合Zset" class="headerlink" title="6.  有序集合Zset"></a>6.  有序集合Zset</h3><ul>
+<li><p><strong>1）基本介绍：</strong> zset 和 set 集合是十分类似的，是一个 <strong>没有重复元素</strong> 的 字符串集合。 不同之处在于 zset <strong>会给每一个成员关联一个评分。这个评分用来作为排序的顺序。</strong> 其中 <strong>集合中 元素是唯一的，而 评分是可以重复的。</strong> </p>
+</li>
+<li><p><strong>2）常用命令：</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/zset%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A401.png"></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/zset%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A402.png"></p>
+</li>
+<li><p><strong>3）数据结构：</strong> zset 的数据结构 等价于 Java的 Map&lt;String, Double&gt; 类型，可以给 每一个元素 赋值权重。 <strong>另一方面，</strong> 它 <strong>又类似于 TreeSet</strong> 内部的元素 会根据权重来进行排序。 <strong>zset 有两种数据结构，分别是 hash 与 跳跃表。</strong> <strong>hash 的作用是 关联元素的 value 与 权重score</strong> 。 <strong>而 跳跃表 则是更快速高效的 根据权重进行排序。</strong> </p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E8%B7%B3%E8%B7%83%E8%A1%A8%E5%8E%9F%E7%90%86%E5%9B%BE.png"></p>
+</li>
+</ul>
+<h1 id="四、redis配置文件详解"><a href="#四、redis配置文件详解" class="headerlink" title="四、redis配置文件详解"></a>四、redis配置文件详解</h1><h3 id="1-Units单位"><a href="#1-Units单位" class="headerlink" title="1. Units单位"></a>1. Units单位</h3><p>配置大小的单位，开头定义了基本的度量单位，<strong>只支持bytes, 不支持bit。 大小写不敏感</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/units%E5%8D%95%E4%BD%8D.png"></p>
+<h3 id="2-includes配置"><a href="#2-includes配置" class="headerlink" title="2. includes配置"></a>2. includes配置</h3><p>主要进行对 <strong>其它配置文件的包含作用</strong> </p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/includes%E9%85%8D%E7%BD%AE.png"></p>
+<h3 id="3-网络配置"><a href="#3-网络配置" class="headerlink" title="3. 网络配置"></a>3. 网络配置</h3><ul>
+<li><p><strong>可以调整redis可以接受远程访问</strong></p>
+<ul>
+<li><p>第一步： 把bind注释掉，不然默认只接受本地访问</p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/bind%E6%B3%A8%E9%87%8A.png"></p>
+</li>
+<li><p>第二步：把 protected-mode 设置为 no</p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/protected-mode%E8%AE%BE%E7%BD%AE.png"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>可以设置端口号</strong></p>
+<p><img src="/../../blog/images/Redis%E5%AD%A6%E4%B9%A0/%E8%AE%BE%E7%BD%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7.png"></p>
+</li>
+<li><p><strong>设置tcp-blocklog</strong></p>
+<p>tcp-blocklog 是指 <strong>tcp的连接队列。即 &#x3D;&#x3D; 未完成三次握手+已经完成三次握手队列。</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/tcpblacklog%E6%B3%A8%E6%84%8F.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/tcpbloack.png"></p>
+</li>
+<li><p><strong>timeout设置</strong></p>
+<p>timeout的作用： 当连接redis后，一定时间没有操作，则断开连接。默认为0，即永不超时。（以秒为单位）</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/timeout.png"></p>
+</li>
+<li><p><strong>tcp-keepalive设置</strong></p>
+<p>作用：当通过tcp连接redis后，一定时间没有操作，则断开连接。（以秒为单位）</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/tcp-keepalive.png"></p>
+</li>
+</ul>
+<h3 id="4-通用配置"><a href="#4-通用配置" class="headerlink" title="4.通用配置"></a>4.通用配置</h3><ul>
+<li><p><strong>pidfile设置</strong></p>
+<p>作用：存放pid的位置（即进程号），每一个实例，就有一个pid文件</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/pidfile.png"></p>
+</li>
+<li><p><strong>loglevel设置</strong></p>
+<p>作用：设置日志的级别</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/loglevel.png"></p>
+</li>
+<li><p><strong>logfile设置</strong></p>
+<p>作用：设置日志文件存放的位置</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/logfile.png"></p>
+</li>
+<li><p><strong>database 设置</strong></p>
+<p>作用：设置库的默认数量 默认是16</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/database.png"></p>
+</li>
+</ul>
+<h3 id="5-security安全配置"><a href="#5-security安全配置" class="headerlink" title="5. security安全配置"></a>5. security安全配置</h3><ul>
+<li><p><strong>设置密码登录，有两种模式，第一种是配置文件设置，第二种是命令行设置。</strong></p>
+<ul>
+<li><p>配置文件设置：</p>
+<ul>
+<li><p>打开requirepass foobared（密码）注释 </p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%8101.png"></p>
+</li>
+</ul>
+</li>
+<li><p>命令行设置</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-Limit配置"><a href="#6-Limit配置" class="headerlink" title="6. Limit配置"></a>6. Limit配置</h3><ul>
+<li><p><strong>maxclients设置</strong></p>
+<p>作用：设置redis 最多可以被多少个客户端进行连接，默认是10000个客户端。如果超过设置数量，则会发出 “max number of clients reached”的回应，拒绝连接。</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/maxclients%E8%AE%BE%E7%BD%AE.png"></p>
+</li>
+<li><p><strong>maxmemory设置</strong></p>
+<p>作用：<strong>建议必须设置的配置，否则，会将内存占满，造成服务器宕机。</strong></p>
+<p>设置redis可以使用的内存量，如果超出上限，redis会试图移除内部数据，移除规则由 <strong>maxmemory-policy</strong> 设置。</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/maxmemory.png"></p>
+</li>
+<li><p><strong>maxmemory-policy设置</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/maxmemory-policy%E8%A7%84%E5%88%99.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/maxmemory-policy.png"></p>
+</li>
+<li><p><strong>maxmemory-samples设置</strong></p>
+<p>作用：设置样本数量，LRU算法 和 TTL算法 并非准确的算法，而是估算值，所以可以设置一个样本的大小，redis会默认检查 这么多个 key并选择其中LRU的那个。 一般设置 3-7个，数值越小也不准确，当然性能消耗就越小。</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/maxmemroy-simple.png"></p>
+</li>
+</ul>
+<h1 id="五、redis的发布与订阅"><a href="#五、redis的发布与订阅" class="headerlink" title="五、redis的发布与订阅"></a>五、redis的发布与订阅</h1><h3 id="1-什么是发布和订阅"><a href="#1-什么是发布和订阅" class="headerlink" title="1. 什么是发布和订阅"></a>1. 什么是发布和订阅</h3><p>Redis中的 发布与订阅 是 一种消息通信模式。发布即发送信息，订阅则是接收信息。 其中，redis客户端可以订阅 <strong>任意数量的频道。</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85%E7%A4%BA%E6%84%8F%E5%9B%BE.png"></p>
+<h3 id="2-如何实现发布与订阅"><a href="#2-如何实现发布与订阅" class="headerlink" title="2. 如何实现发布与订阅"></a>2. 如何实现发布与订阅</h3><ul>
+<li><p>打开一个客户端去订阅频道</p>
+<p><code>subscrbe channel01</code></p>
+</li>
+<li><p>打开另一个客户端去发布信息</p>
+<p><code>publish channel01 hello</code></p>
+</li>
+</ul>
+<h1 id="六、Redis新数据类型"><a href="#六、Redis新数据类型" class="headerlink" title="六、Redis新数据类型"></a>六、Redis新数据类型</h1><h3 id="1-Bitmaps类型"><a href="#1-Bitmaps类型" class="headerlink" title="1. Bitmaps类型"></a>1. Bitmaps类型</h3><ul>
+<li><p><strong>含义：</strong> bitmaps类型 可以合理的操作 二进制的位，通过操作位来有效地提高内存使用率和开发效率。在redis中，可以把bitmaps想象成，以位为单位的数组，数组的每一个单元都只能存储0或1，而数组的下标就叫做偏移量。</p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/bitmaps%E7%A4%BA%E6%84%8F%E5%9B%BE.png"></p>
+</li>
+<li><p><strong>使用命令：</strong></p>
+<ul>
+<li><p><strong>setbit命令：</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/setbit.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/setbit%E4%BD%BF%E7%94%A8.png"></p>
+<p><strong>在第一次初始化bitmaps时，加入偏移量非常大，那么整个初始化过程就会比较慢，可能会造成redis阻塞。</strong></p>
+</li>
+<li><p><strong>getbit命令：</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/getbit.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/getbit%E4%BD%BF%E7%94%A8.png"></p>
+</li>
+<li><p><strong>bitcount命令：</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/bitcount.png"></p>
+<p><strong>注意：bitcount统计1的数量 是以字节为单位的。</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/bitcount%E6%B3%A8%E6%84%8F.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/bitcount%E4%BD%BF%E7%94%A8.png"></p>
+</li>
+<li><p><strong>bitop and (or&#x2F;not&#x2F;xor)命令：</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/bitop%E5%91%BD%E4%BB%A4.png"></p>
+</li>
+<li><p><img src="/Redis%E5%AD%A6%E4%B9%A0/bitop%E4%BD%BF%E7%94%A8.png"></p>
+<p><strong>注意：这个user091114是自定义创建的key</strong></p>
+</li>
+</ul>
+</li>
+<li><p><strong>适用范围：</strong> bitmaps适用于 类似 活跃用户这种类型的，适合频繁活动的数据，如存储一天的活跃用户。</p>
+</li>
+</ul>
+<h3 id="2-HyperLogLog类型"><a href="#2-HyperLogLog类型" class="headerlink" title="2. HyperLogLog类型"></a>2. HyperLogLog类型</h3><ul>
+<li><p><strong>简介：</strong> 主要用于解决 <strong>基数问题</strong> 。 基数问题 即 获取集合中 不重复个数的问题。 </p>
+</li>
+<li><p><strong>使用命令：</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/hyperloglog%E5%91%BD%E4%BB%A401.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/hyperloglog%E5%91%BD%E4%BB%A402.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/hyperloglog%E5%91%BD%E4%BB%A403.png"></p>
+</li>
+</ul>
+<h3 id="3-Geospatial类型"><a href="#3-Geospatial类型" class="headerlink" title="3. Geospatial类型"></a>3. Geospatial类型</h3><ul>
+<li><p><strong>简介：</strong> geospatial类型主要对GEO（地理信息）数据的支持。该元素主要是存储 经纬度的值。</p>
+</li>
+<li><p><strong>常用命令：</strong></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/geospatial%E5%91%BD%E4%BB%A401.png"></p>
+<p><strong>注意： 两极的经纬度不能添加。有效经度为180°到-180°，有效的纬度为85.05112878°到 -85.06112878°</strong> </p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/geospatial%E5%91%BD%E4%BB%A402.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/geospatial%E5%91%BD%E4%BB%A403.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/geospatial%E5%8D%95%E4%BD%8D.png"></p>
+<p><img src="/Redis%E5%AD%A6%E4%B9%A0/geospatial%E5%91%BD%E4%BB%A404.png"></p>
+</li>
+</ul>
+<h1 id="七、Jedis工具"><a href="#七、Jedis工具" class="headerlink" title="七、Jedis工具"></a>七、Jedis工具</h1><h3 id="1-简介"><a href="#1-简介" class="headerlink" title="1. 简介"></a>1. 简介</h3><p>Jedis工具 主要是用于 使用Java来操作Reids的一种工具。里面提供了许多redis的操作api。</p>
+<h3 id="2-使用"><a href="#2-使用" class="headerlink" title="2. 使用"></a>2. 使用</h3><ul>
+<li><p><strong>maven引入依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>redis.clients<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jedis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.7.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>对redis的conf文件配置</strong></p>
+<ul>
+<li>注释掉 bind 127.0.0.1</li>
+<li>把protected-mode 设置为 no</li>
+</ul>
+</li>
+<li><p><strong>关闭防火墙</strong></p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">(centos版本)</span><br><span class="line">//查看防火墙</span><br><span class="line">systemctl status firewall</span><br><span class="line"></span><br><span class="line">//删除防火墙</span><br><span class="line">systemctl stop firewall</span><br><span class="line"></span><br><span class="line">（ubuntu版本）</span><br><span class="line">//查看防火墙</span><br><span class="line">service iptables status</span><br><span class="line">//关闭</span><br><span class="line">service iptables stop</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>最后，重启一下redis服务</strong></p>
+</li>
+</ul>
+<h3 id="3-案例（手机验证码）"><a href="#3-案例（手机验证码）" class="headerlink" title="3. 案例（手机验证码）"></a>3. 案例（手机验证码）</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 规则 每个手机号每天只能获取三次验证码 每次验证码的有效期为2分钟</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 生成随机的验证码</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">getCode</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="type">String</span> <span class="variable">code</span> <span class="operator">=</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> random.nextInt(<span class="number">10</span>);</span><br><span class="line">            code+=temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> code;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//保存验证码到redis</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">saveCodeRedis</span><span class="params">(String telephone,String code)</span>&#123;</span><br><span class="line">        <span class="comment">//每天该手机号生成次数前缀</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">codeCount</span> <span class="operator">=</span> telephone+<span class="string">&quot;count:&quot;</span>;</span><br><span class="line">        <span class="comment">//该手机号的验证码</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">telephoneCode</span> <span class="operator">=</span> telephone+<span class="string">&quot;code:&quot;</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//首先获取该手机号今天已经获取的验证码次数</span></span><br><span class="line">        <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.232.128&quot;</span>,<span class="number">6379</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">codeCount1</span> <span class="operator">=</span> jedis.get(codeCount);</span><br><span class="line">        <span class="type">int</span> <span class="variable">currentCount</span> <span class="operator">=</span> codeCount1==<span class="literal">null</span>?<span class="number">0</span>:Integer.parseInt(codeCount1);</span><br><span class="line">        System.out.println(currentCount);</span><br><span class="line">        <span class="keyword">if</span>(currentCount==<span class="number">0</span>)&#123;</span><br><span class="line">            jedis.set(codeCount,<span class="string">&quot;1&quot;</span>);</span><br><span class="line">            <span class="comment">// 该号码是今天第一次获取验证码 则给redis添加key</span></span><br><span class="line">            jedis.expire(codeCount,<span class="number">24</span>*<span class="number">60</span>*<span class="number">60</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(currentCount&lt;=<span class="number">3</span>)&#123;</span><br><span class="line">            <span class="comment">// 不是第一次获取 则给该key+1</span></span><br><span class="line">            jedis.incr(codeCount);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//今天已经获取了三次了</span></span><br><span class="line">            System.out.println(<span class="string">&quot;今天已经获取了3次验证码，请明天再来！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//存储验证码</span></span><br><span class="line">        jedis.set(telephoneCode,code);</span><br><span class="line">        jedis.expire(telephoneCode,<span class="number">2</span>*<span class="number">60</span>);</span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="comment">//验证验证码是否正确</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">verifyCode</span><span class="params">(String telephone,String code)</span>&#123;</span><br><span class="line">        <span class="type">Jedis</span> <span class="variable">jedis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Jedis</span>(<span class="string">&quot;192.168.232.128&quot;</span>,<span class="number">6379</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">telephoneCode</span> <span class="operator">=</span> telephone+<span class="string">&quot;code:&quot;</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">redisCode</span> <span class="operator">=</span> jedis.get(telephoneCode);</span><br><span class="line">        <span class="keyword">if</span>(code.equals(redisCode))&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;验证正确&quot;</span>);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;验证失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        jedis.close();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"> <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">       saveCodeRedis(<span class="string">&quot;15218423290&quot;</span>,getCode());</span><br><span class="line"><span class="comment">//        verifyCode(&quot;15218423290&quot;,&quot;86426&quot;);</span></span><br><span class="line">  </span><br><span class="line">     </span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="八、SpringBoot整合Redis"><a href="#八、SpringBoot整合Redis" class="headerlink" title="八、SpringBoot整合Redis"></a>八、SpringBoot整合Redis</h1><h3 id="1-引入依赖"><a href="#1-引入依赖" class="headerlink" title="1. 引入依赖"></a>1. 引入依赖</h3><figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-data-redis<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.commons<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>commons-pool2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">			<span class="tag">&lt;<span class="name">version</span>&gt;</span>2.6.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="2-在application-properties编写配置"><a href="#2-在application-properties编写配置" class="headerlink" title="2. 在application.properties编写配置"></a>2. 在application.properties编写配置</h3></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">jackCoding</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/09/21/Redis%E5%AD%A6%E4%B9%A0/">http://example.com/2021/09/21/Redis%E5%AD%A6%E4%B9%A0/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">梁伟杰的代码之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/redis/">-redis</a></div><div class="post_share"><div class="social-share" data-image="/img/avator.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/21/%E6%A8%A1%E6%9D%BF/" title="模板"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">模板</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/AntDesignOfVue%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" title="AntDesignProVue的使用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">AntDesignProVue的使用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">jackCoding</div><div class="author-info__description">编程学习之旅</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81NoSQL%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.</span> <span class="toc-text">一、NoSQL介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BC%9A%E5%87%BA%E7%8E%B0nosql%E6%8A%80%E6%9C%AF"><span class="toc-number">1.0.1.</span> <span class="toc-text">1. 为什么会出现nosql技术</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-NoSQL%E4%BB%8B%E7%BB%8D"><span class="toc-number">1.0.2.</span> <span class="toc-text">2. NoSQL介绍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Redis%E5%AE%89%E8%A3%85"><span class="toc-number">2.</span> <span class="toc-text">二、Redis安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%89%8D%E6%8F%90"><span class="toc-number">2.0.1.</span> <span class="toc-text">1. 前提</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85%E6%AD%A5%E9%AA%A4"><span class="toc-number">2.0.2.</span> <span class="toc-text">2. 安装步骤</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AE%E5%90%8E%E5%8F%B0%E5%90%AF%E5%8A%A8"><span class="toc-number">2.0.3.</span> <span class="toc-text">3. 配置后台启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3%EF%BC%89%E5%90%AF%E5%8A%A8%EF%BC%9A"><span class="toc-number">2.0.4.</span> <span class="toc-text">3）启动：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4%EF%BC%89-%E5%85%B3%E9%97%ADredis"><span class="toc-number">2.0.5.</span> <span class="toc-text">4） 关闭redis</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Redis%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.0.6.</span> <span class="toc-text">4. Redis相关知识介绍</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E5%B8%B8%E7%94%A8%E4%BA%94%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">三、常用五大数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-redis%E5%81%A5%EF%BC%88key%EF%BC%89"><span class="toc-number">3.0.1.</span> <span class="toc-text">1. redis健（key）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%EF%BC%88String%EF%BC%89"><span class="toc-number">3.0.2.</span> <span class="toc-text">2. 字符串类型（String）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Redis%E5%88%97%E8%A1%A8%EF%BC%88List%EF%BC%89"><span class="toc-number">3.0.3.</span> <span class="toc-text">3. Redis列表（List）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Redis%E9%9B%86%E5%90%88%EF%BC%88Set%EF%BC%89"><span class="toc-number">3.0.4.</span> <span class="toc-text">4. Redis集合（Set）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%93%88%E5%B8%8C%E7%B1%BB%E5%9E%8B%EF%BC%88Hash%EF%BC%89"><span class="toc-number">3.0.5.</span> <span class="toc-text">5. 哈希类型（Hash）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E6%9C%89%E5%BA%8F%E9%9B%86%E5%90%88Zset"><span class="toc-number">3.0.6.</span> <span class="toc-text">6.  有序集合Zset</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81redis%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">四、redis配置文件详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Units%E5%8D%95%E4%BD%8D"><span class="toc-number">4.0.1.</span> <span class="toc-text">1. Units单位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-includes%E9%85%8D%E7%BD%AE"><span class="toc-number">4.0.2.</span> <span class="toc-text">2. includes配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">4.0.3.</span> <span class="toc-text">3. 网络配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%80%9A%E7%94%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">4.0.4.</span> <span class="toc-text">4.通用配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-security%E5%AE%89%E5%85%A8%E9%85%8D%E7%BD%AE"><span class="toc-number">4.0.5.</span> <span class="toc-text">5. security安全配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Limit%E9%85%8D%E7%BD%AE"><span class="toc-number">4.0.6.</span> <span class="toc-text">6. Limit配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81redis%E7%9A%84%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85"><span class="toc-number">5.</span> <span class="toc-text">五、redis的发布与订阅</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%8F%91%E5%B8%83%E5%92%8C%E8%AE%A2%E9%98%85"><span class="toc-number">5.0.1.</span> <span class="toc-text">1. 什么是发布和订阅</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%8F%91%E5%B8%83%E4%B8%8E%E8%AE%A2%E9%98%85"><span class="toc-number">5.0.2.</span> <span class="toc-text">2. 如何实现发布与订阅</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81Redis%E6%96%B0%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.</span> <span class="toc-text">六、Redis新数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Bitmaps%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.0.1.</span> <span class="toc-text">1. Bitmaps类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-HyperLogLog%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.0.2.</span> <span class="toc-text">2. HyperLogLog类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Geospatial%E7%B1%BB%E5%9E%8B"><span class="toc-number">6.0.3.</span> <span class="toc-text">3. Geospatial类型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81Jedis%E5%B7%A5%E5%85%B7"><span class="toc-number">7.</span> <span class="toc-text">七、Jedis工具</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E7%AE%80%E4%BB%8B"><span class="toc-number">7.0.1.</span> <span class="toc-text">1. 简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BD%BF%E7%94%A8"><span class="toc-number">7.0.2.</span> <span class="toc-text">2. 使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%A1%88%E4%BE%8B%EF%BC%88%E6%89%8B%E6%9C%BA%E9%AA%8C%E8%AF%81%E7%A0%81%EF%BC%89"><span class="toc-number">7.0.3.</span> <span class="toc-text">3. 案例（手机验证码）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81SpringBoot%E6%95%B4%E5%90%88Redis"><span class="toc-number">8.</span> <span class="toc-text">八、SpringBoot整合Redis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BC%95%E5%85%A5%E4%BE%9D%E8%B5%96"><span class="toc-number">8.0.1.</span> <span class="toc-text">1. 引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9C%A8application-properties%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE"><span class="toc-number">8.0.2.</span> <span class="toc-text">2. 在application.properties编写配置</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/20221/03/06/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/SpringBoot%20%E6%95%B4%E5%90%88%20MybatisPlus/" title="springBoot整合MybatisPlus">springBoot整合MybatisPlus</a><time datetime="+020221-03-06T03:57:36.000Z" title="发表于 20221-03-06 11:57:36">20221-03-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.613Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88Java%E8%AF%AD%E8%A8%8001%EF%BC%89/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.607Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/06/07/Java%E5%A4%8D%E4%B9%A0/java8%E6%96%B0%E7%89%B9%E6%80%A7/" title="java8新特性">java8新特性</a><time datetime="2022-06-07T03:57:36.000Z" title="发表于 2022-06-07 11:57:36">2022-06-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/11/16/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-3/" title="Java复习3">Java复习3</a><time datetime="2021-11-16T03:57:36.000Z" title="发表于 2021-11-16 11:57:36">2021-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By jackCoding</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

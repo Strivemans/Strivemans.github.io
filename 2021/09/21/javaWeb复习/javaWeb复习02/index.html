@@ -1,0 +1,463 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>java复习02 | 梁伟杰的代码之旅</title><meta name="author" content="jackCoding"><meta name="copyright" content="jackCoding"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="一、JSP1.什么是JSP？ 含义： jsp全名 java server pages 意为 Java的服务器页面。  作用： 代替Servlet程序 回传数据 到 Html页面   本质： Jsp本质上 是 一个Servlet程序。  当我们第一次访问Jsp文件时，Tomcat服务器 会把jsp页面 翻译成一个Java源文件，并对它进行 编译成.class的字节码文件。其中 Java源代码如下：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java复习02">
+<meta property="og:url" content="http://example.com/2021/09/21/javaWeb%E5%A4%8D%E4%B9%A0/javaWeb%E5%A4%8D%E4%B9%A002/index.html">
+<meta property="og:site_name" content="梁伟杰的代码之旅">
+<meta property="og:description" content="一、JSP1.什么是JSP？ 含义： jsp全名 java server pages 意为 Java的服务器页面。  作用： 代替Servlet程序 回传数据 到 Html页面   本质： Jsp本质上 是 一个Servlet程序。  当我们第一次访问Jsp文件时，Tomcat服务器 会把jsp页面 翻译成一个Java源文件，并对它进行 编译成.class的字节码文件。其中 Java源代码如下：">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avator.png">
+<meta property="article:published_time" content="2021-09-21T03:57:36.000Z">
+<meta property="article:modified_time" content="2023-04-07T03:03:55.593Z">
+<meta property="article:author" content="jackCoding">
+<meta property="article:tag" content="-JavaWeb -复习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avator.png"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="http://example.com/2021/09/21/javaWeb%E5%A4%8D%E4%B9%A0/javaWeb%E5%A4%8D%E4%B9%A002/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'java复习02',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-07 11:03:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梁伟杰的代码之旅" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="梁伟杰的代码之旅"><span class="site-name">梁伟杰的代码之旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">java复习02</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-07T03:03:55.593Z" title="更新于 2023-04-07 11:03:55">2023-04-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="java复习02"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="一、JSP"><a href="#一、JSP" class="headerlink" title="一、JSP"></a>一、JSP</h1><h3 id="1-什么是JSP？"><a href="#1-什么是JSP？" class="headerlink" title="1.什么是JSP？"></a>1.什么是JSP？</h3><ul>
+<li><p><strong>含义：</strong> jsp全名 <strong>java server pages</strong> 意为 Java的服务器页面。</p>
+</li>
+<li><p><strong>作用：</strong> <strong>代替Servlet程序 回传数据 到 Html页面</strong> </p>
+</li>
+<li><p><strong>本质：</strong> Jsp本质上 是 <strong>一个Servlet程序。</strong> </p>
+<p>当我们第一次访问Jsp文件时，Tomcat服务器 <strong>会把jsp页面 翻译成一个Java源文件，并对它进行 编译成.class的字节码文件。其中 Java源代码如下：</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/jsp%E6%9C%AC%E8%B4%A8%E5%9B%BE1.png"></p>
+<p>由图可知，在源代码中 <strong>a.jsp 成为了一个类 其中 继承了 HttpJspBase 的类，而这个类 继承了 HttpServlet。因此，jsp间接的继承了 HttpServlet，是一个Servlet程序。</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/jsp%E6%9C%AC%E8%B4%A8%E5%9B%BE2.png"></p>
+<p>上图是在 <strong>方法_jspService中 的一段代码，可以看出 jsp之间能够 显示html，是用out输出流来输出 html语句的。</strong></p>
+</li>
+</ul>
+<h3 id="2-jsp的三种语法"><a href="#2-jsp的三种语法" class="headerlink" title="2.jsp的三种语法"></a>2.jsp的三种语法</h3><ul>
+<li><p><strong>jsp头部的page指令</strong></p>
+<p>jsp的page指令 <strong>可以修改jsp页面中一些  重要的属性或者行为。</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/page%E6%8C%87%E4%BB%A4%E5%B1%9E%E6%80%A701.png"></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/page%E6%8C%87%E4%BB%A4%E5%B1%9E%E6%80%A702.png"></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/page%E6%8C%87%E4%BB%A4%E5%B1%9E%E6%80%A703.png"></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/page%E6%8C%87%E4%BB%A4%E5%B1%9E%E6%80%A704.png"></p>
+</li>
+<li><p><strong>jsp中常用脚本</strong></p>
+<ul>
+<li><p><strong>声明脚本</strong></p>
+<ul>
+<li><p><strong>格式：</strong> <strong>&lt;%!  声明Java代码  %&gt;</strong></p>
+</li>
+<li><p><strong>作用：</strong> 可以在jsp中 <strong>声明 类、方法、代码块、属性 等。</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;body&gt;</span><br><span class="line">    &lt;%!</span><br><span class="line">        <span class="comment">//声明类属性</span></span><br><span class="line">        <span class="keyword">private</span> Integer id;</span><br><span class="line">        <span class="keyword">private</span> String name;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> Map&lt;String,Integer&gt; map;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//声明静态代码块</span></span><br><span class="line">        <span class="keyword">static</span> &#123;</span><br><span class="line">            map.put(<span class="string">&quot;name&quot;</span>,<span class="number">1</span>);</span><br><span class="line">            map.put(<span class="string">&quot;password&quot;</span>,<span class="number">123</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//声明方法</span></span><br><span class="line">        <span class="keyword">public</span> Integer <span class="title function_">getId</span><span class="params">()</span>&#123;</span><br><span class="line">            <span class="keyword">return</span>  id;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//声明内部类</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">B</span>&#123;</span><br><span class="line">            <span class="keyword">private</span> Integer id;</span><br><span class="line">        &#125;</span><br><span class="line">    %&gt;</span><br><span class="line">&lt;/body&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>表达式脚本</strong></p>
+</li>
+<li><p><strong>格式：</strong> <strong>&lt;%&#x3D;表达式 %&gt;</strong></p>
+</li>
+<li><p><strong>作用：</strong> 主要用于 <strong>在jsp页面上显示数据</strong></p>
+</li>
+<li><pre><code class="jsp">&lt;body&gt;
+&lt;%=12%&gt;
+&lt;/body&gt;
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">  - **特点：**</span><br><span class="line"></span><br><span class="line">    - **所有的表达式脚本都会翻译到 _jspService()方法中，输出的内容使用 out.print()方法输出到页面的**</span><br><span class="line">    - **由于翻译在 _jspService()方法中，因此 _jspService（）方法的对象也能够使用 如 request、response等**</span><br><span class="line">    - **表达式脚本中的表达式 不能用 分号结尾。**</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">- **代码脚本**</span><br><span class="line"></span><br><span class="line">  - **格式：** **&lt;%  java语句 %&gt;**</span><br><span class="line">  - **作用：** 可在Jsp页面中 ,**编写Java代码** </span><br><span class="line">  - **特点：**</span><br><span class="line">    - **代码脚本 被翻译在 _jspService()方法中，同样对象也可以使用。**</span><br><span class="line">    - **可以由 多个代码脚本 组合 完成一个完成的 Java语句**</span><br><span class="line">    - **代码脚本 还可以和 表达式脚本 组合使用，在JSP中输出数据** </span><br><span class="line"></span><br><span class="line">  ```jsp</span><br><span class="line">  &lt;body&gt;</span><br><span class="line">  &lt;%</span><br><span class="line">      for(int i=0;i&lt;10;i++)&#123;</span><br><span class="line">  %&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;%=i%&gt;&lt;br/&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;%</span><br><span class="line">      &#125;</span><br><span class="line">  %&gt;</span><br><span class="line">  &lt;/body&gt;</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+</li>
+<li><p><strong>JSP的三种注释：</strong></p>
+<p><strong>Html注释：</strong> <!-- --> </p>
+<p><strong>Java注释：</strong> &#x2F;&#x2F;单行注释  &#x2F;**&#x2F; 多行注释</p>
+<p><strong>Jsp注释：</strong> &lt;%– –%&gt;</p>
+</li>
+</ul>
+<h3 id="3-JSP的九大内置对象"><a href="#3-JSP的九大内置对象" class="headerlink" title="3.JSP的九大内置对象"></a>3.JSP的九大内置对象</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/jsp%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1.png"></p>
+<h3 id="4-JSP四大域对象"><a href="#4-JSP四大域对象" class="headerlink" title="4.JSP四大域对象"></a>4.JSP四大域对象</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/jsp%E5%9B%9B%E5%A4%A7%E5%9F%9F%E5%AF%B9%E8%B1%A1.png"></p>
+<p><strong>含义：</strong> 域对象 可以像 Map一样存取数据，<strong>不同的是 它们对数据的存取范围。而他们的使用是由顺序的，条件允许 优先使用 范围小的。</strong></p>
+<p><strong>使用范围：</strong> <strong>pageContext-&gt;request-&gt;session-&gt;application</strong>  </p>
+<h3 id="5-jsp中out输出与response输出的区别"><a href="#5-jsp中out输出与response输出的区别" class="headerlink" title="5.jsp中out输出与response输出的区别"></a>5.jsp中out输出与response输出的区别</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/jsp%E4%B8%ADout%E8%BE%93%E5%87%BA%E4%B8%8Eresponse%E8%BE%93%E5%87%BA%E7%9A%84%E5%8C%BA%E5%88%AB.png"></p>
+<p><strong>上图可以看出，对于JSP，会执行out.flush（）方法 把out的缓冲区 加入到 response缓冲区去。这是最主要的特点。由于底层源码都是用 out来对我们的数据进行输出 ，因此，我们尽量用 out来进行输出数据 避免输出混乱。</strong></p>
+<h3 id="6-jsp的常用标签"><a href="#6-jsp的常用标签" class="headerlink" title="6.jsp的常用标签"></a>6.jsp的常用标签</h3><ul>
+<li><p><strong>1）静态包含：（常使用）</strong></p>
+<ul>
+<li><p><strong>含义：</strong> 当多个页面需要 用到同一部分元素的时候（例如 网页导航栏 或者 底部的版权声明），<strong>可以把这些共有的部分 分别写成一个个的 JSP页面</strong> 哪里需要用到 则 <strong>通过 包含标签 引入即可。</strong> </p>
+</li>
+<li><p><strong>使用：</strong> </p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;!-- -</span><br><span class="line">	&lt;%<span class="meta">@include</span> file=<span class="string">&quot;jsp页面地址&quot;</span>%&gt; 静态包含语法 </span><br><span class="line">-&gt;</span><br><span class="line">&lt;%<span class="meta">@include</span> file=<span class="string">&quot;/include/footer.jsp&quot;</span>%&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>特点：</strong></p>
+<ul>
+<li><p><strong>被静态包含的页面 不会被翻译成 class文件</strong></p>
+</li>
+<li><p><strong>其 包含本质 是 在main的class文件中，加入了 footer 的页面信息输出。</strong></p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>2）动态包含：</strong></p>
+<ul>
+<li><p><strong>含义：</strong> 与 静态包含的含义一致</p>
+</li>
+<li><p><strong>使用：</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">main.jsp</span><br><span class="line">&lt;%--</span><br><span class="line">    动态包含：&lt;jsp:include page=<span class="string">&quot;包含jsp地址&quot;</span>&gt;&lt;/jsp:include&gt;</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;jsp:include page=<span class="string">&quot;/include/head.jsp&quot;</span>&gt;</span><br><span class="line">    &lt;jsp:param name=<span class="string">&quot;password&quot;</span> value=<span class="string">&quot;123&quot;</span>/&gt;</span><br><span class="line">&lt;/jsp:include&gt;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">head.jsp</span><br><span class="line">头部信息页面&lt;br/&gt;<span class="number">22</span></span><br><span class="line">&lt;!-- 获取参数 --&gt;</span><br><span class="line">&lt;%=request.getParameter(<span class="string">&quot;password&quot;</span>)%&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>特点：</strong></p>
+<ul>
+<li><strong>动态包含的jsp页面 也会被翻译成 class文件</strong></li>
+<li><strong>在main.java文件中 主要使用该语句 进行包含 head.jsp页面 JspRuntimeLibrary.include（request，reponse，“&#x2F;include&#x2F;head.jsp”，out，false）来引入 head.jsp页面</strong> </li>
+<li><strong>动态包含 还可以传输参数</strong></li>
+</ul>
+</li>
+<li><p><strong>原理图：</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/jsp%E5%8A%A8%E6%80%81%E5%8C%85%E5%90%AB%E5%8E%9F%E7%90%86%E5%9B%BE.png"></p>
+</li>
+</ul>
+</li>
+<li><p><strong>3）请求转发标签</strong></p>
+<ul>
+<li><p><strong>使用：</strong> </p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line"> &lt;!-- 请求转发标签  --&gt; </span><br><span class="line">&lt;jsp:forward page=<span class="string">&quot;/include/main.jsp&quot;</span>&gt;&lt;/jsp:forward&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h3 id="7-Listener监听器"><a href="#7-Listener监听器" class="headerlink" title="7.Listener监听器"></a>7.Listener监听器</h3><ul>
+<li><p><strong>介绍：</strong> 监听器 是 JavaWeb的三大组件之一。 其只要作用是 <strong>监听某种 类或者事物 ，通过回调函数，对不同的状态做出处理。</strong></p>
+</li>
+<li><p><strong>使用：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ServletContextListenerImpl</span> <span class="keyword">implements</span> <span class="title class_">ServletContextListener</span> &#123;</span><br><span class="line">    <span class="comment">//在servletCOntext 创建后 调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">contextInitialized</span><span class="params">(ServletContextEvent sce)</span> &#123;</span><br><span class="line">       System.out.println(<span class="string">&quot;servletContext被创建&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在 servletCOntext 销毁后调用</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">contextDestroyed</span><span class="params">(ServletContextEvent sce)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;servletContext被销毁&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="二、EL表达式"><a href="#二、EL表达式" class="headerlink" title="二、EL表达式"></a>二、EL表达式</h1><h3 id="1-基本介绍"><a href="#1-基本介绍" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><ul>
+<li><p>EL 全称是 Expression Language 表达式语言，其主要作用是 <strong>代替JSP的脚本，进行数据的输出。</strong> 因为 EL表达式 可以 <strong>大大的简化 JSP脚本的输出代码。</strong> </p>
+</li>
+<li><p><strong>使用格式：</strong> <strong>${表达式}</strong> </p>
+</li>
+<li><p><strong>细节：</strong> </p>
+<ul>
+<li><strong>EL表达式 主要是输出 域对象中的数据(pageContext、request、session、application)</strong></li>
+<li><strong>如果输出的对象数据为空 ， 则页面直接不显示输出，而不是像 JSP脚本 输出NULL</strong></li>
+<li>如果 四个域对象 都存在相同的key， 那么EL表达式 会 按照 <strong>域对象范围 从小到大的顺序 去输出</strong></li>
+</ul>
+</li>
+<li><p><strong>基本使用：(根据 实体类 的 get方法进行 找到属性值 并 输出的)</strong> </p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">使用EL表达式进行输出&lt;br/&gt;</span><br><span class="line">学生姓名：$&#123;student.name&#125;&lt;br/&gt;           &lt;!-- 输出student的属性 --&gt;</span><br><span class="line">输出列表：$&#123;student.addressList[<span class="number">0</span>]&#125;&lt;br/&gt;  &lt;!-- 输出list集合  --&gt;</span><br><span class="line">输出Map：$&#123;student.map.password&#125;&lt;br/&gt;   &lt;!-- 输出map集合 -- &gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="2-EL运算符"><a href="#2-EL运算符" class="headerlink" title="2.EL运算符"></a>2.EL运算符</h3><ul>
+<li><p><strong>1）关系运算符</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/EL%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6.png"></p>
+</li>
+<li><p><strong>2）逻辑运算符</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/EL%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.png"></p>
+</li>
+<li><p><strong>3）算术运算符</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/EL%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6.png"></p>
+</li>
+<li><p><strong>4）empty 运算符</strong></p>
+<p><strong>empty运算符 可以 判断一个数据 是否为空 如果为空 返回true ，否则返回 false。</strong><br>以下情况 判定为空</p>
+<p><strong>值为NULL、空串、长度为0的数组、list集合元素个数为0、map集合元素个数为0</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">	String str=<span class="string">&quot;&quot;</span>;</span><br><span class="line">%&gt;</span><br><span class="line">$&#123;empty str&#125;  <span class="comment">//返回true</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>5）EL支持 三元运算</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">$&#123;<span class="number">12</span>==<span class="number">12</span>? <span class="literal">true</span>:<span class="literal">false</span>&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>6）.运算 与 [] 运算</strong></p>
+<p><strong>.运算 可以用来 输出 实体类的 属性。${student.name}</strong></p>
+<p><strong>[]中括号对象 可以 用来输出 集合的元素 ${arrays[1]}</strong> </p>
+<p><strong>此外 中括号[] 可以用来 输出 特殊字符的  key值。 ${map[“a.b.c”]}</strong></p>
+</li>
+</ul>
+<h3 id="3-EL11个隐含对象"><a href="#3-EL11个隐含对象" class="headerlink" title="3. EL11个隐含对象"></a>3. EL11个隐含对象</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/EL11%E4%B8%AA%E9%9A%90%E5%90%AB%E5%AF%B9%E8%B1%A1.png"></p>
+<h1 id="三、JSTL标签库"><a href="#三、JSTL标签库" class="headerlink" title="三、JSTL标签库"></a>三、JSTL标签库</h1><h3 id="1-基本介绍-1"><a href="#1-基本介绍-1" class="headerlink" title="1. 基本介绍"></a>1. <strong>基本介绍</strong></h3><p>JSTL 标签库 JSP Standard Tag Library ，<strong>主要是为了 优化 JSP的 代码脚本。</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/JSTL%E4%BA%94%E5%A4%A7%E6%A0%87%E7%AD%BE%E5%BA%93.png"></p>
+<p><strong>JSTL使用步骤：</strong></p>
+<ol>
+<li><p>引入jar包</p>
+<p>taglibs-standard-impl-1.2.5.jar</p>
+<p>taglibs-standard-spec-1.2.5.jar</p>
+</li>
+<li><p>加入到 工程的 webapp目录下的 libs目录 并把jar包 加入工程 </p>
+<p><strong>错误记录：如果已经把jar包引入了 lib目录，并且加入项目。运行还是报错无法解析 ，则可以直接把 jar包放到 tomcat目录下的 lib目录</strong></p>
+</li>
+<li><p>完成准备 开始使用（idea自动会引入对应的包）&lt;%@ taglib prefix&#x3D;”c” uri&#x3D;”<a target="_blank" rel="noopener" href="http://java.sun.com/jsp/jstl/core">http://java.sun.com/jsp/jstl/core</a>“ %&gt;</p>
+</li>
+</ol>
+<h3 id="2-标签库的使用"><a href="#2-标签库的使用" class="headerlink" title="2. 标签库的使用"></a>2. 标签库的使用</h3><ul>
+<li><p><strong>Set标签：用于给域对象 进行 数据保存</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">    scope: 在哪个域进行保存</span><br><span class="line">    <span class="keyword">var</span> : 表示 key</span><br><span class="line">    value: 表示 value</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;c:set scope=<span class="string">&quot;request&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;abc&quot;</span> value=<span class="string">&quot;abcValue&quot;</span>&gt;&lt;/c:set&gt;</span><br><span class="line">$&#123;requestScope.abc&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>if标签： 用于做条件判断</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">    test: 判断的条件 (可以使用EL表达式来表示)</span><br><span class="line">    注意: jstl中的<span class="keyword">if</span>标签,只能做一重判断 ,没有 <span class="keyword">if</span>-<span class="keyword">else</span> / <span class="keyword">else</span> </span><br><span class="line">--%&gt;</span><br><span class="line">&lt;c:<span class="keyword">if</span> test=<span class="string">&quot;$&#123;12 == 12&#125;&quot;</span>&gt;</span><br><span class="line">    &lt;h1&gt;正确&lt;/h1&gt;</span><br><span class="line">&lt;/c:<span class="keyword">if</span>&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>choose,when,otherwise标签：类似于 switch-case-defaule 做判断</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%</span><br><span class="line">    request.setAttribute(<span class="string">&quot;num&quot;</span>,<span class="number">123</span>);</span><br><span class="line">%&gt;</span><br><span class="line">&lt;%--</span><br><span class="line">    <span class="number">1.</span> when标签的 父元素 必须是 choose标签</span><br><span class="line">    <span class="number">2.</span> 在choose标签里,不能使用html注释,得使用 jsp注释&lt;% %&gt;</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;c:choose&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">&quot;$&#123;requestScope.num&gt;200&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;$&#123;<span class="string">&quot;大于200&quot;</span>&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:when test=<span class="string">&quot;$&#123;requestScope.num&gt;100&#125;&quot;</span>&gt;</span><br><span class="line">        &lt;h1&gt;$&#123;<span class="string">&quot;大于100&quot;</span>&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/c:when&gt;</span><br><span class="line">    &lt;c:otherwise&gt;</span><br><span class="line">        &lt;h1&gt;小于<span class="number">100</span>&lt;/h1&gt;</span><br><span class="line">    &lt;/c:otherwise&gt;</span><br><span class="line">&lt;/c:choose&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p><strong>forEach标签：用于遍历</strong></p>
+<figure class="highlight jsp"><table><tr><td class="code"><pre><span class="line">&lt;%--</span><br><span class="line">    begin: 开始索引</span><br><span class="line">    end: 结束索引</span><br><span class="line">    <span class="keyword">var</span>: 当前索引 以及 当前索引的值</span><br><span class="line">    items: 需要遍历的集合/数组</span><br><span class="line">    step: 遍历的步长(即每次遍历的索引递增)</span><br><span class="line">    varStatus: 当前遍历到的数据的状态(该属性 有许多的方法)</span><br><span class="line">--%&gt;</span><br><span class="line">&lt;%--正常遍历--%&gt;</span><br><span class="line">&lt;c:forEach begin=<span class="string">&quot;1&quot;</span> end=<span class="string">&quot;10&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;i&quot;</span>&gt;</span><br><span class="line">    $&#123;i&#125;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;br/&gt;</span><br><span class="line">&lt;%--遍历数组--%&gt;</span><br><span class="line">&lt;%</span><br><span class="line">    <span class="type">int</span>[] array = <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">    request.setAttribute(<span class="string">&quot;array&quot;</span>,array);</span><br><span class="line">    Map&lt;String,String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    map.put(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;jack&quot;</span>);</span><br><span class="line">    map.put(<span class="string">&quot;address&quot;</span>,<span class="string">&quot;肇庆&quot;</span>);</span><br><span class="line">    request.setAttribute(<span class="string">&quot;map&quot;</span>,map);</span><br><span class="line"></span><br><span class="line">%&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">&quot;$&#123;requestScope.array&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;item&quot;</span>&gt;</span><br><span class="line">    $&#123;item&#125;</span><br><span class="line">&lt;/c:forEach&gt;</span><br><span class="line">&lt;br/&gt;</span><br><span class="line">&lt;%--遍历Map集合--%&gt;</span><br><span class="line">&lt;c:forEach items=<span class="string">&quot;$&#123;requestScope.map&#125;&quot;</span> <span class="keyword">var</span>=<span class="string">&quot;item&quot;</span>&gt;</span><br><span class="line">    $&#123;item.key&#125;</span><br><span class="line">&lt;/c:forEach&gt;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/JSTL%E7%9A%84forEach%E7%9A%84varStatus%E5%B1%9E%E6%80%A7%E6%96%B9%E6%B3%95.png"></p>
+</li>
+</ul>
+<h1 id="四、文件的上传与下载"><a href="#四、文件的上传与下载" class="headerlink" title="四、文件的上传与下载"></a>四、文件的上传与下载</h1><h3 id="1-文件上传"><a href="#1-文件上传" class="headerlink" title="1.文件上传"></a>1.文件上传</h3><ul>
+<li><p><strong>基本使用过程：</strong></p>
+<ul>
+<li><strong>1）在一个form表单中，使用 post提交方式</strong></li>
+<li><strong>2) 设置form表单的 encType属性 为 multpart&#x2F;form-data</strong></li>
+<li><strong>3) 设置 input type&#x3D;file 添加上传的文件</strong></li>
+<li><strong>4) 编写servlet程序 处理 表单提交的表单信息</strong></li>
+</ul>
+</li>
+<li><p><strong>上传的Http协议解析：</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0http%E5%8D%8F%E8%AE%AE%E5%86%85%E5%AE%B9%E8%A7%A3%E6%9E%90.png"></p>
+<ul>
+<li><p><strong>如何在Servlet程序中处理 表单上传的 表单信息（主要是文件）:</strong></p>
+<ol>
+<li><p>引入 第三方jar包 方便处理（<strong>添加失败 可以直接把jar包放到tomcat的lib中</strong>）</p>
+<p><strong>commons-fileupload-1.4.jar</strong></p>
+<p><strong>commons-io-2.11.0.jar</strong></p>
+<p><strong>commons-codec-1.15.jar</strong></p>
+</li>
+<li><p>jar包的常用类方法介绍：</p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6jar%E5%8C%85%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%9501.png"></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/%E6%96%87%E4%BB%B6jar%E5%8C%85%E4%B8%8A%E4%BC%A0%E7%9A%84%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%9502.png"></p>
+</li>
+<li><p>具体实现：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">        <span class="comment">//1,先判断 表单上传的数据 是不是多段数据</span></span><br><span class="line">        <span class="keyword">if</span>(ServletFileUpload.isMultipartContent(request))&#123;</span><br><span class="line">            <span class="comment">//2. 创建FileItemFactory对象</span></span><br><span class="line">            <span class="type">FileItemFactory</span> <span class="variable">fileItemFactory</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">DiskFileItemFactory</span>();</span><br><span class="line">            <span class="comment">//3. 创建ServletFileUpload对象</span></span><br><span class="line">            <span class="type">ServletFileUpload</span> <span class="variable">servletFileUpload</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ServletFileUpload</span>(fileItemFactory);</span><br><span class="line">            <span class="comment">//4. 解析表单数据 获取到fileItems的 集合 里面包含所有的表单提交信息</span></span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                List&lt;FileItem&gt; fileItems = servletFileUpload.parseRequest(request);</span><br><span class="line">                <span class="comment">//5. 遍历fileItems 并判断 每个 fileItem 是普通表单项 还是 文件表单项</span></span><br><span class="line">                <span class="keyword">for</span> (FileItem fileItem : fileItems) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(fileItem.isFormField())&#123;</span><br><span class="line">                        <span class="comment">//正常表单项</span></span><br><span class="line">                        System.out.println(<span class="string">&quot;表单项的name属性值为: &quot;</span>+fileItem.getFieldName());</span><br><span class="line">                        <span class="comment">//通过getString() 获取 value值,UTF-8解决中文乱码</span></span><br><span class="line">                        System.out.println(<span class="string">&quot;表单项的value属性值为: &quot;</span>+fileItem.getString(<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">                    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">//文件表单项</span></span><br><span class="line">                        System.out.println(<span class="string">&quot;表单项的name属性值为: &quot;</span>+fileItem.getFieldName());</span><br><span class="line">                        System.out.println(<span class="string">&quot;文件名: &quot;</span>+fileItem.getName());</span><br><span class="line"></span><br><span class="line">                        <span class="comment">//把文件保存在本地硬盘中</span></span><br><span class="line">                        fileItem.write(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;E:\\&quot;</span>+fileItem.getName()));</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">RuntimeException</span>(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;表单提交不是多端数据,解析失败&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-文件下载"><a href="#2-文件下载" class="headerlink" title="2.文件下载"></a>2.文件下载</h3><ul>
+<li><p><strong>基本流程：</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/%E4%B8%8B%E8%BD%BD%E6%B5%81%E7%A8%8B%E7%A4%BA%E6%84%8F%E5%9B%BE.png"></p>
+</li>
+<li><p><strong>具体实现：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException &#123;</span><br><span class="line">       <span class="comment">//1. 获取需要下载的文件名</span></span><br><span class="line">       <span class="type">String</span> <span class="variable">fileName</span> <span class="operator">=</span> <span class="string">&quot;exam.jpg&quot;</span>;</span><br><span class="line">       <span class="comment">//2. 获取要下载的文件内容</span></span><br><span class="line">       ServletContext servletContext= getServletContext();</span><br><span class="line">       <span class="comment">//3. 获取要下载的文件类型</span></span><br><span class="line">       <span class="type">String</span> <span class="variable">mimeType</span> <span class="operator">=</span> servletContext.getMimeType(<span class="string">&quot;/file/&quot;</span> + fileName);</span><br><span class="line">       System.out.println(<span class="string">&quot;下载的文件类型：&quot;</span>+mimeType);</span><br><span class="line">       <span class="comment">//4. 通过响应头 告诉客户端返回的数据类型</span></span><br><span class="line">       resp.setContentType(mimeType);</span><br><span class="line">       <span class="comment">//5. 通过响应头，告诉客户端 该Servlet程序是下载文件的</span></span><br><span class="line">       <span class="comment">// 通过User-Agent 来判断 是火狐浏览器 还是 其他浏览器 不同的浏览器 的编码不一样</span></span><br><span class="line">       <span class="keyword">if</span>(req.getHeader(<span class="string">&quot;User-Agent&quot;</span>).contains(<span class="string">&quot;Firefox&quot;</span>))&#123;</span><br><span class="line">           <span class="comment">//火狐浏览器 使用 Base64编码</span></span><br><span class="line">           resp.setHeader(<span class="string">&quot;Content-Disposition&quot;</span>,<span class="string">&quot;attachment; filename==?UTF-8?B?&quot;</span>+<span class="keyword">new</span> <span class="title class_">Base64</span>().encode(<span class="string">&quot;中国.jpb&quot;</span>.getBytes(<span class="string">&quot;UTF-8&quot;</span>))+<span class="string">&quot;?=&quot;</span>);</span><br><span class="line">       &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">           <span class="comment">//其他浏览器</span></span><br><span class="line">           resp.setHeader(<span class="string">&quot;Content-Disposition&quot;</span>,<span class="string">&quot;attachment; filename=&quot;</span>+ URLEncoder.encode(<span class="string">&quot;中国.jpg&quot;</span>,<span class="string">&quot;UTF-8&quot;</span>));</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="comment">//6. 获取文件的内容 生成输入流</span></span><br><span class="line">       <span class="type">InputStream</span> <span class="variable">resourceAsStream</span> <span class="operator">=</span> servletContext.getResourceAsStream(<span class="string">&quot;/file/&quot;</span> + fileName);</span><br><span class="line">       <span class="comment">//7. 获取 响应的输出流</span></span><br><span class="line">       <span class="type">ServletOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> resp.getOutputStream();</span><br><span class="line">       <span class="comment">//8. 通过commons-io.jar 的IOUtils类 进行数据的传输</span></span><br><span class="line">       IOUtils.copy(resourceAsStream,outputStream);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h1 id="五、Cookie"><a href="#五、Cookie" class="headerlink" title="五、Cookie"></a>五、Cookie</h1><h3 id="1-基本介绍-2"><a href="#1-基本介绍-2" class="headerlink" title="1.基本介绍"></a>1.基本介绍</h3><ul>
+<li>cookie 是 <strong>服务器 发送給 客户端 保存键值对的一种技术。</strong></li>
+<li><strong>客户端 拥有了Cookie之后， 每一次的请求 都会发送给 服务端</strong></li>
+<li><strong>每个 Cookie 的大小 不能超过 4kb</strong></li>
+</ul>
+<h3 id="2-Cookie的操作"><a href="#2-Cookie的操作" class="headerlink" title="2.Cookie的操作"></a>2.Cookie的操作</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/Cookie%E5%88%9B%E5%BB%BA%E7%A4%BA%E6%84%8F%E5%9B%BE.png"></p>
+<p><strong>代码实现(创建Cookie)：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   *   创建Cookie</span></span><br><span class="line"><span class="comment">   * */</span></span><br><span class="line">   <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">createCookie</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> IOException,ServletException &#123;</span><br><span class="line">       <span class="comment">//1. 创建Cookie对象</span></span><br><span class="line">       <span class="type">Cookie</span> <span class="variable">cookie</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cookie</span>(<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;value1&quot;</span>);</span><br><span class="line">       <span class="comment">//2. 通知客户端 接收 cookie</span></span><br><span class="line">       response.addCookie(cookie);</span><br><span class="line">       response.getWriter().write(<span class="string">&quot;Cookie创建成功&quot;</span>);</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码实现（获取Cookie）:</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   * 获取Cookie</span></span><br><span class="line"><span class="comment">   * */</span></span><br><span class="line">   <span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title function_">getCookie</span><span class="params">(HttpServletRequest request,HttpServletResponse response)</span>&#123;</span><br><span class="line">       <span class="comment">//1. 获取Cookie 数组</span></span><br><span class="line">       Cookie[] cookies = request.getCookies();</span><br><span class="line">       <span class="comment">//2, 遍历输出 或者 查找你需要的 Cookie</span></span><br><span class="line">       <span class="keyword">for</span> (Cookie cookie : cookies) &#123;</span><br><span class="line">           System.out.println(<span class="string">&quot;cookie的name：&quot;</span>+cookie.getName()+<span class="string">&quot; cookie的值：&quot;</span>+cookie.getValue());</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>代码实现（修改Cookie的值）:</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">   * 修改Cookie 的值</span></span><br><span class="line"><span class="comment">   * */</span></span><br><span class="line">   <span class="keyword">protected</span>  <span class="keyword">void</span> <span class="title function_">updateCookie</span><span class="params">(HttpServletRequest request,HttpServletResponse response)</span>&#123;</span><br><span class="line">       <span class="comment">//方案一:通过创建新的Cookie(name要相同) 来 修改Cookie值</span></span><br><span class="line">       <span class="type">Cookie</span> <span class="variable">cookie</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cookie</span>(<span class="string">&quot;key1&quot;</span>, <span class="string">&quot;newValue1&quot;</span>);</span><br><span class="line">       response.addCookie(cookie);</span><br><span class="line">       </span><br><span class="line">       <span class="comment">//方案二：先通过resquest获取 cookie数组，找到需要修改的cookie 然后 通过setValue()方法 修改value值 再添加到response</span></span><br><span class="line">       Cookie[] cookies = request.getCookies();</span><br><span class="line">       <span class="type">Cookie</span> <span class="variable">updateCook</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">       <span class="keyword">for</span> (Cookie cookie1 : cookies) &#123;</span><br><span class="line">           <span class="keyword">if</span>(cookie1.getName().equals(<span class="string">&quot;key1&quot;</span>))&#123;</span><br><span class="line">               cookie1.setValue(<span class="string">&quot;value1&quot;</span>);</span><br><span class="line">               updateCook = cookie1;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(updateCook!=<span class="literal">null</span>)&#123;</span><br><span class="line">           response.addCookie(updateCook);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-Cookie的生命控制"><a href="#3-Cookie的生命控制" class="headerlink" title="3.Cookie的生命控制"></a>3.Cookie的生命控制</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/Cookie%E7%94%9F%E5%91%BD%E6%8E%A7%E5%88%B6.png"></p>
+<h3 id="4-Cookie的有效路径Path设置"><a href="#4-Cookie的有效路径Path设置" class="headerlink" title="4. Cookie的有效路径Path设置"></a>4. Cookie的有效路径Path设置</h3><ul>
+<li><p><strong>含义：</strong> Cookie 的 path属性 可以有效的判定 哪些Cookie 是需要发送给 服务端的。 有效的过滤不需要的cookie传送。</p>
+</li>
+<li><p><strong>示意图：</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/Cookie%E7%9A%84path%E5%B1%9E%E6%80%A7%E7%A4%BA%E6%84%8F%E5%9B%BE.png"></p>
+</li>
+<li><p><strong>设置Cookie的path属性：</strong> <strong>可以使用 cookid.setPath(xxx) 来 设置 cookie的path属性。</strong></p>
+</li>
+</ul>
+<h1 id="六、Seesion"><a href="#六、Seesion" class="headerlink" title="六、Seesion"></a>六、Seesion</h1><h3 id="1-基本介绍-3"><a href="#1-基本介绍-3" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><ul>
+<li>Seesion <strong>是一个对话</strong>， 它是用来维护 <strong>客户端 和 服务端 之间进行关联的 技术。</strong> </li>
+<li><strong>每个客户端 都有一个 自己 Seesion</strong></li>
+<li>通常可以用来 保存 <strong>用户登录后 的信息。</strong></li>
+</ul>
+<h3 id="2-如何创建和获取Session"><a href="#2-如何创建和获取Session" class="headerlink" title="2.如何创建和获取Session"></a>2.如何创建和获取Session</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/Session%E7%9A%84%E5%88%9B%E5%BB%BA%E5%92%8C%E8%8E%B7%E5%8F%96.png"></p>
+<h3 id="3-Session-的-存值-与-取值"><a href="#3-Session-的-存值-与-取值" class="headerlink" title="3. Session 的 存值 与 取值"></a>3. Session 的 存值 与 取值</h3><p><strong>主要通过 setAttribute() 与 getAttribute() 实现。</strong></p>
+<h3 id="4-Seesion的生命周期"><a href="#4-Seesion的生命周期" class="headerlink" title="4. Seesion的生命周期"></a>4. Seesion的生命周期</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/session%E7%9A%84%E7%94%9F%E5%91%BD%E6%97%B6%E9%95%BF%E8%AE%BE%E7%BD%AE.png"></p>
+<p><strong>Seesion 的 默认生命时长是 30分钟。</strong> 因为在 tomcat 服务器的 <strong>配置文件 web.xml 中 有以下配置</strong></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/tomcat%E9%85%8D%E7%BD%AEsession%E9%BB%98%E8%AE%A4%E6%97%B6%E9%95%BF.png"></p>
+<p><strong>如果想要修改Seesion的默认时长 可在项目的 web.xml中 配置</strong> 即可。</p>
+<h3 id="5-Seesion-与-浏览器的关系"><a href="#5-Seesion-与-浏览器的关系" class="headerlink" title="5. Seesion  与 浏览器的关系"></a>5. Seesion  与 浏览器的关系</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/session%E4%B8%8E%E6%B5%8F%E8%A7%88%E5%99%A8%E5%85%B3%E8%81%94%E7%A4%BA%E6%84%8F%E5%9B%BE.png"></p>
+<p><strong>因此，Seesion 的 本质就是 一个 Cookie。</strong> </p>
+<h1 id="七、Filter过滤器"><a href="#七、Filter过滤器" class="headerlink" title="七、Filter过滤器"></a>七、Filter过滤器</h1><h3 id="1-基本介绍-4"><a href="#1-基本介绍-4" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><p>Filter 过滤器 是 JavaWeb 的三大组件之一，它主要的作用就是 <strong>拦截请求（常用）、过滤响应。</strong> 常见的应用场景有：<strong>权限检查、事务操作等的。</strong> </p>
+<h3 id="2-基本使用"><a href="#2-基本使用" class="headerlink" title="2. 基本使用"></a>2. 基本使用</h3><p><strong>使用的步骤主要是3步：编写一个类 去 实现Filter接口、在doFilter中去写业务代码、其次在Web.xml中配置 Filter过滤器。</strong> </p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//注意： init（） 与 destory（） 方法 尽管不写代码 也要实现 不然会报错</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">LoginFilter</span> <span class="keyword">implements</span> <span class="title class_">Filter</span> &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//通过doFilter方法 来 判断session中 是否已经存在 用户信息。 有则放行 没有则拦截回到登录页面</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doFilter</span><span class="params">(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)</span> <span class="keyword">throws</span> IOException, ServletException &#123;</span><br><span class="line">        <span class="type">HttpServletRequest</span> <span class="variable">request</span> <span class="operator">=</span> (HttpServletRequest) servletRequest;</span><br><span class="line">        <span class="type">HttpSession</span> <span class="variable">session</span> <span class="operator">=</span> request.getSession();</span><br><span class="line">        <span class="type">Object</span> <span class="variable">user</span> <span class="operator">=</span> session.getAttribute(<span class="string">&quot;user&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(user == <span class="literal">null</span>)&#123;</span><br><span class="line">            request.getRequestDispatcher(<span class="string">&quot;/login.jsp&quot;</span>).forward(servletRequest,servletResponse);</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//如果已经有登录 则放行 即继续执行 资源路径下的东西</span></span><br><span class="line">            filterChain.doFilter(servletRequest,servletResponse);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">destroy</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 在 web.xml 中 配置Filter --&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>loginFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span>com.jack.learn.filter.LoginFilter<span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span>loginFilter<span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--        表示拦截/admin/ 下的所有资源--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span>/admin/*<span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="3-Filter的生命周期方法"><a href="#3-Filter的生命周期方法" class="headerlink" title="3. Filter的生命周期方法"></a>3. Filter的生命周期方法</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/Filter%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%96%B9%E6%B3%95.png"></p>
+<h3 id="4-FilterConfig类"><a href="#4-FilterConfig类" class="headerlink" title="4. FilterConfig类"></a>4. FilterConfig类</h3><ul>
+<li><p><strong>介绍：</strong> 通过 FilterConfig类 可以 <strong>获取一些 Filter的信息。如 filter-name、init-param 、获取ServletContext 对象。</strong> </p>
+</li>
+<li><p><strong>基本使用：</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">init</span><span class="params">(FilterConfig filterConfig)</span> <span class="keyword">throws</span> ServletException &#123;</span><br><span class="line">      <span class="type">String</span> <span class="variable">filterName</span> <span class="operator">=</span> filterConfig.getFilterName();</span><br><span class="line">      System.out.println(<span class="string">&quot;FilterName：&quot;</span>+filterName);</span><br><span class="line">  </span><br><span class="line">      <span class="type">String</span> <span class="variable">driver</span> <span class="operator">=</span> filterConfig.getInitParameter(<span class="string">&quot;driver&quot;</span>);</span><br><span class="line">      System.out.println(<span class="string">&quot;Driver：&quot;</span>+driver);</span><br><span class="line">  </span><br><span class="line">      <span class="type">ServletContext</span> <span class="variable">servletContext</span> <span class="operator">=</span> filterConfig.getServletContext();</span><br><span class="line">      System.out.println(<span class="string">&quot;servletContext：&quot;</span>+servletContext);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="5-多个Filter的使用关系"><a href="#5-多个Filter的使用关系" class="headerlink" title="5. 多个Filter的使用关系"></a>5. 多个Filter的使用关系</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/%E5%A4%9A%E4%B8%AAFilter%E7%9A%84%E5%85%B3%E7%B3%BB.png"></p>
+<h3 id="6-Filter拦截路径"><a href="#6-Filter拦截路径" class="headerlink" title="6. Filter拦截路径"></a>6. Filter拦截路径</h3><p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/Filter%E6%8B%A6%E6%88%AA%E8%B7%AF%E5%BE%8401.png"></p>
+<p><img src="/JavaWeb%E5%A4%8D%E4%B9%A0/Filter%E6%8B%A6%E6%88%AA%E8%B7%AF%E5%BE%8402.png"></p>
+<h1 id="八、JSON"><a href="#八、JSON" class="headerlink" title="八、JSON"></a>八、JSON</h1><h3 id="1-基本介绍-5"><a href="#1-基本介绍-5" class="headerlink" title="1. 基本介绍"></a>1. 基本介绍</h3><p>JSON 是一个轻量级的 数据格式。 <strong>主要用于 客户端 与 服务端 的 之间进行数据传输 的 格式。</strong> </p>
+<h3 id="2-常用方法（JavaScript中）"><a href="#2-常用方法（JavaScript中）" class="headerlink" title="2. 常用方法（JavaScript中）"></a>2. 常用方法（JavaScript中）</h3><ul>
+<li><strong>JSON.stringify（）：</strong> 把 JSON 对象 转化成 字符串类型</li>
+<li><strong>JSON.parse（）：</strong> 把 JSON字符串 转换成 对象。</li>
+</ul>
+<h3 id="3-JSON在-Java中的使用"><a href="#3-JSON在-Java中的使用" class="headerlink" title="3. JSON在 Java中的使用"></a>3. JSON在 Java中的使用</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Gson</span> <span class="variable">gson</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Gson</span>(); <span class="comment">//用于json转换的关键类</span></span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test01</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="comment">//JavaBean -》JSON</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;jack&quot;</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="type">String</span> <span class="variable">studentJson</span> <span class="operator">=</span> gson.toJson(student);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//JSON -》JavaBean</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">fromStudent</span> <span class="operator">=</span> gson.fromJson(studentJson, student.getClass());</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test02</span><span class="params">()</span>&#123;</span><br><span class="line">        List&lt;Student&gt; studentList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;jack&quot;</span>,<span class="number">1</span>));</span><br><span class="line">        studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ping&quot;</span>,<span class="number">2</span>));</span><br><span class="line">        studentList.add(<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;kang&quot;</span>,<span class="number">3</span>));</span><br><span class="line">        <span class="comment">//list -》JSON</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> gson.toJson(studentList);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//JSON -》List</span></span><br><span class="line">        List&lt;Student&gt; students = gson.fromJson(s, <span class="keyword">new</span> <span class="title class_">TypeToken</span>&lt;List&lt;Student&gt;&gt;() &#123;</span><br><span class="line">        &#125;.getType());</span><br><span class="line">        System.out.println(students);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">Test03</span><span class="params">()</span>&#123;</span><br><span class="line">        Map&lt;String,Student&gt; studentMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        studentMap.put(<span class="string">&quot;1&quot;</span>,<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;jack&quot;</span>,<span class="number">1</span>));</span><br><span class="line">        studentMap.put(<span class="string">&quot;2&quot;</span>,<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;ping&quot;</span>,<span class="number">2</span>));</span><br><span class="line">        studentMap.put(<span class="string">&quot;3&quot;</span>,<span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;kang&quot;</span>,<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//map -&gt; JSON</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> gson.toJson(studentMap);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//Json -&gt; Map</span></span><br><span class="line">        HashMap&lt;String,Student&gt; stringStudentHashMap = gson.fromJson(s, <span class="keyword">new</span> <span class="title class_">TypeToken</span>&lt;HashMap&lt;String, Student&gt;&gt;() &#123;</span><br><span class="line">        &#125;.getType());</span><br><span class="line">        System.out.println(stringStudentHashMap);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">jackCoding</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/09/21/javaWeb%E5%A4%8D%E4%B9%A0/javaWeb%E5%A4%8D%E4%B9%A002/">http://example.com/2021/09/21/javaWeb%E5%A4%8D%E4%B9%A0/javaWeb%E5%A4%8D%E4%B9%A002/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">梁伟杰的代码之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/JavaWeb-%E5%A4%8D%E4%B9%A0/">-JavaWeb -复习</a></div><div class="post_share"><div class="social-share" data-image="/img/avator.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/21/javaWeb%E5%A4%8D%E4%B9%A0/javaWeb%E5%A4%8D%E4%B9%A001/" title="JavaWeb复习01"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaWeb复习01</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/21/javaWeb%E5%A4%8D%E4%B9%A0/javaWeb%E5%A4%8D%E4%B9%A003/" title="JavaWeb复习03"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaWeb复习03</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">jackCoding</div><div class="author-info__description">编程学习之旅</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%80%E3%80%81JSP"><span class="toc-number">1.</span> <span class="toc-text">一、JSP</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFJSP%EF%BC%9F"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.什么是JSP？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-jsp%E7%9A%84%E4%B8%89%E7%A7%8D%E8%AF%AD%E6%B3%95"><span class="toc-number">1.0.2.</span> <span class="toc-text">2.jsp的三种语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-JSP%E7%9A%84%E4%B9%9D%E5%A4%A7%E5%86%85%E7%BD%AE%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.0.3.</span> <span class="toc-text">3.JSP的九大内置对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-JSP%E5%9B%9B%E5%A4%A7%E5%9F%9F%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.0.4.</span> <span class="toc-text">4.JSP四大域对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-jsp%E4%B8%ADout%E8%BE%93%E5%87%BA%E4%B8%8Eresponse%E8%BE%93%E5%87%BA%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.5.</span> <span class="toc-text">5.jsp中out输出与response输出的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-jsp%E7%9A%84%E5%B8%B8%E7%94%A8%E6%A0%87%E7%AD%BE"><span class="toc-number">1.0.6.</span> <span class="toc-text">6.jsp的常用标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-Listener%E7%9B%91%E5%90%AC%E5%99%A8"><span class="toc-number">1.0.7.</span> <span class="toc-text">7.Listener监听器</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%8C%E3%80%81EL%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">2.</span> <span class="toc-text">二、EL表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-number">2.0.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-EL%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">2.0.2.</span> <span class="toc-text">2.EL运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-EL11%E4%B8%AA%E9%9A%90%E5%90%AB%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.0.3.</span> <span class="toc-text">3. EL11个隐含对象</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E3%80%81JSTL%E6%A0%87%E7%AD%BE%E5%BA%93"><span class="toc-number">3.</span> <span class="toc-text">三、JSTL标签库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-1"><span class="toc-number">3.0.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%A0%87%E7%AD%BE%E5%BA%93%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">3.0.2.</span> <span class="toc-text">2. 标签库的使用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%96%87%E4%BB%B6%E7%9A%84%E4%B8%8A%E4%BC%A0%E4%B8%8E%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text">四、文件的上传与下载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0"><span class="toc-number">4.0.1.</span> <span class="toc-text">1.文件上传</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="toc-number">4.0.2.</span> <span class="toc-text">2.文件下载</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%94%E3%80%81Cookie"><span class="toc-number">5.</span> <span class="toc-text">五、Cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-2"><span class="toc-number">5.0.1.</span> <span class="toc-text">1.基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-Cookie%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">5.0.2.</span> <span class="toc-text">2.Cookie的操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Cookie%E7%9A%84%E7%94%9F%E5%91%BD%E6%8E%A7%E5%88%B6"><span class="toc-number">5.0.3.</span> <span class="toc-text">3.Cookie的生命控制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Cookie%E7%9A%84%E6%9C%89%E6%95%88%E8%B7%AF%E5%BE%84Path%E8%AE%BE%E7%BD%AE"><span class="toc-number">5.0.4.</span> <span class="toc-text">4. Cookie的有效路径Path设置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AD%E3%80%81Seesion"><span class="toc-number">6.</span> <span class="toc-text">六、Seesion</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-3"><span class="toc-number">6.0.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E5%88%9B%E5%BB%BA%E5%92%8C%E8%8E%B7%E5%8F%96Session"><span class="toc-number">6.0.2.</span> <span class="toc-text">2.如何创建和获取Session</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Session-%E7%9A%84-%E5%AD%98%E5%80%BC-%E4%B8%8E-%E5%8F%96%E5%80%BC"><span class="toc-number">6.0.3.</span> <span class="toc-text">3. Session 的 存值 与 取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Seesion%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">6.0.4.</span> <span class="toc-text">4. Seesion的生命周期</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Seesion-%E4%B8%8E-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">6.0.5.</span> <span class="toc-text">5. Seesion  与 浏览器的关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%83%E3%80%81Filter%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">7.</span> <span class="toc-text">七、Filter过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-4"><span class="toc-number">7.0.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">7.0.2.</span> <span class="toc-text">2. 基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Filter%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%96%B9%E6%B3%95"><span class="toc-number">7.0.3.</span> <span class="toc-text">3. Filter的生命周期方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-FilterConfig%E7%B1%BB"><span class="toc-number">7.0.4.</span> <span class="toc-text">4. FilterConfig类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E5%A4%9A%E4%B8%AAFilter%E7%9A%84%E4%BD%BF%E7%94%A8%E5%85%B3%E7%B3%BB"><span class="toc-number">7.0.5.</span> <span class="toc-text">5. 多个Filter的使用关系</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-Filter%E6%8B%A6%E6%88%AA%E8%B7%AF%E5%BE%84"><span class="toc-number">7.0.6.</span> <span class="toc-text">6. Filter拦截路径</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%AB%E3%80%81JSON"><span class="toc-number">8.</span> <span class="toc-text">八、JSON</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-5"><span class="toc-number">8.0.1.</span> <span class="toc-text">1. 基本介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95%EF%BC%88JavaScript%E4%B8%AD%EF%BC%89"><span class="toc-number">8.0.2.</span> <span class="toc-text">2. 常用方法（JavaScript中）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-JSON%E5%9C%A8-Java%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="toc-number">8.0.3.</span> <span class="toc-text">3. JSON在 Java中的使用</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/20221/03/06/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/SpringBoot%20%E6%95%B4%E5%90%88%20MybatisPlus/" title="springBoot整合MybatisPlus">springBoot整合MybatisPlus</a><time datetime="+020221-03-06T03:57:36.000Z" title="发表于 20221-03-06 11:57:36">20221-03-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.613Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88Java%E8%AF%AD%E8%A8%8001%EF%BC%89/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.607Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/06/07/Java%E5%A4%8D%E4%B9%A0/java8%E6%96%B0%E7%89%B9%E6%80%A7/" title="java8新特性">java8新特性</a><time datetime="2022-06-07T03:57:36.000Z" title="发表于 2022-06-07 11:57:36">2022-06-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/11/16/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-3/" title="Java复习3">Java复习3</a><time datetime="2021-11-16T03:57:36.000Z" title="发表于 2021-11-16 11:57:36">2021-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By jackCoding</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

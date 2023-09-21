@@ -1,0 +1,272 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>梁伟杰的代码之旅</title><meta name="author" content="jackCoding"><meta name="copyright" content="jackCoding"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="编程学习之旅">
+<meta property="og:type" content="website">
+<meta property="og:title" content="梁伟杰的代码之旅">
+<meta property="og:url" content="http://example.com/page/2/index.html">
+<meta property="og:site_name" content="梁伟杰的代码之旅">
+<meta property="og:description" content="编程学习之旅">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avator.png">
+<meta property="article:author" content="jackCoding">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avator.png"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="http://example.com/page/2/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '梁伟杰的代码之旅',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2023-09-21 12:28:03'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梁伟杰的代码之旅" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/banner.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="梁伟杰的代码之旅"><span class="site-name">梁伟杰的代码之旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">梁伟杰的代码之旅</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-4/" title="Java复习-4">Java复习-4</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">1. Java绘图
+(1) 绘图坐标体系坐标原点位于 左上角，以像素为单位。
+
+(2) 绘图入门// 让类 继承 JFrame（窗体）public class Test extends JFrame &#123;    @SuppressWarnings(&quot;all&quot;)    private MyPanel mp=null;  //面板对象    public static void main(String[] args)&#123;        new Test();    &#125;//创建一个 面板类class MyPanel extends JPanel&#123;    //重写paint方法：用于画图    //Graphics g:相当于 画笔的功能        @Override        public void paint(Graphics g) &#123;            super.paint(g);            g.drawOval(10,10,40,40);        &#125;    &#125;    	 ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-5/" title="java复习-5">java复习-5</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">一、JDBC
+(1) 介绍：JDBC为 访问不同的数据库接口 提供了同一的接口，为使用者 屏蔽了细节问题。 程序员可以通过使用JDBC ，可以连接 任何提供了JDBC驱动程序的数据库系统。 实现用 java 操作 数据库的 功能。
+(2) 原理：
+
+
+概括来说，jdbc 为了实现 java能够操作 各不同公司的 数据库，提供了 一套共用共识的 接口规范。通过 该接口规范 来实现对 各不相同的 数据库系统 进行 数据库操作。
+
+
+(3) 简单入门 jdbc 编写
+public static void main(String[] args) throws SQLException &#123;
+        //1. 拿到 drive 可以用来建立连接(需要引入 mysql-connector-java-8.0.18.jar)
+        Driver driver = new Driver();
+
+        //2.配置连接的信息
+        //serverTimezone=GMT%2d8 : 进行时区设置
+        String url=&quot;jdbc:m ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/Java%E5%A4%8D%E4%B9%A0/mysql%E5%A4%8D%E4%B9%A0/" title="mysql复习">mysql复习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">一、mysql 基本启动命令
+1. mysql 服务启动命令：net start mysql 开启mysql服务、net stop mysql 停止mysql服务
+2. 连接mysql 命令：mysql -h 主机名(ip号 默认为127.0.0.1 既本机) -P 端口号(默认 3306) -u 用户名 -p密码
+3. 查看 mysql版本（需要进入 mysql 安装目录下的 bin 目录 才能使用 mysql命令）： mysql –version
+
+二、mysql 三层结构解析
+
+1. 说明：当 开启mysql 服务时，mysql 通过tcp网络的 mysql端口( 默认 3306)  进行监听。 当客户端 输入mysql命令后，3306端口就会接受到 请求，分析命令，处理操作，最后 返回结果给 客户端。
+2. SQL 语句分类
+
+三、操作数据库的命令
+1. 创建数据库：# if not exist: 表示没有数据库名为exam_01的情况下# character set： 设置 数据库编码# collate：设置 校对规则create database if not exists ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/%E6%A8%A1%E6%9D%BF/" title="模板">模板</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content"></div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/Redis%E5%AD%A6%E4%B9%A0/" title="Redis数据库学习">Redis数据库学习</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">一、NoSQL介绍1. 为什么会出现nosql技术在传统的网络时代中，用户的访问量 随着时代的发展 越来越大，对 CPU、内存、IO 的压力 越来越大。 这时，NOSQL技术就可以大大的缓解了这些压力。比如， 可以把 存储用户信息的session，放到NoSQL中。 或是 把一些常用的 简单的数据查询 放到 NOSQL中，可以缓解IO压力 等等。 
+2. NoSQL介绍
+NoSQL 意为 Not Only SQL  不仅仅是 SQL。 指的是 非关系型数据库。 NoSQL 是 不依赖义务逻辑存储的  而是以 key - value 的模式存储。
+
+特点：
+不遵循SQL标准、不支持ACID（原子性、一致性、永久性、隔离性）、远超SQL的性能。
+
+存储数据库类型：
+
+
+
+
+
+二、Redis安装1. 前提由于Redis 只支持Linux操作系统。 所以本次学习系统环境是：CentOS7 。
+2. 安装步骤
+1) 安装C语言 编译环境（centos yml ， ubuntu apt-get）
+
+yum install centos-release-scl scl-utils-buildyum  ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/AntDesignOfVue%E6%A1%86%E6%9E%B6%E7%9A%84%E4%BD%BF%E7%94%A8/" title="AntDesignProVue的使用">AntDesignProVue的使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">一、脚手架安装与介绍1. 安装脚手架
+1) 可在vscode中 打开 文件夹的cmd命令窗口中运行
+git clone --depth=1 https://github.com/vueComponent/ant-design-vue-pro.git
+
+
+
+2) 下载依赖
+注意：这里记得 先打开 clone下来的 antDesignProVue 的文件夹的终端窗口 再下载依赖
+npm install
+
+
+
+3) 启动项目
+npm run serve
+
+![](&#x2F;Ant Design Pro Of Vue的使用&#x2F;项目成功启动.png)
+
+
+2. 目录介绍
+整体目录了解：
+![](&#x2F;Ant Design Pro Of Vue的使用&#x2F;整体目录了解.png)
+
+主要目录分析：
+![](&#x2F;Ant Design Pro Of Vue的使用&#x2F;主要文件目录了解.png)
+
+
+二、对脚手架进行个性化修改</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/springBoot+swaggerUI%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" title="模板">模板</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">一、引入依赖&lt;!-- swagger 用来测试方法是否有效 --&gt;       &lt;dependency&gt;           &lt;groupId&gt;io.springfox&lt;/groupId&gt;           &lt;artifactId&gt;springfox-swagger2&lt;/artifactId&gt;           &lt;version&gt;2.7.0&lt;/version&gt;       &lt;/dependency&gt;       &lt;dependency&gt;           &lt;groupId&gt;io.springfox&lt;/groupId&gt;           &lt;artifactId&gt;springfox-swagger-ui&lt;/artifactId&gt;           &lt;version&gt;2.7.0&lt;/version&gt;       &lt;/dependency&gt;
+
+
+
+二、在application.prop ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/springboor+vue+nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%85%8D%E7%BD%AE/" title="springBoot+Vue+Nginx 前后端分离">springBoot+Vue+Nginx 前后端分离</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">本篇文章 仅作于如何搭建 前后端分离步骤一、准备工作
+搭建好基本的springBoot项目、Vue项目（具体看 另两篇文章 ：SpringBoot 整合 Mybatis-plus &amp;&amp; 新建Vue项目）
+下载 nginx。
+
+二、编写后端
+1. 在appcation.properties  配置端口号
+
+2. 编写简单的 Controller/** * @author jack * @version 1.0 * @date 2022/3/20 8:40 * 编写简单的 controller 测试后端返回数据 */@RestController@CrossOrigin@RequestMapping(value = &quot;/exam&quot;)public class ExamController &#123;    @RequestMapping(&quot;hello&quot;)    public String sayHello()&#123;        return &quot;hello,this is springBoot&quot;;    &# ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/vue%E5%90%84%E7%A7%8D%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8/" title="vue各种插件使用">vue各种插件使用</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">演示Vue各种插件的使用1. Apache ECharts
+(1) 用处：主要用于制作 各种数据图表 如 折线图、柱状图、饼装图等
+(2) 安装与配置
+1.npm安装 cnpm install echarts –save
+
+2.在src&#x2F;main.js 中配置使用 echarts
+
+
+
+
+(3) 使用（以 折线图为例）&lt;template&gt;    &lt;!-- 创立一个dom 用于显示图表 --&gt;    &lt;div class=&quot;Echarts&quot;&gt;        &lt;div id=&quot;main&quot; style=&quot;height: 400px; width: 500px;&quot;&gt;&lt;/div&gt;    &lt;/div&gt;&lt;/template&gt;&lt;script&gt;export default&#123;    name: &#x27;Echarts&#x27;,    methods:&#123;        myEcharts()&#123;        ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/%E6%96%B0%E5%BB%BAVue%E9%A1%B9%E7%9B%AE/" title="模板">模板</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time></span></div><div class="content">一、 准备工具
+1. node.js：用于Vue项目的依赖安装、构建等 运行的命令（npm）。可通过 npm -v 与 node -v 来查看 是否安装成功
+2. 对npm进行 国内镜像设置，加快依赖的下载$ npm install -g cnpm –registry&#x3D;https://registry.npm.taobao.org
+
+二、项目初始化
+1. 安装 vue-cli通过命令 cnpm install vue-cli -g  来全局安装安装完毕后，可使用 vue list 来核实是否安装成功![](&#x2F;Vue-cli 是否安装成功.png)
+
+2. 创建项目通过命令 vue init webpack “项目名称”
+项目创建成功后目录
+
+3. 下载项目必须依赖通过 npm install 命令 下载依赖![](&#x2F;依赖下载完成 目录图.png)
+
+
+三、项目启动使用 npm run dev启动 项目
+四、整合VUE框架 element-UI
+1. 引入 element-ui 的依赖使用命令 cnpm install element-ui –save 加入 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">jackCoding</div><div class="author-info__description">编程学习之旅</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/20221/03/06/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/SpringBoot%20%E6%95%B4%E5%90%88%20MybatisPlus/" title="springBoot整合MybatisPlus">springBoot整合MybatisPlus</a><time datetime="+020221-03-06T03:57:36.000Z" title="发表于 20221-03-06 11:57:36">20221-03-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.613Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88Java%E8%AF%AD%E8%A8%8001%EF%BC%89/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.607Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/06/07/Java%E5%A4%8D%E4%B9%A0/java8%E6%96%B0%E7%89%B9%E6%80%A7/" title="java8新特性">java8新特性</a><time datetime="2022-06-07T03:57:36.000Z" title="发表于 2022-06-07 11:57:36">2022-06-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/11/16/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-3/" title="Java复习3">Java复习3</a><time datetime="2021-11-16T03:57:36.000Z" title="发表于 2021-11-16 11:57:36">2021-11-16</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/JavaWeb-%E5%A4%8D%E4%B9%A0/" style="font-size: 1.1em; color: #999">-JavaWeb -复习</a> <a href="/tags/%E5%89%8D%E7%AB%AF-Vue/" style="font-size: 1.1em; color: #999">-前端 -Vue</a> <a href="/tags/Mysql-%E5%A4%8D%E4%B9%A0/" style="font-size: 1.1em; color: #999">-Mysql -复习</a> <a href="/tags/java-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%91%E7%BB%93%E6%9E%84/" style="font-size: 1.4em; color: #99a5b6">-java -数据结构 -树结构</a> <a href="/tags/java-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E7%BB%93%E6%9E%84/" style="font-size: 1.3em; color: #99a1ac">-java -数据结构 -线性结构</a> <a href="/tags/%E6%A1%86%E6%9E%B6/" style="font-size: 1.1em; color: #999">-框架</a> <a href="/tags/java-%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/" style="font-size: 1.1em; color: #999">-java -框架技术</a> <a href="/tags/Vue-%E5%89%8D%E7%AB%AF%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8/" style="font-size: 1.1em; color: #999">-Vue -前端组件使用</a> <a href="/tags/Java-%E9%9D%A2%E8%AF%95/" style="font-size: 1.2em; color: #999da3">-Java -面试</a> <a href="/tags/Java-%E9%9D%A2%E8%AF%95-%E7%BA%BF%E7%A8%8B/" style="font-size: 1.1em; color: #999">-Java -面试 -线程</a> <a href="/tags/Java-IO-%E9%9D%A2%E8%AF%95%E9%A2%98/" style="font-size: 1.1em; color: #999">-Java -IO -面试题</a> <a href="/tags/hexo-%E6%90%AD%E5%BB%BA/" style="font-size: 1.1em; color: #999">-hexo -搭建</a> <a href="/tags/Java-Web/" style="font-size: 1.1em; color: #999">-Java -Web</a> <a href="/tags/java-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">-java -数据结构 -排序算法</a> <a href="/tags/Java-%E5%A4%8D%E4%B9%A0/" style="font-size: 1.5em; color: #99a9bf">-Java -复习</a> <a href="/tags/redis/" style="font-size: 1.1em; color: #999">-redis</a> <a href="/tags/Java-%E6%A1%86%E6%9E%B6/" style="font-size: 1.2em; color: #999da3">-Java -框架</a> <a href="/tags/Vue-%E6%8F%92%E4%BB%B6/" style="font-size: 1.1em; color: #999">-Vue -插件</a> <a href="/tags/Java-JavaWeb%E5%A4%8D%E4%B9%A0/" style="font-size: 1.1em; color: #999">-Java -JavaWeb复习</a> <a href="/tags/java-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">-java -数据结构</a> <a href="/tags/Java-%E9%9D%A2%E8%AF%95-%E9%9B%86%E5%90%88/" style="font-size: 1.1em; color: #999">-Java -面试 -集合</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="fas fa-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/20221/03/"><span class="card-archive-list-date">三月 20221</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/11/"><span class="card-archive-list-date">十一月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/10/"><span class="card-archive-list-date">十月 2021</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/09/"><span class="card-archive-list-date">九月 2021</span><span class="card-archive-list-count">19</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/08/"><span class="card-archive-list-date">八月 2021</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2021/07/"><span class="card-archive-list-date">七月 2021</span><span class="card-archive-list-count">3</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">44</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2023-09-21T04:28:03.650Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By jackCoding</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

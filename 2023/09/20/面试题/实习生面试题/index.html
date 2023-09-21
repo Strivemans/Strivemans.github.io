@@ -1,0 +1,388 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>梁伟杰的代码之旅 | 梁伟杰的代码之旅</title><meta name="author" content="jackCoding"><meta name="copyright" content="jackCoding"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="实习生面试题 java面向对象的三个特性 以及它们的含义 封装： 就是把 一个 对象 中的 细节数据隐藏起来，控制它们读和写的权限 通过 get&#x2F;set方法进行获取与设置 继承：就是把 两个类之间存在 父与子的关系。 子类是诞生于父类，拥有父类的属性和行为，并且还有自己独特的行为。而父类则充当共有的行为特征。比如动物是父类，而鸟是动物的子类。 多态：表示同一个行为，表现在不同的对象 会有">
+<meta property="og:type" content="article">
+<meta property="og:title" content="梁伟杰的代码之旅">
+<meta property="og:url" content="http://example.com/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="梁伟杰的代码之旅">
+<meta property="og:description" content="实习生面试题 java面向对象的三个特性 以及它们的含义 封装： 就是把 一个 对象 中的 细节数据隐藏起来，控制它们读和写的权限 通过 get&#x2F;set方法进行获取与设置 继承：就是把 两个类之间存在 父与子的关系。 子类是诞生于父类，拥有父类的属性和行为，并且还有自己独特的行为。而父类则充当共有的行为特征。比如动物是父类，而鸟是动物的子类。 多态：表示同一个行为，表现在不同的对象 会有">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avator.png">
+<meta property="article:published_time" content="2023-09-20T07:18:43.613Z">
+<meta property="article:modified_time" content="2023-04-07T03:03:55.641Z">
+<meta property="article:author" content="jackCoding">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avator.png"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="http://example.com/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '梁伟杰的代码之旅',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-07 11:03:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梁伟杰的代码之旅" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="梁伟杰的代码之旅"><span class="site-name">梁伟杰的代码之旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">无题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-20T07:18:43.613Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-07T03:03:55.641Z" title="更新于 2023-04-07 11:03:55">2023-04-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="实习生面试题"><a href="#实习生面试题" class="headerlink" title="实习生面试题"></a>实习生面试题</h2><ol>
+<li><h1 id="java面向对象的三个特性-以及它们的含义"><a href="#java面向对象的三个特性-以及它们的含义" class="headerlink" title="java面向对象的三个特性 以及它们的含义"></a>java面向对象的三个特性 以及它们的含义</h1><ul>
+<li>封装： 就是把 一个 对象 中的 细节数据隐藏起来，控制它们读和写的权限 通过 get&#x2F;set方法进行获取与设置</li>
+<li>继承：就是把 两个类之间存在 父与子的关系。 子类是诞生于父类，拥有父类的属性和行为，并且还有自己独特的行为。而父类则充当共有的行为特征。比如动物是父类，而鸟是动物的子类。</li>
+<li>多态：表示同一个行为，表现在不同的对象 会有不同的特征。 例如 动物的 叫声。</li>
+</ul>
+</li>
+<li><h2 id="与-equals-的区别"><a href="#与-equals-的区别" class="headerlink" title="&#x3D;&#x3D; 与 equals 的区别"></a>&#x3D;&#x3D; 与 equals 的区别</h2><p>&#x3D;&#x3D; 通常用于比较两者的 内存引用地址是否相等。 而equals则通常用于比较两者的 值是否相等。 在Object对象中， equals 和 &#x3D;&#x3D; 的功能是一样的。 但是，通常 许多的 类型类 都会继承 Object类 并重写了 equals方法 ，使其变成比较两个值大小的功能。例如 String 类。</p>
+</li>
+<li><h2 id="String-、StringBuffer、StringBuilder的区别"><a href="#String-、StringBuffer、StringBuilder的区别" class="headerlink" title="String 、StringBuffer、StringBuilder的区别"></a>String 、StringBuffer、StringBuilder的区别</h2><p>String 是一个 final类，每修改一次 则相当于 创建了一个对象</p>
+<p>StringBuffer 是 一个线程不安全的 类，性能高</p>
+<p>StringBuilder 因为继承了 synchronized 修饰 所以是线程安全的，但是性能就是减低</p>
+</li>
+<li><h2 id="ArrayList-与-LinkedList-的区别"><a href="#ArrayList-与-LinkedList-的区别" class="headerlink" title="ArrayList 与 LinkedList 的区别"></a>ArrayList 与 LinkedList 的区别</h2><p>它们在底层的数据结构上就不同，从名字就可以看出，ArrayList 是 采用动态数组实现的。它可以存储任何类型的 数据，当数组满了之后，会创建一个新的数组 并采用尾插法的方式 加入到 原来的数组中</p>
+<p>而 LinkedList 底层就是采用 链表的结构，链表的特性就是 增删的效率快，而查询的效率慢。并且只能使用iteartor来进行遍历</p>
+</li>
+<li><h2 id="什么叫IOC容器"><a href="#什么叫IOC容器" class="headerlink" title="什么叫IOC容器"></a>什么叫IOC容器</h2><p>ioc容器的主要功能就是把 创建对象的权利 交给 容器去处理，这个容器 就叫IOC容器。 </p>
+<p>那么 ，为什么需要ioc容器呢，因在，如果没有ioc容器，就意味着 每一个对象都需要我们去创建，这样是不利于我们后期的修改的。其中，spring就是一个ioc的容器，主要是三层 dao、service、controller层，service调用dao 而controller调用service ，其中就要我们去创建对象。这样会创建许多重复的对象，资源浪费。</p>
+<p>使用spring 则可以通过注解的形式 对 bean进行依赖注入。把创建对象的权力 交给 ioc容器。</p>
+<p>如果自己创建一个IOC容器</p>
+<p>配置文件 配置包 扫描路径</p>
+<p>递归包 去 扫描 .class文件</p>
+<p>反射， 确定需要交给ioc容器管理的类</p>
+<p>最后 依赖注入(get&#x2F; set)</p>
+</li>
+<li><h2 id="AOP的含义"><a href="#AOP的含义" class="headerlink" title="AOP的含义"></a>AOP的含义</h2><p>aop 即 面向切面编程。 什么叫面向切面呢 ，就当我们实现一个功能时，我们想要在实现这个功能之前或者之后去处理一些前置任务或者后置处理等功能时，就可以使用aop去进行处理。aop通常也可以叫做通知，主要有前置、后置、环绕、异常四个通知，根据不同的情况去在对应的通知中进行逻辑代码的编写。</p>
+</li>
+<li><h2 id="hashMap的特性"><a href="#hashMap的特性" class="headerlink" title="hashMap的特性"></a>hashMap的特性</h2><p>在jdk1.8之后 ，hashMap的底层数据结构时 数组+链表+红黑树组成的，</p>
+<p>它呢 是无序、线程不安全、key允许为null、key不能重复的一些特点。</p>
+<p>当 向hashmap对象进行put方法存储数据时，根据 key的值 用 hashCode（）方法去 得到这key值得 hashCode值，根据该值去 存储到 数组对应得下标（hash%16）。如果该 hashCode值相同，并且key值不相等，就会在数组该索引得地方构建衍生一个链表结构，</p>
+<p>随着数据存入越来越多，链表和数组可能就会存满，这是就会有扩容机制。</p>
+<p>数组得扩容：通常不会存满数组的长度才扩容，而是在数组长度的0.75 时，就会出发扩容 ，每次扩容会扩容为原来长度的2倍。</p>
+<p>链表变化： 当链表的长度达到8后，就会使链表变成红黑树结构。</p>
+<p>使用红黑树是为了二叉查找树的缺陷， 二叉查找树在特殊的情况下可能就变成线性结构，这样遍历查询的速度就更慢了。 而红黑树为了保持二叉树的平衡 会有 左旋、右旋、变色等操作。使用红黑树 就是为了 解决 查找速度的问题。而创建红黑树本身也需要损耗资源，所以如果长度不长的情况下，就不需要使用红黑树。</p>
+</li>
+<li><h2 id="Mysql事务的四大特性"><a href="#Mysql事务的四大特性" class="headerlink" title="Mysql事务的四大特性"></a>Mysql事务的四大特性</h2><ul>
+<li>原子性： 事务作为一个整体存在，执行就要么执行完成，要么就不执行（undo log）</li>
+<li>一致性：事务开始后，不论对数据做出怎样的改变，在没有结束之前，都不会去干扰到原来的数据。( 回滚、回复、并发情况的隔离性)</li>
+<li>隔离性：当事务并发执行时，两者是互不干扰的。（锁、MVCC）</li>
+<li>永久性：当事务执行完毕后，对数据的改变是永久保存在数据库中。（redo log）</li>
+</ul>
+</li>
+<li><h2 id="事务的隔离级别"><a href="#事务的隔离级别" class="headerlink" title="事务的隔离级别"></a>事务的隔离级别</h2><ul>
+<li>读未提交： 最低级别，任何情况都无法保证</li>
+<li>读已提交： 可预防脏读</li>
+<li>可重复读：预防脏读、不可重复读（默认事务级别）</li>
+<li>串行化： 预防幻读、脏读、不可重复读</li>
+</ul>
+</li>
+<li><h2 id="脏读、不可重复读、幻读的含义"><a href="#脏读、不可重复读、幻读的含义" class="headerlink" title="脏读、不可重复读、幻读的含义"></a>脏读、不可重复读、幻读的含义</h2><ul>
+<li>脏读：当其中一个事务涉及到a数据修改，但还没提交，但是另一个事务 却读到了 它修改而没提交的a数据状态。</li>
+<li>不可重复读： 在进行事务时，a数据在不同时刻的值是不一样的，因为 其它事务可能对a进行了修改。</li>
+<li>幻读： 比如说，当事务中，我需要去select 某项数据是否存在， 如果存在，则 添加某项数据。 那么我这个select判断的状态 可能会不同。</li>
+</ul>
+</li>
+<li><h2 id="group-by-与-distinct的区别"><a href="#group-by-与-distinct的区别" class="headerlink" title="group by 与 distinct的区别"></a>group by 与 distinct的区别</h2><p>这两个关键字 主要都是用于筛选重复数据使用的。</p>
+<p>它们的区别：对数据逻辑处理的不同，group by 是 先得到结果集, 然后进行筛选。 而distinct 则相反</p>
+<p>其次呢，gourpby 可以对 某个字段 去分组刷选， 而distinct 则是对所有字段进行筛选。</p>
+</li>
+<li><h2 id="常见的存储引擎"><a href="#常见的存储引擎" class="headerlink" title="常见的存储引擎"></a>常见的存储引擎</h2><p>常见的有MyISAM、innoDB、MEMORY、ARCHIVE</p>
+<p>mysql 5.5版本 默认采用 innoDB</p>
+</li>
+<li><h2 id="innoDB-与-myISAM-的区别"><a href="#innoDB-与-myISAM-的区别" class="headerlink" title="innoDB 与  myISAM 的区别"></a>innoDB 与  myISAM 的区别</h2><ul>
+<li><p>事务</p>
+<p>innoDB支持索引 而 myISAM不支持</p>
+</li>
+<li><p>表锁</p>
+<p>myISAM 只支持 表锁</p>
+<p>而 innoDB 支持 事务 和 行级锁。 行级锁可以让事务在多用户并发的情况下，增加性能。但是，只有在索引上 才可能是行锁。其他情况 依然是 表级锁</p>
+</li>
+<li><p>索引</p>
+<p>innoDB 与 myISAM 都是采用 b+树的形式作为索引结构，但是 叶节点的 data域 存放的数据不同。</p>
+<p>myISAM 是存放 数据存储的地址，即 数据文件 与 索引文件是分开的，当 myISAM 检索 索引时，采用b+树算法检索到索引，然后 指定的 key存在 ，取出data域的值作为地址 ，读取相对应得 查询记录。这种 也叫 非聚集</p>
+<p>而 innoDB 得 索引文件 就是 数据文件， 查询到key 拿到data域得值 就是 要查询得数据。</p>
+</li>
+<li><p>表行</p>
+<p>myISAM 保存有表行 查询表行 可以直接获得 </p>
+<p>而 innoDB 则需要 遍历，再得出结果。 不过 如果加了where条件  这两者的处理方式就是一样的 都需要先遍历。</p>
+</li>
+<li><p>主键</p>
+<p>myISAM 可以不定义主键 ，主键 就是 保存行的地址</p>
+<p>而 innoDB 则需要 有一个 非空的唯一主键索引，如果在创建表时，没有自定义主键，那么 innoDB 就会自动为这个表生成一个 6字节的主键（用户看不到） </p>
+</li>
+<li><p>外键</p>
+<p>innoDB 支持 外键</p>
+<p>myISAM 不支持</p>
+</li>
+</ul>
+</li>
+<li><h2 id="数据库的三大范式"><a href="#数据库的三大范式" class="headerlink" title="数据库的三大范式"></a>数据库的三大范式</h2><p>数据表中的每一列 都不可以 再拆分</p>
+<p>在第一范式的基础上， 每一个非主键 要 完全依赖于 主键</p>
+<p>在第二范式的基础上， 表中的 非主键 只依赖于 主键。</p>
+</li>
+<li><h2 id="什么是存储结构-优缺点是啥"><a href="#什么是存储结构-优缺点是啥" class="headerlink" title="什么是存储结构 优缺点是啥"></a>什么是存储结构 优缺点是啥</h2><p>存储结构 就是把 编译好的sql语句 组成 一个函数 ，给他们自定义一个名字 ，这样下次就像调用方法一样 调用该存储结构 就会执行 里面 的sql语句</p>
+<p>好处：减少sql重复编写， 因为存储结构就是 预编译好的代码块 所以 可以 提升执行效率，还可以保证 数据的安全。</p>
+<p>缺点： 可移植性不灵活，调试麻烦。</p>
+</li>
+<li><h2 id="日常开发-怎么-优化sql"><a href="#日常开发-怎么-优化sql" class="headerlink" title="日常开发 怎么 优化sql"></a>日常开发 怎么 优化sql</h2><ul>
+<li><p>添加合适的索引</p>
+<p>对 所以查询条件 或者 group by 的字段 添加索引</p>
+<p>如果是有多个查询字段的话 可以对这些字段建立 组合索引，把查询次数最多的放在最左边 依次 递减。</p>
+<p>索引不宜太多 5个以内</p>
+</li>
+<li><p>调整优化 表的结构</p>
+<p>选择正确的 表字段类型 ，比如 可以用数字类型的 就不用 字符串类型。尽量使用 not null 约束。</p>
+</li>
+<li><p>优化查询的语句</p>
+</li>
+</ul>
+</li>
+<li><h2 id="索引的优缺点"><a href="#索引的优缺点" class="headerlink" title="索引的优缺点"></a>索引的优缺点</h2><p>优点：减少数据库的io成本 提升 查询的效率</p>
+<p>缺点： 创建索引 会 占用物理空间，并且 会对增删改的效率会有影响。每次的增删改 都要去维护 索引。</p>
+</li>
+<li><h2 id="索引的分类"><a href="#索引的分类" class="headerlink" title="索引的分类"></a>索引的分类</h2><p>索引主要有5种，普通索引、唯一索引、主键索引、全文索引、组合索引</p>
+<p>普通索引： 就是 没有限制的索引</p>
+<p>唯一索引： 被标注为唯一索引的字段，值不能相同，但可以为null</p>
+<p>主键索引：一个表 通常只能有一个主键索引，不能为null</p>
+<p>组合索引： 一个索引 包含有多个列</p>
+<p>全文索引： 只能用在 char varchar text 的字段类型，</p>
+</li>
+<li><h2 id="索引的数据结构有哪些"><a href="#索引的数据结构有哪些" class="headerlink" title="索引的数据结构有哪些"></a>索引的数据结构有哪些</h2><p>主要有两者 hash索引 和 b+树索引</p>
+</li>
+<li><h2 id="HashCode的意义和作用"><a href="#HashCode的意义和作用" class="headerlink" title="HashCode的意义和作用"></a>HashCode的意义和作用</h2><p>hashCode方法的主要意义 就是 让同一个对象的 不同特征尽量拥有不同的hashCode值 让他们得以区分。</p>
+<p>其次 hashode方法 与 equals（）方法有着关联,这也是 equals 的判定值是否相等的关键。</p>
+<p>equals 相等 则 hashCode 必须相等</p>
+<p>hashCode相等 equals 未必true</p>
+<p>equals false hashCode 必须 不相等</p>
+</li>
+<li><h2 id="什么是spring"><a href="#什么是spring" class="headerlink" title="什么是spring"></a>什么是spring</h2><p>spring 是一个轻量型（核心包只有不到1m，上手简单）的容器框架，它的作用就是 用来装javaBean 以及 作为一个中间层框架的存在（可以连接其它的框架 如 springMVC 、 mybatis）。 简单来说，就是一个 ioc 和 aop的 容器框架。</p>
+</li>
+<li><h2 id="Java8的新特性"><a href="#Java8的新特性" class="headerlink" title="Java8的新特性"></a>Java8的新特性</h2><ul>
+<li><p>接口 可以存在 非抽象方法。</p>
+</li>
+<li><p>有了lambda表达式，减少代码冗余</p>
+</li>
+<li><p>有函数式接口 即 只有一个抽象方法的接口 ，可以用注解 @FunctionInterface 来标识</p>
+<p>消费性接口 Consumer<T>  void accept(T t)</p>
+<p>供给性接口 Supplier<T> T get()</p>
+<p>函数性接口 Function&lt;T,R&gt; R apply(T t)</p>
+<p>断定型接口 Predicate<T> boolean test(T t)</p>
+</li>
+<li><p>有了方法引用，可以直接引用Java类的 方法 和 构造器。简化lambda表达式。</p>
+</li>
+<li><p>stream流 用于解决conllection的弊端，可以简化它们的弊端，如 foreach遍历、filter筛选、map映射、concat合并。</p>
+</li>
+</ul>
+</li>
+<li><h2 id="反射的基本概念、优缺点、使用场景"><a href="#反射的基本概念、优缺点、使用场景" class="headerlink" title="反射的基本概念、优缺点、使用场景"></a>反射的基本概念、优缺点、使用场景</h2><p>反射 即 当一个类在运行状态中，可以随时获取它的属性和方法，并且使用。这种动态的获取类的信息就叫做反射。</p>
+<p>优点：就是可以动态的 访问类的属性和方法</p>
+<p>缺点：破坏了Java的特性，比如封装性。</p>
+<p>使用场景：在 一些框架中经常会用 反射来实现动态代理的设计。如Spring。通常是用 配置文件来写入信息，那么反射就可以通过配置文件来 动态的处理类相关的属性和方法了。</p>
+</li>
+<li><h2 id="通过反射获取对象的方法，可以获得哪些信息"><a href="#通过反射获取对象的方法，可以获得哪些信息" class="headerlink" title="通过反射获取对象的方法，可以获得哪些信息"></a>通过反射获取对象的方法，可以获得哪些信息</h2><ul>
+<li><p>通过 类名.class 来获得 </p>
+</li>
+<li><p>clss.forName(类的权限名com.jack.code.entity.student)</p>
+</li>
+<li><p>可以获取属性、方法、以及该实例对象。</p>
+</li>
+</ul>
+</li>
+<li><h2 id="反射的底层思路"><a href="#反射的底层思路" class="headerlink" title="反射的底层思路"></a>反射的底层思路</h2><p>为什么我们可以在运行状态中，获取任何一个类的属性方法等信息呢。 计算机在执行Java程序的时候，通常有三个状态。</p>
+<p>编译阶段，主要是在讲我们编写的 .java文件 通过 javac 编译成 字节码文件 即 .class文件。</p>
+<p>第二阶段，是加载阶段，通过 classLoader类加载器 对 生成的字节码文件 进行加载，加载类中的属性和方法和构造器等等。而我们从反射中 获取的类信息，就是在这个阶段，将类中的信息 存放在了 堆中。这样，我们才可以从 Class类中 获取每个类的 信息。</p>
+<p>第三阶段，是运行阶段。在这个阶段 才真正的开始执行 程序中的代码。</p>
+</li>
+<li><h2 id="注解-和-元注解的含义，注解有什么用"><a href="#注解-和-元注解的含义，注解有什么用" class="headerlink" title="注解 和 元注解的含义，注解有什么用"></a>注解 和 元注解的含义，注解有什么用</h2><p>注解就是一种标记，使用了注解，会给它附带一个独特的信息。这样 编译器 和 jvm 在执行到 它时，就会识别到它时干嘛用的。</p>
+<p>元注解：就是 我们自定义注解的注解。 比如说 @Target： 约束注解使用的位置。 @Rentention: 约束注解的生命周期。@Documented: 表明该注解被javadoc工具记录。</p>
+</li>
+<li><h2 id="File对象表示什么，有什么方法"><a href="#File对象表示什么，有什么方法" class="headerlink" title="File对象表示什么，有什么方法"></a>File对象表示什么，有什么方法</h2><p>File对象 通常用来 表示 计算中中的文件 或者 目录。其中 我用的比较多的方法有 </p>
+<p>获取信息型方法： getPath() 获取 定义时的路径。 getAbsolutePath() 获取文件的绝对路径。 getName() 获取文件名带后缀。 lengh() 获取文件的长度 以字节为单位。</p>
+<p>判断型方法： exists() 文件是否存在 isDirectory() 判断是不是目录 isFile() 判断是不是文件 </p>
+<p>创建或删除： createNewFile() 不存在时 创建文件 delete() 删除文件，目录（非空目录不能删除） mkdir() 创建一级目录 mkdirs()创建多级目录 </p>
+<p>获取多个： list() 获取该目录下的一级文件 的名字 。 listFiles()  获取多个一级文件 成 File对象 列表</p>
+</li>
+<li><h2 id="英文、数字、中文在文件中分别占多大的空间"><a href="#英文、数字、中文在文件中分别占多大的空间" class="headerlink" title="英文、数字、中文在文件中分别占多大的空间"></a>英文、数字、中文在文件中分别占多大的空间</h2><p>英文和数字 在文件中占 1个字节，中文在 GBK编码中 占2个字节 ， UTF-8中 占 3个字节。</p>
+</li>
+<li><h2 id="创建IO有哪些分类"><a href="#创建IO有哪些分类" class="headerlink" title="创建IO有哪些分类"></a>创建IO有哪些分类</h2><ul>
+<li><p>按流的方向： 输入流（从磁盘中的文件 或者 网络介质 写入到 内存中）、输出流（和输入流相反）。</p>
+</li>
+<li><p>流的内容分： 字节流（通常用来传输二进制的数据）、字符流 （传输文本类）。 如 inputStream、outputStream、Reader、Writer。 它们都实现了 Closeable 接口。</p>
+</li>
+<li><p>缓冲流：自带有8kb1的缓冲区，可以将字节&#x2F;字符 流 转化成 缓冲流。 常用的有 BufferedInputSteam BufferedOutputStream BufferedWriter BufferedReader。（可以提升读写的效率，减少系统IO的次数）</p>
+</li>
+<li><p>转换流： 主要用于 字节 与 字符流的 转换使用。 如 inputStreamReader outputStreamWriter</p>
+</li>
+<li><p>打印流: 主要用于 打印数据，printStream</p>
+</li>
+</ul>
+</li>
+<li><h2 id="BIO、NIO、AIO-的区别和原理"><a href="#BIO、NIO、AIO-的区别和原理" class="headerlink" title="BIO、NIO、AIO 的区别和原理"></a>BIO、NIO、AIO 的区别和原理</h2><p>这三种都是针对 不同场景下的 三种 线程执行IO的 操作方式。</p>
+<p>BIO: 又叫 同步并阻塞，同步就是自己去做，阻塞就是 当我们访问IO时，就会开一个线程去进行处理。这样就会创建大量的线程，可能就会导致不必要的资源开销。 这在JDK1.4前的 唯一选择。使用 连接数目小，且固定的架构。</p>
+<p>NIO：又叫 同步非阻塞。 简单来说 就是 一个请求就开一个线程去处理。当客户端发送请求的时候，会注册到 多路复用器上，多路复用器会根据你是否需要使用IO，会则启动线程去处理。 这比BIO 减少对线程的资源开销。在jdk1.4之后出现。使用连接数多，但连接比较短的架构。 比如聊天室</p>
+<p>AIO：又叫 异步非阻塞。 异步，就是别人会帮你去干。一个有效的请求 开启一个线程。有效的请求就是 需要去访问IO，这就是有效的请求。如果是有效请求，那么 OS会先完成IO操作 然后再 通知 服务端去开启线程。从JDK7开始。使用连接数多且连接长的架构。</p>
+</li>
+<li><h2 id="序列化与反序列化是什么，有什么要求"><a href="#序列化与反序列化是什么，有什么要求" class="headerlink" title="序列化与反序列化是什么，有什么要求"></a>序列化与反序列化是什么，有什么要求</h2><p>序列化就是可以将 Java对象 转化成 字节数组，使它能够在 网络上传输、文件存储中传输。因为，通过网络传输图片、视频这种资源都是需要进行二进制传输的。因此，当我们需要去传输Java对象时，就需要序列化。 序列化的另一个特点就是持久性，序列化对象 的生命周期不局限于 程序是否运行。它存在于程序的调用之间。</p>
+<p>而 反序列化 就是 将序列化的对象的字节数组 返回成 Java对象。这里需要注意 序列化 与 反序列化之间的标识 在于 序列化的ID <strong>serialVersionUID</strong>  通过这个来识别。</p>
+<p>静态变量 与 被transient 修饰的变量 是不能序列化的。 static 就是类的对象。 程序关闭，类就死亡了。 transient 就是临时的数据，也不能被序列化。</p>
+</li>
+<li><h2 id="SpringMVC的执行流程"><a href="#SpringMVC的执行流程" class="headerlink" title="SpringMVC的执行流程"></a>SpringMVC的执行流程</h2><ul>
+<li><p>客户端发送请求给 dispatcherServlet, 在发送过程中 ，Filter过滤器 会对数据进行过滤(可以对 httpServletRequest进行处理), dispatcherServlet 会执行 doService() 方法，把数据灌入，然后 再执行 doDispatcher() 得到 请求资源标示符。</p>
+</li>
+<li><p>dispatcherServlet 获取到 请求后， 就会去访问 handlerMapper处理映射器，handlerMapper 会生成Handler对象 和 HandlerInterceptor 处理拦截器。 把它们组合封装成 HandlerExecutionChain 类型的 一个Hanler处理器执行链 和 适配这个Hanler的 HandlerAdapter 返回给 dispatcherServlet。</p>
+</li>
+<li><p>获取到 dispatcherAdapter后，就会去执行 它的 handler方法，方法里面呢 就会去调用 对应的bean 找到执行该bean的 controller类。</p>
+</li>
+<li><p>controller 执行完毕后，就会封装成 ModeAndView 对象 ，返回给 dispatcherServlet。</p>
+</li>
+<li><p>dispatcherServlet 就会 把 modeAndView 传输给 ViewReslover视图解析器，并根据View进行视图的渲染。</p>
+</li>
+<li><p>最后，将处理封装好的 ModeAndView视图 返回给 dispatcherServlet ，并响应给 客户端。客户端就可以看到执行完结果后的试图。</p>
+</li>
+</ul>
+</li>
+<li><h2 id="什么是noSQL，列举几个noSQL的数据库"><a href="#什么是noSQL，列举几个noSQL的数据库" class="headerlink" title="什么是noSQL，列举几个noSQL的数据库"></a>什么是noSQL，列举几个noSQL的数据库</h2><p>noSQL 意为 not only SQL， 泛指 非关系型数据库。 它的特点就是 没有数据间的关系，只有存储数据。</p>
+<p>那么，为什么需要noSQL呢，因为 传统的关系型数据库 比如 Mysql，在用户比较多，流量比较大时，传统的关系型数据库就会显露弊端，比如 磁盘IO的性能会降低，数据关系复杂，扩展性差等问题。 而 noSQL则能完美的解决这些问题，可以说 noSQL就是为了 大数据高并发而诞生的一种数据库类型。</p>
+<p>常见的noSQL数据库有：redis、MongoDB、HBase。</p>
+</li>
+<li><h2 id="讲讲Redis的含义"><a href="#讲讲Redis的含义" class="headerlink" title="讲讲Redis的含义"></a>讲讲Redis的含义</h2><p>Redis 使用C语言开发的 一款 开源高性能的  以 键值对的形式 来存储的 数据库。 数据库中的数据之间 没有必要的关联，内部采用单线程的机制去进行工作，并且支持持久化的存储。</p>
+<p>Redis常见的 数据类型有： string、list、set、hash、sorted_set 。</p>
+</li>
+<li></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">jackCoding</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/">http://example.com/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">梁伟杰的代码之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avator.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/20221/03/06/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/SpringBoot%20%E6%95%B4%E5%90%88%20MybatisPlus/" title="springBoot整合MybatisPlus"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">springBoot整合MybatisPlus</div></div></a></div><div class="next-post pull-right"><a href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88Java%E8%AF%AD%E8%A8%8001%EF%BC%89/" title=""><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info"></div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">jackCoding</div><div class="author-info__description">编程学习之旅</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">实习生面试题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#java%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%89%E4%B8%AA%E7%89%B9%E6%80%A7-%E4%BB%A5%E5%8F%8A%E5%AE%83%E4%BB%AC%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number"></span> <span class="toc-text">java面向对象的三个特性 以及它们的含义</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%8E-equals-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.</span> <span class="toc-text">&#x3D;&#x3D; 与 equals 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-%E3%80%81StringBuffer%E3%80%81StringBuilder%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">2.</span> <span class="toc-text">String 、StringBuffer、StringBuilder的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ArrayList-%E4%B8%8E-LinkedList-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">3.</span> <span class="toc-text">ArrayList 与 LinkedList 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%8F%ABIOC%E5%AE%B9%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">什么叫IOC容器</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AOP%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">5.</span> <span class="toc-text">AOP的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hashMap%E7%9A%84%E7%89%B9%E6%80%A7"><span class="toc-number">6.</span> <span class="toc-text">hashMap的特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Mysql%E4%BA%8B%E5%8A%A1%E7%9A%84%E5%9B%9B%E5%A4%A7%E7%89%B9%E6%80%A7"><span class="toc-number">7.</span> <span class="toc-text">Mysql事务的四大特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E7%9A%84%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">8.</span> <span class="toc-text">事务的隔离级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%8F%E8%AF%BB%E3%80%81%E4%B8%8D%E5%8F%AF%E9%87%8D%E5%A4%8D%E8%AF%BB%E3%80%81%E5%B9%BB%E8%AF%BB%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">9.</span> <span class="toc-text">脏读、不可重复读、幻读的含义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#group-by-%E4%B8%8E-distinct%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">10.</span> <span class="toc-text">group by 与 distinct的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">11.</span> <span class="toc-text">常见的存储引擎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#innoDB-%E4%B8%8E-myISAM-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">12.</span> <span class="toc-text">innoDB 与  myISAM 的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F"><span class="toc-number">13.</span> <span class="toc-text">数据库的三大范式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E5%AD%98%E5%82%A8%E7%BB%93%E6%9E%84-%E4%BC%98%E7%BC%BA%E7%82%B9%E6%98%AF%E5%95%A5"><span class="toc-number">14.</span> <span class="toc-text">什么是存储结构 优缺点是啥</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%B8%B8%E5%BC%80%E5%8F%91-%E6%80%8E%E4%B9%88-%E4%BC%98%E5%8C%96sql"><span class="toc-number">15.</span> <span class="toc-text">日常开发 怎么 优化sql</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">16.</span> <span class="toc-text">索引的优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">17.</span> <span class="toc-text">索引的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%B4%A2%E5%BC%95%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">18.</span> <span class="toc-text">索引的数据结构有哪些</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HashCode%E7%9A%84%E6%84%8F%E4%B9%89%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="toc-number">19.</span> <span class="toc-text">HashCode的意义和作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFspring"><span class="toc-number">20.</span> <span class="toc-text">什么是spring</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java8%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7"><span class="toc-number">21.</span> <span class="toc-text">Java8的新特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5%E3%80%81%E4%BC%98%E7%BC%BA%E7%82%B9%E3%80%81%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">22.</span> <span class="toc-text">反射的基本概念、优缺点、使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%8F%8D%E5%B0%84%E8%8E%B7%E5%8F%96%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%8F%AF%E4%BB%A5%E8%8E%B7%E5%BE%97%E5%93%AA%E4%BA%9B%E4%BF%A1%E6%81%AF"><span class="toc-number">23.</span> <span class="toc-text">通过反射获取对象的方法，可以获得哪些信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%8D%E5%B0%84%E7%9A%84%E5%BA%95%E5%B1%82%E6%80%9D%E8%B7%AF"><span class="toc-number">24.</span> <span class="toc-text">反射的底层思路</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B3%A8%E8%A7%A3-%E5%92%8C-%E5%85%83%E6%B3%A8%E8%A7%A3%E7%9A%84%E5%90%AB%E4%B9%89%EF%BC%8C%E6%B3%A8%E8%A7%A3%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8"><span class="toc-number">25.</span> <span class="toc-text">注解 和 元注解的含义，注解有什么用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#File%E5%AF%B9%E8%B1%A1%E8%A1%A8%E7%A4%BA%E4%BB%80%E4%B9%88%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E6%96%B9%E6%B3%95"><span class="toc-number">26.</span> <span class="toc-text">File对象表示什么，有什么方法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8B%B1%E6%96%87%E3%80%81%E6%95%B0%E5%AD%97%E3%80%81%E4%B8%AD%E6%96%87%E5%9C%A8%E6%96%87%E4%BB%B6%E4%B8%AD%E5%88%86%E5%88%AB%E5%8D%A0%E5%A4%9A%E5%A4%A7%E7%9A%84%E7%A9%BA%E9%97%B4"><span class="toc-number">27.</span> <span class="toc-text">英文、数字、中文在文件中分别占多大的空间</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAIO%E6%9C%89%E5%93%AA%E4%BA%9B%E5%88%86%E7%B1%BB"><span class="toc-number">28.</span> <span class="toc-text">创建IO有哪些分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BIO%E3%80%81NIO%E3%80%81AIO-%E7%9A%84%E5%8C%BA%E5%88%AB%E5%92%8C%E5%8E%9F%E7%90%86"><span class="toc-number">29.</span> <span class="toc-text">BIO、NIO、AIO 的区别和原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E8%A6%81%E6%B1%82"><span class="toc-number">30.</span> <span class="toc-text">序列化与反序列化是什么，有什么要求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#SpringMVC%E7%9A%84%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="toc-number">31.</span> <span class="toc-text">SpringMVC的执行流程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFnoSQL%EF%BC%8C%E5%88%97%E4%B8%BE%E5%87%A0%E4%B8%AAnoSQL%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-number">32.</span> <span class="toc-text">什么是noSQL，列举几个noSQL的数据库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%B2%E8%AE%B2Redis%E7%9A%84%E5%90%AB%E4%B9%89"><span class="toc-number">33.</span> <span class="toc-text">讲讲Redis的含义</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/20221/03/06/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/SpringBoot%20%E6%95%B4%E5%90%88%20MybatisPlus/" title="springBoot整合MybatisPlus">springBoot整合MybatisPlus</a><time datetime="+020221-03-06T03:57:36.000Z" title="发表于 20221-03-06 11:57:36">20221-03-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.613Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88Java%E8%AF%AD%E8%A8%8001%EF%BC%89/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.607Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/06/07/Java%E5%A4%8D%E4%B9%A0/java8%E6%96%B0%E7%89%B9%E6%80%A7/" title="java8新特性">java8新特性</a><time datetime="2022-06-07T03:57:36.000Z" title="发表于 2022-06-07 11:57:36">2022-06-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/11/16/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-3/" title="Java复习3">Java复习3</a><time datetime="2021-11-16T03:57:36.000Z" title="发表于 2021-11-16 11:57:36">2021-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By jackCoding</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>

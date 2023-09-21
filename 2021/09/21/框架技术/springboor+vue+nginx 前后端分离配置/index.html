@@ -1,0 +1,220 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>springBoot+Vue+Nginx 前后端分离 | 梁伟杰的代码之旅</title><meta name="author" content="jackCoding"><meta name="copyright" content="jackCoding"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="本篇文章 仅作于如何搭建 前后端分离步骤一、准备工作 搭建好基本的springBoot项目、Vue项目（具体看 另两篇文章 ：SpringBoot 整合 Mybatis-plus &amp;&amp; 新建Vue项目） 下载 nginx。  二、编写后端 1. 在appcation.properties  配置端口号  2. 编写简单的 Controller&#x2F;** * @author jack *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springBoot+Vue+Nginx 前后端分离">
+<meta property="og:url" content="http://example.com/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/springboor+vue+nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:site_name" content="梁伟杰的代码之旅">
+<meta property="og:description" content="本篇文章 仅作于如何搭建 前后端分离步骤一、准备工作 搭建好基本的springBoot项目、Vue项目（具体看 另两篇文章 ：SpringBoot 整合 Mybatis-plus &amp;&amp; 新建Vue项目） 下载 nginx。  二、编写后端 1. 在appcation.properties  配置端口号  2. 编写简单的 Controller&#x2F;** * @author jack *">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/avator.png">
+<meta property="article:published_time" content="2021-09-21T03:57:36.000Z">
+<meta property="article:modified_time" content="2023-04-07T03:03:55.617Z">
+<meta property="article:author" content="jackCoding">
+<meta property="article:tag" content="-框架">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/avator.png"><link rel="shortcut icon" href="/img/icon.png"><link rel="canonical" href="http://example.com/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/springboor+vue+nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%85%8D%E7%BD%AE/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"找不到您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'springBoot+Vue+Nginx 前后端分离',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-04-07 11:03:55'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="梁伟杰的代码之旅" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr class="custom-hr"/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="梁伟杰的代码之旅"><span class="site-name">梁伟杰的代码之旅</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">springBoot+Vue+Nginx 前后端分离</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-09-21T03:57:36.000Z" title="发表于 2021-09-21 11:57:36">2021-09-21</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-04-07T03:03:55.617Z" title="更新于 2023-04-07 11:03:55">2023-04-07</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="springBoot+Vue+Nginx 前后端分离"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="本篇文章-仅作于如何搭建-前后端分离步骤"><a href="#本篇文章-仅作于如何搭建-前后端分离步骤" class="headerlink" title="本篇文章 仅作于如何搭建 前后端分离步骤"></a>本篇文章 仅作于如何搭建 前后端分离步骤</h1><h3 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h3><ul>
+<li><h4 id="搭建好基本的springBoot项目、Vue项目（具体看-另两篇文章-：SpringBoot-整合-Mybatis-plus-新建Vue项目）"><a href="#搭建好基本的springBoot项目、Vue项目（具体看-另两篇文章-：SpringBoot-整合-Mybatis-plus-新建Vue项目）" class="headerlink" title="搭建好基本的springBoot项目、Vue项目（具体看 另两篇文章 ：SpringBoot 整合 Mybatis-plus &amp;&amp; 新建Vue项目）"></a>搭建好基本的springBoot项目、Vue项目（具体看 另两篇文章 ：<em>SpringBoot 整合 Mybatis-plus</em> &amp;&amp; <em>新建Vue项目</em>）</h4></li>
+<li><h4 id="下载-nginx。"><a href="#下载-nginx。" class="headerlink" title="下载 nginx。"></a>下载 nginx。</h4></li>
+</ul>
+<h4 id="二、编写后端"><a href="#二、编写后端" class="headerlink" title="二、编写后端"></a>二、编写后端</h4><ul>
+<li><h4 id="1-在appcation-properties-配置端口号"><a href="#1-在appcation-properties-配置端口号" class="headerlink" title="1. 在appcation.properties  配置端口号"></a>1. 在appcation.properties  配置端口号</h4><p><img src="/%E9%85%8D%E7%BD%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7.png"></p>
+</li>
+<li><h4 id="2-编写简单的-Controller"><a href="#2-编写简单的-Controller" class="headerlink" title="2. 编写简单的 Controller"></a>2. 编写简单的 Controller</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> jack</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@version</span> 1.0</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 2022/3/20 8:40</span></span><br><span class="line"><span class="comment"> * 编写简单的 controller 测试后端返回数据</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="meta">@RequestMapping(value = &quot;/exam&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ExamController</span> &#123;</span><br><span class="line">    <span class="meta">@RequestMapping(&quot;hello&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">sayHello</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;hello,this is springBoot&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="3-在-swagger-ui进行功能测试"><a href="#3-在-swagger-ui进行功能测试" class="headerlink" title="3. 在 swagger-ui进行功能测试"></a>3. 在 swagger-ui进行功能测试</h4><p><img src="/%E6%B5%8B%E8%AF%95%E6%88%90%E5%8A%9F.png"></p>
+</li>
+</ul>
+<h3 id="三、配置-nginx"><a href="#三、配置-nginx" class="headerlink" title="三、配置 nginx"></a>三、配置 nginx</h3><ul>
+<li><h4 id="1-在nginx的目录下，conf-nginx-conf-中配置"><a href="#1-在nginx的目录下，conf-nginx-conf-中配置" class="headerlink" title="1. 在nginx的目录下，conf&#x2F;nginx.conf 中配置"></a>1. 在nginx的目录下，conf&#x2F;nginx.conf 中配置</h4><p>在 http中 新建server字段 具体如下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">http &#123;</span><br><span class="line">	#试验前后端分离</span><br><span class="line">	server&#123;  #一个server 代表一个项目管理的 nginx</span><br><span class="line">		listen 9003; #nginx 端口号</span><br><span class="line">		server_name localhost; #本地</span><br><span class="line">		</span><br><span class="line">		#配置代理 管理 前端 </span><br><span class="line">		location / &#123;</span><br><span class="line">			proxy_pass http://localhost:8080; #前端接口</span><br><span class="line">		&#125;</span><br><span class="line">		</span><br><span class="line">		#配置代理 管理 后端</span><br><span class="line">		location ~ /exam/ &#123;</span><br><span class="line">				proxy_pass http://localhost:8081; #8081 是后端的端口号</span><br><span class="line">			&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;	</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="2-开启-nginx"><a href="#2-开启-nginx" class="headerlink" title="2. 开启 nginx"></a>2. 开启 nginx</h4><ul>
+<li><p>nginx 常用命令</p>
+<p><img src="/nginx%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4.png"></p>
+</li>
+<li><h5 id="开启nginx：在nginx的-目录中，上方的路径中输入cmd-打开shell。-输入命令即可"><a href="#开启nginx：在nginx的-目录中，上方的路径中输入cmd-打开shell。-输入命令即可" class="headerlink" title="开启nginx：在nginx的  目录中，上方的路径中输入cmd 打开shell。 输入命令即可"></a>开启nginx：在nginx的  目录中，上方的路径中输入cmd 打开shell。 输入命令即可</h5></li>
+</ul>
+</li>
+</ul>
+<h3 id="四、编写前端"><a href="#四、编写前端" class="headerlink" title="四、编写前端"></a>四、编写前端</h3><ul>
+<li><h4 id="1-下载-axios-依赖"><a href="#1-下载-axios-依赖" class="headerlink" title="1.  下载 axios 依赖"></a>1.  下载 axios 依赖</h4><h5 id="通过命令-cnpm-install-axios-s-下载依赖"><a href="#通过命令-cnpm-install-axios-s-下载依赖" class="headerlink" title="通过命令 cnpm install axios -s 下载依赖"></a>通过命令 cnpm install axios -s 下载依赖</h5><p>下载完成后，可在 package.json 中的 dependencies 中查看是否下载成功</p>
+<p><img src="/axios%E6%98%AF%E5%90%A6%E5%AE%89%E8%A3%85%E6%88%90%E5%8A%9F.png"></p>
+</li>
+<li><h4 id="2-编辑-dev-env-js-文件"><a href="#2-编辑-dev-env-js-文件" class="headerlink" title="2. 编辑 dev.env.js 文件"></a>2. 编辑 dev.env.js 文件</h4><p>在 config 文件夹中 编辑dev.env.js文件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Descripttion: </span></span><br><span class="line"><span class="comment"> * @Author: jack</span></span><br><span class="line"><span class="comment"> * @Date: 2022-03-05 11:12:12</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="meta">&#x27;use strict&#x27;</span></span><br><span class="line"><span class="keyword">const</span> merge = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> prodEnv = <span class="built_in">require</span>(<span class="string">&#x27;./prod.env&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">module</span>.<span class="property">exports</span> = <span class="title function_">merge</span>(prodEnv, &#123;</span><br><span class="line">  <span class="attr">NODE_ENV</span>: <span class="string">&#x27;&quot;development&quot;&#x27;</span>,</span><br><span class="line">    <span class="comment">//主要配置端口号 改端口 就是 nginx 的的端口号</span></span><br><span class="line">  <span class="attr">BASE_API</span>: <span class="string">&#x27;&quot;http://localhost:9003&quot;&#x27;</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="3-新建-request-js-文件-用于创建-axios实例-以及-方便后续配置-request、response的设置"><a href="#3-新建-request-js-文件-用于创建-axios实例-以及-方便后续配置-request、response的设置" class="headerlink" title="3. 新建 request.js 文件 用于创建 axios实例 以及 方便后续配置 request、response的设置"></a>3. 新建 request.js 文件 用于创建 axios实例 以及 方便后续配置 request、response的设置</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * @Descripttion: </span></span><br><span class="line"><span class="comment"> * @Author: jack</span></span><br><span class="line"><span class="comment"> * @Date: 2022-03-19 14:23:29</span></span><br><span class="line"><span class="comment"> * 创建 axios 实例</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">&#x27;axios&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> service = axios.<span class="title function_">create</span>(&#123;</span><br><span class="line">    <span class="attr">baseURL</span>: process.<span class="property">env</span>.<span class="property">BASEURL</span>,</span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">5000</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// response 拦截器  设置response</span></span><br><span class="line">service.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(</span><br><span class="line">    <span class="function"><span class="params">response</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">//让返回的response 是直接返回response.data 这样就不需要再vue界面接受 数据时 还要 response.data.data</span></span><br><span class="line">      <span class="keyword">const</span> res = response.<span class="property">data</span> </span><br><span class="line">      </span><br><span class="line">      <span class="comment">// 这里是结合 后端返回的 R，进行显示</span></span><br><span class="line">      <span class="comment">// 20000:成功 200001：不成功</span></span><br><span class="line">      <span class="keyword">if</span> (res.<span class="property">code</span> == <span class="number">20001</span>) &#123;   <span class="comment">// 后端返回访问 不成功的 处理  既相当于 后端出现了错误 让前端无法正确的R值</span></span><br><span class="line">        <span class="title class_">Message</span>(&#123;</span><br><span class="line">          <span class="attr">message</span>: res.<span class="property">message</span>,</span><br><span class="line">          <span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">          <span class="attr">duration</span>: <span class="number">5</span> * <span class="number">1000</span> </span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(<span class="string">&#x27;error&#x27;</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="keyword">return</span> response.<span class="property">data</span>  <span class="comment">//访问正确 response.data 其实就是R </span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="function"><span class="params">error</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;err&#x27;</span> + error) <span class="comment">// for debug</span></span><br><span class="line">      <span class="title class_">Message</span>(&#123;</span><br><span class="line">        <span class="attr">message</span>: error.<span class="property">message</span>,</span><br><span class="line">        <span class="attr">type</span>: <span class="string">&#x27;error&#x27;</span>,</span><br><span class="line">        <span class="attr">duration</span>: <span class="number">5</span> * <span class="number">1000</span></span><br><span class="line">      &#125;)</span><br><span class="line">      <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error)</span><br><span class="line">    &#125;</span><br><span class="line">  )</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> service</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="4-新建-student-js-文件，-用于连接-与后端对应的-controller层的-方法。"><a href="#4-新建-student-js-文件，-用于连接-与后端对应的-controller层的-方法。" class="headerlink" title="4. 新建 student.js 文件， 用于连接 与后端对应的 controller层的 方法。"></a>4. 新建 student.js 文件， 用于连接 与后端对应的 controller层的 方法。</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> request <span class="keyword">from</span> <span class="string">&#x27;@/utils/request.js&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    <span class="title function_">exam</span>(<span class="params"></span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">request</span>(&#123;</span><br><span class="line">            <span class="attr">url</span>: <span class="string">`/exam/hello`</span>,  <span class="comment">//后端方法地址</span></span><br><span class="line">            <span class="attr">method</span>: <span class="string">&#x27;post&#x27;</span>,  <span class="comment">// 请求方式</span></span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="5-新建-exam-vue-界面"><a href="#5-新建-exam-vue-界面" class="headerlink" title="5. 新建 exam.vue 界面"></a>5. 新建 exam.vue 界面</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&lt;!--</span><br><span class="line"> * @Descripttion: </span><br><span class="line"> * @Author: jack</span><br><span class="line"> * @Date: 2022-03-20 14:45:35</span><br><span class="line">--&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;button @click=&quot;hello&quot;&gt;按钮&lt;/button&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">import student from &#x27;@/api/student&#x27;</span><br><span class="line"></span><br><span class="line">export default&#123;</span><br><span class="line">    data()&#123;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">    methods:&#123;</span><br><span class="line">        hello()&#123;</span><br><span class="line">            student.exam()</span><br><span class="line">            .then(response=&gt;&#123;</span><br><span class="line">                alert(response.data)</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;   </span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><h4 id="6-添加路由"><a href="#6-添加路由" class="headerlink" title="6.  添加路由"></a>6.  添加路由</h4><p><img src="/%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1.png"></p>
+</li>
+</ul>
+<h3 id="五、-测试结果"><a href="#五、-测试结果" class="headerlink" title="五、 测试结果"></a>五、 测试结果</h3><p>启动vue项目,点击按钮 弹出 hello,this is springBoot 则成功实现 前后端分离</p>
+<p><img src="/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E5%AE%8C%E6%88%90.png"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">jackCoding</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/springboor+vue+nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%85%8D%E7%BD%AE/">http://example.com/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/springboor+vue+nginx%20%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%85%8D%E7%BD%AE/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">梁伟杰的代码之旅</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%A1%86%E6%9E%B6/">-框架</a></div><div class="post_share"><div class="social-share" data-image="/img/avator.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/springBoot+swaggerUI%E6%B5%8B%E8%AF%95%E6%96%B9%E6%B3%95/" title="模板"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">模板</div></div></a></div><div class="next-post pull-right"><a href="/2021/09/21/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/vue%E5%90%84%E7%A7%8D%E6%8F%92%E4%BB%B6%E4%BD%BF%E7%94%A8/" title="vue各种插件使用"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">vue各种插件使用</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">jackCoding</div><div class="author-info__description">编程学习之旅</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">44</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%AC%E7%AF%87%E6%96%87%E7%AB%A0-%E4%BB%85%E4%BD%9C%E4%BA%8E%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA-%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.</span> <span class="toc-text">本篇文章 仅作于如何搭建 前后端分离步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.0.1.</span> <span class="toc-text">一、准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E5%A5%BD%E5%9F%BA%E6%9C%AC%E7%9A%84springBoot%E9%A1%B9%E7%9B%AE%E3%80%81Vue%E9%A1%B9%E7%9B%AE%EF%BC%88%E5%85%B7%E4%BD%93%E7%9C%8B-%E5%8F%A6%E4%B8%A4%E7%AF%87%E6%96%87%E7%AB%A0-%EF%BC%9ASpringBoot-%E6%95%B4%E5%90%88-Mybatis-plus-%E6%96%B0%E5%BB%BAVue%E9%A1%B9%E7%9B%AE%EF%BC%89"><span class="toc-number">1.0.1.1.</span> <span class="toc-text">搭建好基本的springBoot项目、Vue项目（具体看 另两篇文章 ：SpringBoot 整合 Mybatis-plus &amp;&amp; 新建Vue项目）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD-nginx%E3%80%82"><span class="toc-number">1.0.1.2.</span> <span class="toc-text">下载 nginx。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E7%BC%96%E5%86%99%E5%90%8E%E7%AB%AF"><span class="toc-number">1.0.1.3.</span> <span class="toc-text">二、编写后端</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9C%A8appcation-properties-%E9%85%8D%E7%BD%AE%E7%AB%AF%E5%8F%A3%E5%8F%B7"><span class="toc-number">1.0.1.4.</span> <span class="toc-text">1. 在appcation.properties  配置端口号</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BC%96%E5%86%99%E7%AE%80%E5%8D%95%E7%9A%84-Controller"><span class="toc-number">1.0.1.5.</span> <span class="toc-text">2. 编写简单的 Controller</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%9C%A8-swagger-ui%E8%BF%9B%E8%A1%8C%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95"><span class="toc-number">1.0.1.6.</span> <span class="toc-text">3. 在 swagger-ui进行功能测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E9%85%8D%E7%BD%AE-nginx"><span class="toc-number">1.0.2.</span> <span class="toc-text">三、配置 nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%9C%A8nginx%E7%9A%84%E7%9B%AE%E5%BD%95%E4%B8%8B%EF%BC%8Cconf-nginx-conf-%E4%B8%AD%E9%85%8D%E7%BD%AE"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">1. 在nginx的目录下，conf&#x2F;nginx.conf 中配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%BC%80%E5%90%AF-nginx"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">2. 开启 nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BC%80%E5%90%AFnginx%EF%BC%9A%E5%9C%A8nginx%E7%9A%84-%E7%9B%AE%E5%BD%95%E4%B8%AD%EF%BC%8C%E4%B8%8A%E6%96%B9%E7%9A%84%E8%B7%AF%E5%BE%84%E4%B8%AD%E8%BE%93%E5%85%A5cmd-%E6%89%93%E5%BC%80shell%E3%80%82-%E8%BE%93%E5%85%A5%E5%91%BD%E4%BB%A4%E5%8D%B3%E5%8F%AF"><span class="toc-number">1.0.2.2.1.</span> <span class="toc-text">开启nginx：在nginx的  目录中，上方的路径中输入cmd 打开shell。 输入命令即可</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E7%BC%96%E5%86%99%E5%89%8D%E7%AB%AF"><span class="toc-number">1.0.3.</span> <span class="toc-text">四、编写前端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E4%B8%8B%E8%BD%BD-axios-%E4%BE%9D%E8%B5%96"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">1.  下载 axios 依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E5%91%BD%E4%BB%A4-cnpm-install-axios-s-%E4%B8%8B%E8%BD%BD%E4%BE%9D%E8%B5%96"><span class="toc-number">1.0.3.1.1.</span> <span class="toc-text">通过命令 cnpm install axios -s 下载依赖</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%BC%96%E8%BE%91-dev-env-js-%E6%96%87%E4%BB%B6"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">2. 编辑 dev.env.js 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%96%B0%E5%BB%BA-request-js-%E6%96%87%E4%BB%B6-%E7%94%A8%E4%BA%8E%E5%88%9B%E5%BB%BA-axios%E5%AE%9E%E4%BE%8B-%E4%BB%A5%E5%8F%8A-%E6%96%B9%E4%BE%BF%E5%90%8E%E7%BB%AD%E9%85%8D%E7%BD%AE-request%E3%80%81response%E7%9A%84%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">3. 新建 request.js 文件 用于创建 axios实例 以及 方便后续配置 request、response的设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-%E6%96%B0%E5%BB%BA-student-js-%E6%96%87%E4%BB%B6%EF%BC%8C-%E7%94%A8%E4%BA%8E%E8%BF%9E%E6%8E%A5-%E4%B8%8E%E5%90%8E%E7%AB%AF%E5%AF%B9%E5%BA%94%E7%9A%84-controller%E5%B1%82%E7%9A%84-%E6%96%B9%E6%B3%95%E3%80%82"><span class="toc-number">1.0.3.4.</span> <span class="toc-text">4. 新建 student.js 文件， 用于连接 与后端对应的 controller层的 方法。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-%E6%96%B0%E5%BB%BA-exam-vue-%E7%95%8C%E9%9D%A2"><span class="toc-number">1.0.3.5.</span> <span class="toc-text">5. 新建 exam.vue 界面</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-%E6%B7%BB%E5%8A%A0%E8%B7%AF%E7%94%B1"><span class="toc-number">1.0.3.6.</span> <span class="toc-text">6.  添加路由</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81-%E6%B5%8B%E8%AF%95%E7%BB%93%E6%9E%9C"><span class="toc-number">1.0.4.</span> <span class="toc-text">五、 测试结果</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/20221/03/06/%E6%A1%86%E6%9E%B6%E6%8A%80%E6%9C%AF/SpringBoot%20%E6%95%B4%E5%90%88%20MybatisPlus/" title="springBoot整合MybatisPlus">springBoot整合MybatisPlus</a><time datetime="+020221-03-06T03:57:36.000Z" title="发表于 20221-03-06 11:57:36">20221-03-06</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/%E5%AE%9E%E4%B9%A0%E7%94%9F%E9%9D%A2%E8%AF%95%E9%A2%98/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.613Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/09/20/%E9%9D%A2%E8%AF%95%E9%A2%98/Java%E9%9D%A2%E8%AF%95%E9%A2%98%EF%BC%88Java%E8%AF%AD%E8%A8%8001%EF%BC%89/" title="无题">无题</a><time datetime="2023-09-20T07:18:43.607Z" title="发表于 2023-09-20 15:18:43">2023-09-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2022/06/07/Java%E5%A4%8D%E4%B9%A0/java8%E6%96%B0%E7%89%B9%E6%80%A7/" title="java8新特性">java8新特性</a><time datetime="2022-06-07T03:57:36.000Z" title="发表于 2022-06-07 11:57:36">2022-06-07</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2021/11/16/Java%E5%A4%8D%E4%B9%A0/Java%E5%A4%8D%E4%B9%A0-3/" title="Java复习3">Java复习3</a><time datetime="2021-11-16T03:57:36.000Z" title="发表于 2021-11-16 11:57:36">2021-11-16</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By jackCoding</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div class="no-result" id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
